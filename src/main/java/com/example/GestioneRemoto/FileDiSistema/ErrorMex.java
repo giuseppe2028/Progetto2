@@ -1,4 +1,4 @@
-package com.example.progetto2.FileDiSistema;
+package com.example.GestioneRemoto.FileDiSistema;
 
 import javafx.scene.control.Alert;
 

@@ -1,4 +1,4 @@
-package com.example.progetto2.FileDiSistema;
+package com.example.GestioneRemoto.FileDiSistema;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

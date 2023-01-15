@@ -1,8 +1,8 @@
-package com.example.progetto2.Autenticazione.Schermate;
+package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
-import com.example.progetto2.Autenticazione.Control.ControlLogin;
-import com.example.progetto2.FileDiSistema.DatePicker;
-import com.example.progetto2.Start;
+import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
+import com.example.GestioneRemoto.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,13 +19,15 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+//TODO implementare la classe schermata Principale Dipendente
 public class SchermataPrincipaleDipendente implements Runnable {
 
-    ResultSet rs;
-
+    List<Object> datiProfilo;
     @FXML
     Label nomeCognome;
     @FXML
@@ -35,8 +37,9 @@ public class SchermataPrincipaleDipendente implements Runnable {
 
     ControlLogin controlLogin;
 
-    public SchermataPrincipaleDipendente(ControlLogin controlLogin, ResultSet rs){
-this.rs= rs;
+    public SchermataPrincipaleDipendente(ControlLogin controlLogin, List<Object> datiProfilo){
+
+        this.datiProfilo = datiProfilo;
         this.controlLogin = controlLogin;
 
         //setto le label e le imageview:
@@ -107,18 +110,15 @@ this.rs= rs;
 
     @FXML
     public void initialize(){
-        try {
-            String stringNomeCognome = rs.getString("nome") +" " + rs.getString("cognome");
+
+        String stringNomeCognome = (String) datiProfilo.get(1) + (String) datiProfilo.get(2);
             nomeCognome.setText(stringNomeCognome);
-            String stringMatricola = rs.getString("matricola");
-            String stringRuolo = rs.getString("ruolo");
+            String stringMatricola = (String) datiProfilo.get(0);
+            String stringRuolo = (String) datiProfilo.get(7);
             nomeCognome.setText(stringNomeCognome);
             matricola.setText(stringMatricola);
             ruolo.setText(stringRuolo);
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
     }
     @Override

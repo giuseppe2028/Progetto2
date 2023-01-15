@@ -1,6 +1,6 @@
-package com.example.progetto2.Autenticazione.Schermate;
+package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
-import com.example.progetto2.Autenticazione.Control.ControlLogin;
+import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -21,7 +21,7 @@ public class SchermataRecuperoPassword {
     private Label label = new Label();
     private Stage stage;
     public SchermataRecuperoPassword(ControlLogin controlLogin){
-        this.controlLogin = controlLogin;
+    this.controlLogin = controlLogin;
     }
     private Scene scene;
     private Parent root;
@@ -36,12 +36,12 @@ public class SchermataRecuperoPassword {
 
     @FXML
     public void clickIndietro(ActionEvent e){
-        controlLogin.clickIndietro();
+    controlLogin.clickIndietro();
     }
     @FXML
     public void clickInvia(ActionEvent e) throws Exception {
 
-        controlLogin.clickInvia(mailText.getText());
+       controlLogin.clickInvia(mailText.getText());
 
     }
 

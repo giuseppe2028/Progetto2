@@ -1,6 +1,6 @@
-package com.example.progetto2.FileDiSistema;
+package com.example.GestioneRemoto.FileDiSistema;
 
-import com.example.progetto2.Start;
+import com.example.GestioneRemoto.Start;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
