@@ -1,0 +1,36 @@
+#rettangoloUP{
+
+    -fx-background-color:  #526475;
+
+}
+#IconaLogout{
+    -fx-background-color:  #526475;;
+    -fx-background-radius: 7;
+    -fx-text-fill: "white";
+}
+#IconaNotifica{
+    -fx-background-color: #526475;
+    -fx-background-radius: 7;
+    -fx-text-fill: "white";
+}
+#DataCorrente{
+    -fx-text-fill: "white";
+}
+#ImmagineProfilo{
+    -fx-background-radius: 70;
+}
+#sfondoDropDownButton{
+    -fx-background-color: #3B8BC5;
+}
+#GestioneTurni{
+    -fx-text-fill: "white";
+}
+#Immagine{
+    -fx-text-fill: "white";
+}
+#GestioneDipendente{
+    -fx-text-fill: "white";
+}
+#GestioneProfilo{
+   -fx-text-fill: "white";
+}
