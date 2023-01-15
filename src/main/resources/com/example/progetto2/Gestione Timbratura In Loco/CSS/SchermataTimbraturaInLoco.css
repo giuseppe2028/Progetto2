@@ -1,0 +1,15 @@
+#sfondoRettangolo{
+    -fx-background-color: rgba(82, 100, 117, 1);
+}
+
+#bottoneTimbraEntrata{
+    -fx-background-color: #006E9D;
+    -fx-background-radius: 25;
+    -fx-opacity: 0.6;
+}
+
+#bottoneTimbraUscita{
+    -fx-background-color: #006E9D;
+    -fx-opacity: 0.6;
+    -fx-background-radius: 25;
+}
