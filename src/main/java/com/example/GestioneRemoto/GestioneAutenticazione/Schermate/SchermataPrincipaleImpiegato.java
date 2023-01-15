@@ -13,8 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +23,7 @@ import java.util.TimerTask;
 
 
 //TODO implementare la classe schermata Principale Dipendente
-public class SchermataPrincipaleDipendente implements Runnable {
+public class SchermataPrincipaleImpiegato implements Runnable {
 
     List<Object> datiProfilo;
     @FXML
@@ -37,7 +35,7 @@ public class SchermataPrincipaleDipendente implements Runnable {
 
     ControlLogin controlLogin;
 
-    public SchermataPrincipaleDipendente(ControlLogin controlLogin, List<Object> datiProfilo){
+    public SchermataPrincipaleImpiegato(ControlLogin controlLogin, List<Object> datiProfilo){
 
         this.datiProfilo = datiProfilo;
         this.controlLogin = controlLogin;
