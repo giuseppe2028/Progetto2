@@ -1,9 +1,11 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Control;
 
+import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleAmministrativo;
 import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDatore;
 import com.example.GestioneRemoto.FileDiSistema.*;
 
 import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDipendente;
+import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataRecuperoPassword;
 import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -41,7 +43,7 @@ public class ControlLogin {
             }
             else if(datiProfilo.get(7).equals("IMPIEGATO")){
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo)));
+                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
 
@@ -49,7 +51,7 @@ public class ControlLogin {
             }
             else{
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo)));
+                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleAmministrativo(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
             }
@@ -61,7 +63,7 @@ public class ControlLogin {
 
     }
     public void clickRecuperaPassword(ActionEvent e){
-        //Util.setScene("/com/example/progettogaga/Autenticazione/SchermataRecuperoPassword.fxml",stage,c-> new SchermataRecuperoPassword(this));
+        Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataRecuperoPassword.fxml",stage,c-> new SchermataRecuperoPassword(this));
     }
     //metodo che parte dalla Schermata Recupera Password
     public void clickIndietro(){
@@ -101,9 +103,5 @@ public class ControlLogin {
         }
         return passwordGenerata;
     }
-/*public void clickLogout(){
-    Util.setScene("/com/example/progettogaga/SchermataLogin.fxml",stage,c-> new SchermataLogin());
-}
 
- */
 }
