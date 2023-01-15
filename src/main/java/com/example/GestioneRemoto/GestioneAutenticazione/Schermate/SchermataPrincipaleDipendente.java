@@ -1,8 +1,8 @@
-package com.example.progetto2.Autenticazione.Schermate;
+package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
-import com.example.progetto2.Autenticazione.Control.ControlLogin;
-import com.example.progetto2.FileDiSistema.DatePicker;
-import com.example.progetto2.Start;
+import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
+import com.example.GestioneRemoto.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +22,8 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
+//TODO implementare la classe schermata Principale Dipendente
 public class SchermataPrincipaleDipendente implements Runnable {
 
     ResultSet rs;

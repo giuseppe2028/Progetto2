@@ -34,3 +34,6 @@
 #GestioneProfilo{
    -fx-text-fill: "white";
 }
+#logout{
+    -fx-background-color: #526475;
+}

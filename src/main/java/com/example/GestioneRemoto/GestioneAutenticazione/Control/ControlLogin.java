@@ -1,8 +1,10 @@
-package com.example.progetto2.Autenticazione.Control;
+package com.example.GestioneRemoto.GestioneAutenticazione.Control;
 
-import com.example.progetto2.Autenticazione.Schermate.SchermataPrincipaleDatore;
-import com.example.progetto2.FileDiSistema.*;
-import com.example.progetto2.Start;
+import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDatore;
+import com.example.GestioneRemoto.FileDiSistema.*;
+
+import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDipendente;
+import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
@@ -32,26 +34,24 @@ public class ControlLogin {
 
             if(datiProfilo.get(7).equals("DATORE")){
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                SchermataPrincipaleDatore schermataPrincipaleDatore =  Util.setSpecificScene("/com/example/progetto2/Autenticazione/FXML/SchermataPrincipaleDatore.fxml", stage, c -> new SchermataPrincipaleDatore(this, (ArrayList<Object>) datiProfilo));
+                SchermataPrincipaleDatore schermataPrincipaleDatore =  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml", stage, c -> new SchermataPrincipaleDatore(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDatore);
                     thread.start();
 
             }
             else if(datiProfilo.get(7).equals("IMPIEGATO")){
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    /*SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleDipendente(this, rsProfilo));
+                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo)));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
 
-                     */
+
             }
             else{
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    /*SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleDipendente(this, rsProfilo));
+                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo)));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
-
-                     */
             }
         }
         else{
@@ -88,6 +88,7 @@ public class ControlLogin {
 
     }
     public void clickLogout(ActionEvent e){
+        //TODO implementare clickLogout
         //Util.setScene("/com/example/progetto2/Autenticazione/FXML/Login.fxml", stage, c-> );
     }
     private String generaPassword(){

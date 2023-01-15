@@ -5,9 +5,9 @@ module com.example.progetto2 {
     requires java.mail;
 
 
-    opens com.example.progetto2 to javafx.fxml;
-    exports com.example.progetto2;
-    opens com.example.progetto2.Autenticazione.Schermate to javafx.fxml;
+    opens com.example.GestioneRemoto to javafx.fxml;
+    exports com.example.GestioneRemoto;
+    opens com.example.GestioneRemoto.GestioneAutenticazione.Schermate to javafx.fxml;
 
 
 

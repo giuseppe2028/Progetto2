@@ -1,7 +1,7 @@
-package com.example.progetto2.Autenticazione.Schermate;
+package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
-import com.example.progetto2.Autenticazione.Control.ControlLogin;
-import com.example.progetto2.Start;
+import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
+import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

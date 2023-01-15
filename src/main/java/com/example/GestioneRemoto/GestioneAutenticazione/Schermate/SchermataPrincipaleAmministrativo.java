@@ -1,6 +1,6 @@
-package com.example.progetto2.Autenticazione.Schermate;
+package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
-import com.example.progetto2.Autenticazione.Control.ControlLogin;
+import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 
 import java.sql.ResultSet;
 

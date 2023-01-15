@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="bottone" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="900.0" stylesheets="@SchermataPrincipaleImpiegato.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.progettogaga.SchermataPrincipale.SchermataPrincipaleDipendente">
+<AnchorPane fx:id="bottone" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="900.0" stylesheets="@../CSS/SchermataPrincipaleImpiegato.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDipendente">
     <children>
         <AnchorPane fx:id="rettangoloUP" prefHeight="60.0" prefWidth="900.0">
             <children>
@@ -20,17 +20,17 @@
             <Button fx:id="logout" contentDisplay="GRAPHIC_ONLY" layoutX="803.0" layoutY="3.0" mnemonicParsing="false" onAction="#clickLogout" prefHeight="53.0" prefWidth="49.0" scaleX="0.7" scaleY="0.7" style="-fx-background-color: #526475;" text="Text" />
             <ImageView fx:id="Iconlogout" layoutX="838.0" layoutY="6.0" preserveRatio="true">
                <image>
-                  <Image url="@Icon/Logout.png" />
+                  <Image url="@../../Icon/Logout.png" />
                </image>
             </ImageView>
             </children></AnchorPane>
         <ImageView fx:id="ImmagineProfilo" fitHeight="138.0" fitWidth="196.0" layoutX="382.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Icon/ImmaginiGestioneProfilo/fotoPro.png" />
+            <Image url="@../../Icon/ImmaginiGestioneProfilo/fotoPro.png" />
          </image></ImageView>
       <AnchorPane fx:id="sfondoDropDownButton" layoutY="348.0" prefHeight="82.0" prefWidth="900.0" style="-fx-background-color: #526475;">
          <children>
-            <MenuButton fx:id="menuButtonGestioneProfilo" layoutY="1.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="450.0" style="-fx-background-color: #526475;" stylesheets="@../SchermataPrincipaleImpiegato.css" text="Gestione Profilo" textFill="WHITE">
+            <MenuButton fx:id="menuButtonGestioneProfilo" layoutY="1.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="450.0" style="-fx-background-color: #526475;" stylesheets="@../CSS/SchermataPrincipaleImpiegato.css" text="Gestione Profilo" textFill="WHITE">
               <items>
                 <MenuItem id="item1" mnemonicParsing="false" text="Visualizza Profilo" />
                 <MenuItem id="item2" mnemonicParsing="false" text="Visualizza Stipendio" />

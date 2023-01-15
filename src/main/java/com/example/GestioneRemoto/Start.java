@@ -1,6 +1,6 @@
-package com.example.progetto2;
+package com.example.GestioneRemoto;
 
-import com.example.progetto2.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.FileDiSistema.DatePicker;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +24,7 @@ public class Start extends Application {
         mainStage = stage;
         Parent root;
         //FXMLLoader loader = new FXMLLoader();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/progetto2/Autenticazione/FXML/Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/Login.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
