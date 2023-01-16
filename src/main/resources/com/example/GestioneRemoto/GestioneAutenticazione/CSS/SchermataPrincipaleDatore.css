@@ -37,3 +37,13 @@
 #logout{
     -fx-background-color: #526475;
 }
+.menu-item{
+    -fx-pref-width: 400;
+    -fx-font-size: 19;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-arc-width: 100;
+    -fx-background-radius: 10px 10px 10px 10px;
+
+
+}

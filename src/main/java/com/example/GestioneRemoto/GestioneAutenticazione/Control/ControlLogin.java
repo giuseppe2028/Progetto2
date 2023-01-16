@@ -33,26 +33,26 @@ public class ControlLogin {
         List<Object> datiProfilo = Daemon.getDatiProfilo(matricola);
 
         if(Daemon.verifyCredenziali(matricola,password)){
-
-            if(datiProfilo.get(7).equals("DATORE")){
+            if(datiProfilo.get(6).equals("Datore")){
                 new EntityUtente((ArrayList<Object>) datiProfilo);
                 SchermataPrincipaleDatore schermataPrincipaleDatore =  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml", stage, c -> new SchermataPrincipaleDatore(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDatore);
                     thread.start();
 
             }
-            else if(datiProfilo.get(7).equals("IMPIEGATO")){
+            else if(datiProfilo.get(6).equals("IMPIEGATO")){
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    SchermataPrincipaleImpiegato schermataPrincipaleImpiegato1 =  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleImpiegato(this, (ArrayList<Object>) datiProfilo));
-                    Thread thread = new Thread(schermataPrincipaleImpiegato1);
+                    SchermataPrincipaleImpiegato schermataPrincipaleImpiegato =  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleImpiegato.fxml", stage, c -> new SchermataPrincipaleImpiegato(this, (ArrayList<Object>) datiProfilo));
+                    Thread thread = new Thread(schermataPrincipaleImpiegato);
                     thread.start();
 
 
             }
             else{
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    SchermataPrincipaleImpiegato schermataPrincipaleImpiegato1 =  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleAmministrativo(this, (ArrayList<Object>) datiProfilo));
-                    Thread thread = new Thread(schermataPrincipaleImpiegato1);
+
+                    SchermataPrincipaleAmministrativo schermataPrincipaleAmministrativo =  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleAmministrativo(this, (ArrayList<Object>) datiProfilo));
+                    Thread thread = new Thread(schermataPrincipaleAmministrativo);
                     thread.start();
             }
         }

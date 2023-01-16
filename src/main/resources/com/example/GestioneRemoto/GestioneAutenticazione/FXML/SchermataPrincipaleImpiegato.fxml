@@ -32,7 +32,7 @@
          <children>
             <MenuButton fx:id="menuButtonGestioneProfilo" layoutY="1.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="450.0" style="-fx-background-color: #526475;" stylesheets="@../CSS/SchermataPrincipaleImpiegato.css" text="Gestione Profilo" textFill="WHITE">
               <items>
-                <MenuItem id="item1" mnemonicParsing="false" text="Visualizza Profilo" />
+                <MenuItem id="item1" mnemonicParsing="false" onAction="#clickVisualizzaProfilo" text="Visualizza Profilo" />
                 <MenuItem id="item2" mnemonicParsing="false" text="Visualizza Stipendio" />
                   <MenuItem id="item3" mnemonicParsing="false" text="Visualizza Calendario" />
                   <MenuItem id="item4" mnemonicParsing="false" text="Gestione Richieste" />

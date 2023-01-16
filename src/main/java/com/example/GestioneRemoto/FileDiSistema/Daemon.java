@@ -43,76 +43,43 @@ public class Daemon {
         //return fittizzio
         return false;
     }
-    public static List<Object> getDatiProfilo(int matricola){
-        try {
-            ritorno = new ArrayList<>();
-            String sql = "SELECT * FROM Utente WHERE matricola = ?";
-            preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet = preparedStatement.executeQuery();
-            //ho messo tutto nella lista
-            while(resultSet.next()){
-                ritorno.add(resultSet.getInt("matricola"));
-                ritorno.add(resultSet.getString("nome"));
-                ritorno.add(resultSet.getString("cognome"));
-                ritorno.add(resultSet.getString("cf"));
-                ritorno.add(resultSet.getDate("data_nascita"));
-                ritorno.add(resultSet.getBlob("foto_profilo"));
-                ritorno.add(resultSet.getString("indirizzo_residenza"));
-                ritorno.add(resultSet.getString("ruolo"));
-                ritorno.add(resultSet.getString("mail"));
-                ritorno.add(resultSet.getString("password"));
-                ritorno.add(resultSet.getString("IBAN"));
-                ritorno.add(resultSet.getLong("recapito_telefonico"));
-                ritorno.add(resultSet.getString("mail_personale"));
+    public static List<Object> getDatiProfilo(int matricola) {
+        List<Object> ritorno = new ArrayList<>();
+        String sql = "SELECT * FROM Utente WHERE matricola = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 
+            preparedStatement.setInt(1, matricola);
+            try (ResultSet resultSet = preparedStatement.executeQuery();) {
+                while (resultSet.next()) {
+                    ritorno.add(resultSet.getInt("matricola"));
+                    ritorno.add(resultSet.getString("nome"));
+                    ritorno.add(resultSet.getString("cognome"));
+                    ritorno.add(resultSet.getString("cf"));
+                    ritorno.add(resultSet.getDate("data_nascita"));
+                   // ritorno.add(resultSet.getBlob("foto_profilo"));
+                    ritorno.add(resultSet.getString("indirizzo_residenza"));
+                    ritorno.add(resultSet.getString("ruolo"));
+                    ritorno.add(resultSet.getString("mail"));
+                   // ritorno.add(resultSet.getString("password"));
+                    ritorno.add(resultSet.getString("IBAN"));
+                    ritorno.add(resultSet.getLong("recapito_telefonico"));
+                    ritorno.add(resultSet.getString("mail_personale"));
+
+                }
             }
-            System.out.println(ritorno.get(7));
-            return ritorno;
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error in getDatiProfilo");
         }
-
+        if (ritorno.isEmpty()) {
+            System.out.println("no data found for matricola: ");
+        }
+        return ritorno;
     }
 
 
 
-    /*public static boolean verificaNotifiche(int matricola){
-         ResultSet rs;
-        try {
 
-            conn  = DriverManager.getConnection(URL,username,passwordDBMS);
-            String sql = "SELECT * FROM Notifiche WHERE presa_visione = false and ref_matricola = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, 1);
-            rs =  pstm.executeQuery();
-            if(rs.next()){
-                return true;
-            }
-            else{
-                return false;
-            }
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }    */
-    public static ResultSet getNuoveNotifiche(int matricola){
-        ResultSet rs;
-        try {
-
-            conn  = DriverManager.getConnection(URL,username,passwordDBMS);
-            String sql = "SELECT * FROM Notifica WHERE presa_visione = false and ref_matricola = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, matricola);
-            rs =  pstm.executeQuery();
-            return rs;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public static int getMatricola(String mail){
         ResultSet rs;
         try{
@@ -126,15 +93,50 @@ public class Daemon {
             return 0;
         }
     }
-    /*public static void updatePresaVisione(int ID){
+
+    public static boolean modificaDati(Double recapito,String indirizzo, String iban, String mail) {
+        int matricola= EntityUtente.getMatricola();
+
         try{
-            String sql = "UPDATE Notifica SET presa_visione = true WHERE = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1,ID);
-            pstm.execute();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            String query= "UPDATE Utente SET indirizzo_residenza=?, recapito_telefonico=?, IBAN=?, mail_personale=?  WHERE matricola=?";
+            PreparedStatement pstm1= conn.prepareStatement(query);
+            pstm1.setString(1, indirizzo);
+            pstm1.setDouble(2, recapito);
+            pstm1.setString(3, iban);
+            pstm1.setString(4, mail);
+            pstm1.setInt(5, matricola);
+            pstm1.execute();
+            return true;
+
+        } catch (SQLException a){
+            return false;
         }
-    }*/
-CIAO ALE
+    }
+
+    public static boolean modificaPassword(String vecpass, String nuovapass) {
+        ResultSet rs;
+        int matricola= EntityUtente.getMatricola();
+
+        try{
+            String sql = "SELECT password FROM Utente WHERE password=? AND matricola=?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,vecpass);
+            pstm.setInt(2, matricola);
+            rs = pstm.executeQuery();
+
+
+            if (rs.next()){
+                String query= "UPDATE Utente SET password=? WHERE matricola=?";
+                PreparedStatement pstm1= conn.prepareStatement(query);
+                pstm1.setString(1, nuovapass);
+                pstm1.setInt(2,matricola);
+                pstm1.execute();
+                return true;
+            }
+        } catch (SQLException a){
+            return false;
+        }
+        return false;
+    }
+
 }

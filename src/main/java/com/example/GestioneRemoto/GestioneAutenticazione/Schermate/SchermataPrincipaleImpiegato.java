@@ -2,6 +2,7 @@ package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -39,51 +40,21 @@ public class SchermataPrincipaleImpiegato implements Runnable {
 
         this.datiProfilo = datiProfilo;
         this.controlLogin = controlLogin;
-
-        //setto le label e le imageview:
-
-       /* String stringNomeCognome;
-        try {
-            stringNomeCognome = rs.getString("nome") +" " + rs.getString("cognome");
-            nomeCognome.setText(stringNomeCognome);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }*/
-/*
-        try {
-            stringNomeCognome = rs.getString("nome") +" " + rs.getString("cognome");
-            String stringMatricola = rs.getString("matricola");
-            String stringRuolo = rs.getString("ruolo");
-            nomeCognome.setText(stringNomeCognome);
-            matricola.setText(stringMatricola);
-            ruolo.setText(stringRuolo);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
- */
-
     }
 
     String data;
     @FXML
     ImageView Iconlogout;
     @FXML
-    ImageView IconNotification;
-    @FXML
     Label dataCorrente;
-
     @FXML
     private ImageView ImmagineProfilo;
-
     @FXML
     private AnchorPane bottone;
-
     @FXML
     private Button notifiche;
-
     @FXML
     private Button gestioneProfilo;
-
     @FXML
     private Button timbratura;
     @FXML
@@ -92,10 +63,8 @@ public class SchermataPrincipaleImpiegato implements Runnable {
     private ImageView Iconatimbratura;
     @FXML
     private Button logout;
-
     @FXML
     private AnchorPane rettangoloUP;
-
     @FXML
     private AnchorPane sfondoDropDownButton;
     @FXML
@@ -103,25 +72,21 @@ public class SchermataPrincipaleImpiegato implements Runnable {
     @FXML
     MenuButton menuButtonGestioneTimbratura = new MenuButton();
     Stage stage = Start.mainStage;
-
     private  Timer timer = new Timer();
-
     @FXML
     public void initialize(){
 
-        String stringNomeCognome = (String) datiProfilo.get(1) + (String) datiProfilo.get(2);
+        String stringNomeCognome =  datiProfilo.get(1).toString() +" "+ datiProfilo.get(2).toString();
             nomeCognome.setText(stringNomeCognome);
-            String stringMatricola = (String) datiProfilo.get(0);
-            String stringRuolo = (String) datiProfilo.get(7);
+            String stringMatricola = datiProfilo.get(0).toString();
+            String stringRuolo =datiProfilo.get(7).toString();
             nomeCognome.setText(stringNomeCognome);
             matricola.setText(stringMatricola);
             ruolo.setText(stringRuolo);
 
-
     }
     @Override
-
-public void run() {
+    public void run() {
       int x = 0;
     timer.scheduleAtFixedRate(new TimerTask() {
         @Override
@@ -152,8 +117,6 @@ public void run() {
     },0,1000);
 
 }
-
-
     @FXML
     public void clickGestioneProfilo(ActionEvent e){
 
@@ -166,7 +129,10 @@ public void run() {
 
     }
     @FXML
-    public void clickvisualizzaProfilo(ActionEvent e){
+    public void clickVisualizzaProfilo(ActionEvent e){
+        ControlVisualizzaProfilo controlVisualizzaProfilo=new ControlVisualizzaProfilo();
+        controlVisualizzaProfilo.clickVisualizzaProfilo();
+
 
     }
     @FXML

@@ -2,6 +2,7 @@ package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -80,24 +82,19 @@ public class SchermataPrincipaleDatore implements Runnable{
 
 
 
-   /* @FXML
+    @FXML
     public void initialize(){
-        try {
-            String stringNomeCognome = rs.getString("nome") +" " + rs.getString("cognome");
-            nomeCognome.setText(stringNomeCognome);
-            String stringMatricola = rs.getString("matricola");
-            String stringRuolo = rs.getString("ruolo");
-            nomeCognome.setText(stringNomeCognome);
-            matricola.setText(stringMatricola);
-            ruolo.setText(stringRuolo);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        String stringNomeCognome =lista.get(1).toString() +" " +  lista.get(2).toString();
+        nomeCognome.setText(stringNomeCognome);
+        String stringMatricola =  lista.get(0).toString();
+        String stringRuolo = lista.get(6).toString();
+        nomeCognome.setText(stringNomeCognome);
+        matricola.setText(stringMatricola);
+        ruolo.setText(stringRuolo);
 
     }
 
-    */
+
     public void run() {
         int x = 0;
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -135,7 +132,10 @@ public class SchermataPrincipaleDatore implements Runnable{
     }
 
     @FXML
-    public void clickVisualizzaProfilo(){
+    public void clickVisualizzaProfilo(ActionEvent e){
+        System.out.println("cccc");
+        ControlVisualizzaProfilo controlVisualizzaProfilo1=new ControlVisualizzaProfilo();
+        controlVisualizzaProfilo1.clickVisualizzaProfilo();
 
     }
     @FXML
