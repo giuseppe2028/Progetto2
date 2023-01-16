@@ -1,5 +1,6 @@
 package com.example.progetto2.Schermate;
 
+import com.example.progetto2.Control.ControlTimbratura;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,27 +9,30 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class SchermataTimbraturaInLoco {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    private LocalTime time;
+    private LocalDate date;
+private  ControlTimbratura controlTimbratura;
 
+public SchermataTimbraturaInLoco(){
+    controlTimbratura=new ControlTimbratura();
+}
     @FXML
-    public void clickTimbraEntrata(ActionEvent e ) throws IOException{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaEntrata.fxml"));
-            root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+    public void clickTimbraEntrata1(ActionEvent e ) throws IOException{
+      controlTimbratura.clickTimbraEntrata();
     }
 
     public void show(){
-
+    }
+    @FXML
+    public void clickTimbraUscita1(ActionEvent e) throws IOException{
+        controlTimbratura.clickTimbraUscita();
     }
 
-    public void clickTimbraUscita(ActionEvent e){
 
-    }
+
 
 }

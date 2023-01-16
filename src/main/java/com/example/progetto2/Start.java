@@ -1,6 +1,10 @@
 package com.example.progetto2;
 
+import com.example.progetto2.Control.ControlTimbratura;
+import com.example.progetto2.FileDiSistema.Daemon;
 import com.example.progetto2.FileDiSistema.DatePicker;
+import com.example.progetto2.FileDiSistema.Util;
+import com.example.progetto2.Schermate.SchermataTimbraturaInLoco;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,18 +22,22 @@ public class Start extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //new SchermataTimbraturaInLoco();
         DatePicker datePicker = new DatePicker();
-        //Thread orologio = new Thread(datePicker);
-        //orologio.start();
+        Thread orologio = new Thread(datePicker);
+        orologio.start();
         mainStage = stage;
-        Parent root;
-        FXMLLoader loader = new FXMLLoader();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/progetto2/Autenticazione/FXML/Login.fxml"));
+        /*Parent root;
+        //FXMLLoader loader = new FXMLLoader();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/progetto2/GestioneTimbraturaInLoco/FXML/SchermataTimbraturaInLoco.fxml"));
+        //ControlTimbratura controlTimbratura = new ControlTimbratura();
+        //fxmlLoader.setController(controlTimbratura);
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
-
+        stage.show();*/
+        Util.setScene("/com/example/progetto2/GestioneTimbraturaInLoco/FXML/SchermataTimbraturaInLoco.fxml",stage,c->new SchermataTimbraturaInLoco());
+        new Daemon();
     }
 
     public static void main(String[] args) {

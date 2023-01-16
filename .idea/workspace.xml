@@ -4,26 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/SceneController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/PopUpErrore.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/PopUpInformazione.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaUscita.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/PopUpErrore.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/PopUpInformazione.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaUscita.fxml" afterDir="false" />
+    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="mi serve per importare file">
+      <changelist_data name="Giuseppe Barone" email="giuseppebarone2028@gmail.com" date="1673863552000" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Esegue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Contenitori/PropostaTurno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Contenitori/Turno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Daemon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Timbratura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/JavaMail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlTimbratura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlTimbratura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlUscitaDimenticata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlUscitaDimenticata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Daemon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/BoundaryTempo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/BoundaryTempo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlUscitaDimenticata.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/BoundaryTempo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupErrore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupErrore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupInformazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupInformazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaEntrata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaEntrata.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaInLoco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaInLoco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaUscita.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaUscita.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/PopUpErrore.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/CSS/PopUpErrore.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/PopUpInformazione.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/CSS/PopUpInformazione.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaEntrata.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/CSS/SchermataTimbraturaEntrata.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaInLoco.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/CSS/SchermataTimbraturaInLoco.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaUscita.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/CSS/SchermataTimbraturaUscita.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/PopUpErrore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/FXML/PopUpErrore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/PopUpInformazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/FXML/PopUpInformazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaEntrata.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/FXML/SchermataTimbraturaEntrata.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaInLoco.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/FXML/SchermataTimbraturaInLoco.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaUscita.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/GestioneTimbraturaInLoco/FXML/SchermataTimbraturaUscita.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +63,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -71,6 +86,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/alisiabarrovecchio/IdeaProjects/Progetto2/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -89,6 +106,8 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/progetto2" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco" />
     </key>
   </component>
@@ -102,6 +121,7 @@
       <updated>1673717578438</updated>
       <workItem from="1673717579583" duration="1000" />
       <workItem from="1673746092796" duration="380000" />
+      <workItem from="1673876809745" duration="84662000" />
     </task>
     <task id="LOCAL-00001" summary="commit iniziale">
       <created>1673779856856</created>
@@ -117,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673779941548</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mi serve per importare file">
+      <created>1673863804102</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673863804102</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +176,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit iniziale" />
     <MESSAGE value="per alisia" />
-    <option name="LAST_COMMIT_MESSAGE" value="per alisia" />
+    <MESSAGE value="mi serve per importare file" />
+    <option name="LAST_COMMIT_MESSAGE" value="mi serve per importare file" />
   </component>
 </project>

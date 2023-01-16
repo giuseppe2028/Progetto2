@@ -7,16 +7,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rettangolo" prefHeight="200.0" prefWidth="300.0" stylesheets="@PopUpErrore.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rettangolo" prefHeight="200.0" prefWidth="300.0" stylesheets="@../CSS/PopUpErrore.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="OK" layoutX="201.0" layoutY="155.0" mnemonicParsing="false" onAction="#clickOK" prefHeight="30.0" prefWidth="85.0" text="OK" textFill="WHITE" />
-      <Text layoutX="96.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messaggio Errore">
+      <Button fx:id="clickOK" layoutX="201.0" layoutY="155.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" text="OK" textFill="WHITE" >
+      </Button>
+      <Text fx:id="messaggioErrore" layoutX="96.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messaggio Errore">
          <font>
             <Font size="14.0" />
          </font></Text>
       <AnchorPane fx:id="area" layoutX="1.0" layoutY="1.0" prefHeight="50.0" prefWidth="300.0">
          <children>
-            <Text layoutX="126.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Errore">
+            <Text fx:id="errore" layoutX="126.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Errore">
                <font>
                   <Font size="18.0" />
                </font>
