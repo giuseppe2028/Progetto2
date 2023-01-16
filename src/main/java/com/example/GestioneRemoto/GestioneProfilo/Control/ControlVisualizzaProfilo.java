@@ -108,10 +108,9 @@ this.datiModificati= datiModificati;
                 Alert a= new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Dati cambiati con successo!");
                 a.showAndWait();
-                ControlVisualizzaProfilo c1=new ControlVisualizzaProfilo();
                 ArrayList<Object> datiProfilo;
                 datiProfilo=(ArrayList<Object>) EntityUtente.getDatiProfilo();
-                Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataVisualizzaProfilo.fxml", stage, c->new SchermataVisualizzaProfilo(c1,datiProfilo ));
+                Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataVisualizzaProfilo.fxml", stage, c-> new SchermataVisualizzaProfilo(this,datiProfilo ));
             }else {
                 Alert a= new Alert(Alert.AlertType.ERROR);
                 a.setTitle("Errore");

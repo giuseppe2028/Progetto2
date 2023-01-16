@@ -36,9 +36,9 @@
             <MenuButton fx:id="menuButtonGestioneProfilo" layoutX="7.0" layoutY="3.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="210.0" style="-fx-background-color: #526475;" stylesheets="@../CSS/SchermataPrincipaleImpiegato.css" text="Gestione Profilo" textFill="WHITE">
               <items>
                 <MenuItem id="item1" mnemonicParsing="false" text="Visualizza Profilo" />
-                  <MenuItem mnemonicParsing="false" text="Visualizza Stipendio" />
+                  <MenuItem mnemonicParsing="false" onAction="#clickVisualizzaStipendio" text="Visualizza Stipendio" />
                   <MenuItem mnemonicParsing="false" text="Visualizza Calendario" />
-                  <MenuItem mnemonicParsing="false" text="Gestione Richieste" />
+                  <MenuItem mnemonicParsing="false" onAction="#clickGestioneRichieste" text="Gestione Richieste" />
               </items>
                <font>
                   <Font size="18.0" />

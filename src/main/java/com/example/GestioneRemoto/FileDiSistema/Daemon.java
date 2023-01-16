@@ -139,4 +139,34 @@ public class Daemon {
         return false;
     }
 
+    public static ResultSet getRichiesta() throws SQLException {
+        ResultSet rs = null;
+
+
+        try {
+
+            Connection conn = DriverManager.getConnection(URL, username, passwordDBMS);
+            int matricola= EntityUtente.getMatricola();
+            String sql = "SELECT * FROM Richiesta WHERE ref_impiegato=?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, matricola);
+            rs = pstm.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public static void delete(int ID_richiesta) throws SQLException {
+        Connection conn = DriverManager.getConnection(URL, username, passwordDBMS);
+        String deleteSQL = "DELETE FROM Richiesta WHERE id = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(deleteSQL);
+        preparedStatement.setInt(1, ID_richiesta);
+
+        preparedStatement.executeUpdate();
+
+    }
+
 }

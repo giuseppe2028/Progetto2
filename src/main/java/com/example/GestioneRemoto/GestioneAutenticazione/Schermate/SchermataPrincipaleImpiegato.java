@@ -1,8 +1,12 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
+import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
 import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
+import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaStipendio;
+import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
+import com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataVisualizzaStipendio;
 import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -145,12 +149,19 @@ public class SchermataPrincipaleImpiegato implements Runnable {
     }
     @FXML
     public void clickGestioneRichieste(ActionEvent e){
-
+        ControlGestioneRichieste controlGestioneRichieste= new ControlGestioneRichieste();
+        controlGestioneRichieste.clickGestioneRichieste();
     }
     @FXML
     public void clickTimbraturaRemotoEntrata(ActionEvent e){
 
     }
+    @FXML
+    public void clickVisualizzaStipendio(ActionEvent e){
+        ControlVisualizzaStipendio controlVisualizzaStipendio= new ControlVisualizzaStipendio();
+       controlVisualizzaStipendio.clickVisualizzaStipendio();
+    }
+
 
 
 }

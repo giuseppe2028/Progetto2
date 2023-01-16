@@ -133,7 +133,6 @@ public class SchermataPrincipaleDatore implements Runnable{
 
     @FXML
     public void clickVisualizzaProfilo(ActionEvent e){
-        System.out.println("cccc");
         ControlVisualizzaProfilo controlVisualizzaProfilo1=new ControlVisualizzaProfilo();
         controlVisualizzaProfilo1.clickVisualizzaProfilo();
 

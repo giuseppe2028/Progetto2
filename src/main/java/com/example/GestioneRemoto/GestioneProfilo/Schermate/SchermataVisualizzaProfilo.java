@@ -4,15 +4,9 @@ import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfi
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 public class SchermataVisualizzaProfilo  {
     @FXML
     ImageView ImmagineProfilo;
@@ -76,8 +70,6 @@ controlVisualizzaProfilo.clickModificaPassword();
     public void clickIndietro(ActionEvent e){
 controlVisualizzaProfilo.clickIndietro();
     }
-
-
     public void clickModifica(ActionEvent event) {
         controlVisualizzaProfilo.clickModifica();
     }

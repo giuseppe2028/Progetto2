@@ -12,9 +12,9 @@ module com.example.GestioneRemoto {
     opens com.example.GestioneRemoto.GestioneProfilo.Control to javafx.fxml;
     exports com.example.GestioneRemoto.GestioneProfilo.Schermate;
     opens com.example.GestioneRemoto.GestioneProfilo.Schermate to javafx.fxml;
-
-
-
-
+    exports com.example.GestioneRemoto.GestioneRichieste.Control;
+    opens com.example.GestioneRemoto.GestioneRichieste.Control to javafx.fxml;
+    exports com.example.GestioneRemoto.GestioneRichieste.Schermate;
+    opens com.example.GestioneRemoto.GestioneRichieste.Schermate to javafx.fxml;
 
 }
