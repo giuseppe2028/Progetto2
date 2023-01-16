@@ -1,6 +1,7 @@
 package com.example.GestioneRemoto.GestioneTurni.Schermate;
 
 import com.example.GestioneRemoto.Contenitori.PropostaTurno;
+import com.example.GestioneRemoto.Contenitori.RigaPropostaTurnazione;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,12 +14,16 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class SchermataPianificazioneTurni {
-    private TableColumn<String,String> tipoTurno;
-    private TableColumn<String, String> dipendete;
-    private TableColumn<String,Integer> servizio;
-    private TableColumn<String, String> ruolo;
     @FXML
-    private TableView<PropostaTurno> tabella;
+    private TableColumn<PropostaTurno,String> turno;
+    @FXML
+    private TableColumn<PropostaTurno, String> dipendente;
+    @FXML
+    private TableColumn<PropostaTurno,Integer> servizio;
+    @FXML
+    private TableColumn<PropostaTurno, String> ruolo;
+    @FXML
+    private TableView<RigaPropostaTurnazione> tabella;
     LocalDate dataAttuale;
     @FXML
     private Label ciao;
@@ -147,7 +152,7 @@ public class SchermataPianificazioneTurni {
     @FXML
     private ChoiceBox<String> selezionaMese;
     private String[] giorniSettimana = {"Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"};
-    private ObservableList<PropostaTurno> propostaTurniTabella;
+    private ObservableList<RigaPropostaTurnazione> propostaTurniTabella;
     private Date first;
     /*TurnoImpiegato turnoImpiegato;
 
@@ -361,7 +366,7 @@ private void visualizzaCalendarioBase(int mese, int anno){
     @FXML
     //todo magari mettere l'alert??
     public void clickButtonb1(ActionEvent e){
-visualizzaTabella(0,Integer.parseInt(b1.getText()));
+visualizzaTabella(Integer.parseInt(b1.getText()));
 
 
 
@@ -369,174 +374,174 @@ visualizzaTabella(0,Integer.parseInt(b1.getText()));
     }
     @FXML
     public void clickButtonb2(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b2.getText()));
+        visualizzaTabella(Integer.parseInt(b2.getText()));
     }
     @FXML
     public void clickButtonb3(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b3.getText()));
+        visualizzaTabella(Integer.parseInt(b3.getText()));
     }
     @FXML
     public void clickButtonb4(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b4.getText()));
+        visualizzaTabella(Integer.parseInt(b4.getText()));
     }
     @FXML
     public void clickButtonb5(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b5.getText()));
+        visualizzaTabella(Integer.parseInt(b5.getText()));
     }
     @FXML
     public void clickButtonb6(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b6.getText()));
+        visualizzaTabella(Integer.parseInt(b6.getText()));
     }
     @FXML
     public void clickButtonb7(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b7.getText()));
+        visualizzaTabella(Integer.parseInt(b7.getText()));
     }
     @FXML
     public void clickButtonb8(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b8.getText()));
+        visualizzaTabella(Integer.parseInt(b8.getText()));
     }
     @FXML
     public void clickButtonb9(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b1.getText()));
+        visualizzaTabella(Integer.parseInt(b9.getText()));
     }
     @FXML
     public void clickButtonb10(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b1.getText()));
+        visualizzaTabella(Integer.parseInt(b10.getText()));
     }
     @FXML
     public void clickButtonb11(ActionEvent e){
-        visualizzaTabella(0,Integer.parseInt(b1.getText()));
+        visualizzaTabella(Integer.parseInt(b11.getText()));
     }
     @FXML
     public void clickButtonb12(ActionEvent e){
-        // visualizzaTabella(11);
+        visualizzaTabella(Integer.parseInt(b12.getText()));
     }
     @FXML
     public void clickButtonb13(ActionEvent e){
-        // visualizzaTabella(12);
+        visualizzaTabella(Integer.parseInt(b13.getText()));
     }
     @FXML
     public void clickButtonb14(ActionEvent e){
-        //visualizzaTabella(13);
+        visualizzaTabella(Integer.parseInt(b14.getText()));
     }
     @FXML
     public void clickButtonb15(ActionEvent e){
-        //visualizzaTabella(14);
+        visualizzaTabella(Integer.parseInt(b15.getText()));
     }
     @FXML
     public void clickButtonb16(ActionEvent e){
-        //visualizzaTabella(15);
+        visualizzaTabella(Integer.parseInt(b16.getText()));
     }
     @FXML
     public void clickButtonb17(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b17.getText()));
     }
     @FXML
     public void clickButtonb18(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b18.getText()));
     }
     @FXML
     public void clickButtonb19(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b19.getText()));
     }
     @FXML
     public void clickButtonb20(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b20.getText()));
     }
     @FXML
     public void clickButtonb21(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b21.getText()));
     }
     @FXML
     public void clickButtonb22(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b22.getText()));
     }
     @FXML
     public void clickButtonb23(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b23.getText()));
     }
     @FXML
     public void clickButtonb24(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b24.getText()));
     }
     @FXML
     public void clickButtonb25(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b25.getText()));
     }
     @FXML
     public void clickButtonb26(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b26.getText()));
     }
     @FXML
     public void clickButtonb27(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b27.getText()));
     }
     @FXML
     public void clickButtonb28(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b28.getText()));
     }
     @FXML
     public void clickButtonb29(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b29.getText()));
     }
     @FXML
     public void clickButtonb30(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b30.getText()));
     }
     @FXML
     public void clickButtonb31(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b31.getText()));
     }
     @FXML
     public void clickButtonb32(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b32.getText()));
     }
     @FXML
     public void clickButtonb33(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b33.getText()));
     }
     @FXML
     public void clickButtonb34(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b34.getText()));
     }
     @FXML
     public void clickButtonb35(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b35.getText()));
     }
     @FXML
     public void clickButtonb36(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b36.getText()));
     }
     @FXML
     public void clickButtonb37(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b37.getText()));
     }
     @FXML
     public void clickButtonb38(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b38.getText()));
     }
     @FXML
     public void clickButtonb39(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b39.getText()));
     }
     @FXML
     public void clickButtonb40(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b40.getText()));
     }
     @FXML
     public void clickButtonb41(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b41.getText()));
     }
     @FXML
     public void clickButtonb42(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b42.getText()));
     }
     @FXML
     public void clickButtonb43(ActionEvent e){
-
+        visualizzaTabella(Integer.parseInt(b43.getText()));
     }
 
-private void visualizzaTabella(int offset,int giornoconsiderato){
+private void visualizzaTabella(int giornoconsiderato){
     System.out.println("GiornoConsiderato "+giornoconsiderato);
     propostaTurniTabella = FXCollections.observableArrayList();
     //scorro la lista e vedo quale oggetto ha il giorno selezionato
@@ -544,15 +549,17 @@ private void visualizzaTabella(int offset,int giornoconsiderato){
         System.out.println("giorno query "+ proposta.get(i).getDataTurno().getDayOfMonth());;
         if(proposta.get(i).getDataTurno().getDayOfMonth() == giornoconsiderato){
             System.out.println(proposta.get(i).getDataTurno().getDayOfMonth());
-            propostaTurniTabella.add(proposta.get(i));
+            propostaTurniTabella.add(new RigaPropostaTurnazione(proposta.get(i).getTurno(),proposta.get(i).getDipendente(),proposta.get(i).getServizio(),proposta.get(i).getRuolo()));
+
         }
     }
-
-    tipoTurno.setCellValueFactory(new PropertyValueFactory<>("turno"));
-    dipendete.setCellValueFactory(new PropertyValueFactory<>("Dipendente"));
+    System.out.println("HAVANA "+propostaTurniTabella.get(0).getTurno());
+    turno.setCellValueFactory(new PropertyValueFactory<>("turno"));
+    dipendente.setCellValueFactory(new PropertyValueFactory<>("Dipendente"));
     servizio.setCellValueFactory(new PropertyValueFactory<>("Servizio"));
     ruolo.setCellValueFactory(new PropertyValueFactory<>("Ruolo"));
     tabella.setItems(propostaTurniTabella);
+    System.out.println(tabella.getItems());
 
 
 

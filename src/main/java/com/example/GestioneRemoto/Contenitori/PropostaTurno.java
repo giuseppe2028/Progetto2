@@ -7,20 +7,20 @@ public class PropostaTurno {
 
 
     private int id;
-    private String cognome;
-    private String tipoTurno;
+    private String dipendente;
+    private String turno;
     private int servizio;
     private String ruolo;
     private LocalDate dataTurno;
 
-    public PropostaTurno(int id,String tipoTurno, String cognome,int refServizio,String ruolo ,LocalDate dataTurno){
+    public PropostaTurno(int id,String turno, String dipendente,int refServizio,String ruolo ,LocalDate dataTurno){
 
         this.id = id;
         this.dataTurno = dataTurno;
-        this.cognome = cognome;
+        this.dipendente = dipendente;
         this.servizio = refServizio;
         this.ruolo = ruolo;
-        this.tipoTurno = tipoTurno;
+        this.turno = turno;
 
     }
 
@@ -34,12 +34,12 @@ public class PropostaTurno {
 
 
 
-    public String getTipoTurno() {
-        return tipoTurno;
+    public String getTurno() {
+        return turno;
     }
 
-    public void setTipoTurno(String tipoTurno) {
-        this.tipoTurno = tipoTurno;
+    public void setTipoTurno(String turno) {
+        this.turno = turno;
     }
 
 
@@ -60,12 +60,12 @@ public class PropostaTurno {
         this.servizio = servizio;
     }
 
-    public String getCognome() {
-        return cognome;
+    public String getDipendente() {
+        return dipendente;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setdipendente(String dipendente) {
+        this.dipendente = dipendente;
     }
 
     public String getRuolo() {
@@ -75,8 +75,5 @@ public class PropostaTurno {
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
-    @Override
-    public String toString(){
-        return this.ruolo + this.cognome;
-    }
+
 }

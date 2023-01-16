@@ -9,6 +9,6 @@ module com.example.progetto2 {
     exports com.example.GestioneRemoto;
     opens com.example.GestioneRemoto.GestioneAutenticazione.Schermate to javafx.fxml;
     opens com.example.GestioneRemoto.GestioneTurni.Schermate to javafx.fxml;
-
+    opens com.example.GestioneRemoto.Contenitori to javafx.base;
 
 }
