@@ -80,24 +80,18 @@ public class SchermataPrincipaleDatore implements Runnable{
 
 
 
-   /* @FXML
+   @FXML
     public void initialize(){
-        try {
-            String stringNomeCognome = rs.getString("nome") +" " + rs.getString("cognome");
-            nomeCognome.setText(stringNomeCognome);
-            String stringMatricola = rs.getString("matricola");
-            String stringRuolo = rs.getString("ruolo");
+            String stringNomeCognome = lista.get(1).toString() + lista.get(2).toString();
+           nomeCognome.setText(stringNomeCognome);
+            String stringMatricola = lista.get(0).toString();
+            String stringRuolo = lista.get(7).toString();
             nomeCognome.setText(stringNomeCognome);
             matricola.setText(stringMatricola);
             ruolo.setText(stringRuolo);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
-    */
+
     public void run() {
         int x = 0;
         timer.scheduleAtFixedRate(new TimerTask() {

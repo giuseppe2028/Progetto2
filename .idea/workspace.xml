@@ -4,13 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="Sto risolvendo i vari problemi">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/CSS/SchermataRecuperoPassword.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataRecuperoPassword.fxml" afterDir="false" />
+    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="pur alì">
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/PropostaTurno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneTurni/Control/ControlVisualizzaPropostaTurni.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneTurni/Schermate/SchermataPianificazioneTurni.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni/CSS/Calendario.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni/FXML/Calendario.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Daemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Daemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Control/ControlLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Control/ControlLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleAmministrativo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleAmministrativo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleDatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleDatore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleDipendente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleDipendente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +31,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,8 +102,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/giuseppebarone/Desktop/Progetto2/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML",
+    "last_opened_file_path": "/Users/giuseppebarone/Desktop/Progetto2/src/main/resources/com/example/GestioneRemoto/GestioneTurni/CSS",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -111,16 +123,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni/CSS" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni/FXML" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Autenticazione/CSS" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Autenticazione/FXML" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/progetto2/Autenticazione/Schermate" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/CSS" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Autenticazione/CSS" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Autenticazione/FXML" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.GestioneRemoto.GestioneTurni" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.GestioneRemoto.GestioneAutenticazione.Schermate" />
@@ -134,7 +151,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673717578438</updated>
-      <workItem from="1673717579583" duration="13585000" />
+      <workItem from="1673717579583" duration="47990000" />
     </task>
     <task id="LOCAL-00001" summary="Ho sistemato il login">
       <created>1673741328099</created>
@@ -150,7 +167,35 @@
       <option name="project" value="LOCAL" />
       <updated>1673750184586</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Modificate tutte le schermate">
+      <created>1673774092508</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673774092508</updated>
+    </task>
+    <task id="LOCAL-00004" summary="per alessia">
+      <created>1673778324810</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673778324810</updated>
+    </task>
+    <task id="LOCAL-00005" summary="per alisia">
+      <created>1673779823464</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673779823464</updated>
+    </task>
+    <task id="LOCAL-00006" summary="pur alì">
+      <created>1673863583605</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673863583605</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +215,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ho sistemato il login" />
     <MESSAGE value="Sto risolvendo i vari problemi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sto risolvendo i vari problemi" />
+    <MESSAGE value="Modificate tutte le schermate" />
+    <MESSAGE value="per alessia" />
+    <MESSAGE value="per alisia" />
+    <MESSAGE value="pur alì" />
+    <option name="LAST_COMMIT_MESSAGE" value="pur alì" />
   </component>
 </project>

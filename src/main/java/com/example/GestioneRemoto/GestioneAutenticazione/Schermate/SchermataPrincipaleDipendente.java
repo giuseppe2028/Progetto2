@@ -27,7 +27,7 @@ import java.util.TimerTask;
 //TODO implementare la classe schermata Principale Dipendente
 public class SchermataPrincipaleDipendente implements Runnable {
 
-    List<Object> datiProfilo;
+    private List<Object> lista;
     @FXML
     Label nomeCognome;
     @FXML
@@ -37,9 +37,8 @@ public class SchermataPrincipaleDipendente implements Runnable {
 
     ControlLogin controlLogin;
 
-    public SchermataPrincipaleDipendente(ControlLogin controlLogin, List<Object> datiProfilo){
-
-        this.datiProfilo = datiProfilo;
+    public SchermataPrincipaleDipendente(ControlLogin controlLogin, List<Object> lista){
+        this.lista = lista;
         this.controlLogin = controlLogin;
 
         //setto le label e le imageview:
@@ -110,14 +109,16 @@ public class SchermataPrincipaleDipendente implements Runnable {
 
     @FXML
     public void initialize(){
+        System.out.println("ciao");
+        String stringNomeCognome = lista.get(1).toString() + lista.get(2).toString();
+        nomeCognome.setText(stringNomeCognome);
+        String stringMatricola = lista.get(0).toString();
+        String stringRuolo = lista.get(7).toString();
+        nomeCognome.setText(stringNomeCognome);
+        matricola.setText(stringMatricola);
+        ruolo.setText(stringRuolo);
 
-        String stringNomeCognome = (String) datiProfilo.get(1) + (String) datiProfilo.get(2);
-            nomeCognome.setText(stringNomeCognome);
-            String stringMatricola = (String) datiProfilo.get(0);
-            String stringRuolo = (String) datiProfilo.get(7);
-            nomeCognome.setText(stringNomeCognome);
-            matricola.setText(stringMatricola);
-            ruolo.setText(stringRuolo);
+        ruolo.setText("Banana");
 
 
     }

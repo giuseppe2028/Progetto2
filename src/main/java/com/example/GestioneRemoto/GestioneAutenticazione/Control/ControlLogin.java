@@ -51,7 +51,7 @@ public class ControlLogin {
             }
             else{
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleAmministrativo(this, (ArrayList<Object>) datiProfilo));
+                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleAmministrativo(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
             }

@@ -6,7 +6,6 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class JavaMail {
-    ciaooalii
     static String text;
     static String oggetto;
     public static void sendMail(String recepient) throws Exception{

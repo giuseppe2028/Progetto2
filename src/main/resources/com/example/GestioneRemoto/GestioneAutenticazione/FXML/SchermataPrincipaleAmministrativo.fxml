@@ -63,7 +63,7 @@
             </MenuButton>
             <MenuButton fx:id="menuButtonGestioneTimbratura11" layoutX="709.0" layoutY="3.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="190.0" style="-fx-background-color: #526475;" text="Gestione Turni" textFill="WHITE">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Visualizza Calendario Complessivo" />
+                  <MenuItem mnemonicParsing="false" onAction="#clickTurnazioneTrimestrale" text="Visualizza Calendario Complessivo" />
                </items>
                <font>
                   <Font size="18.0" />

@@ -10,7 +10,6 @@ import javafx.util.Callback;
 import java.io.IOException;
 
 public class Util {
-    ciao ali
     public static Scene scene;
     public static void setScene(String fxml, Stage stage, Callback controller){
 
