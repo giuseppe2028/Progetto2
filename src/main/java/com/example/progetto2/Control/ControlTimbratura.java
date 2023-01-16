@@ -18,5 +18,9 @@ public class ControlTimbratura {
 public void compila(String nome, String cognome, int matricola){
     }
 
-public void clickTimbra()
+public void clickTimbra() {
+
+}
+    //qui dentro devo mettere pure tutti i metodi al Daemon
+
 }

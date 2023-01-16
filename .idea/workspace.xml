@@ -4,23 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="Ho sistemato il login">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlTimbratura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlUscitaDimenticata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Daemon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/DatePicker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/BoundaryTempo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupErrore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupInformazione.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaEntrata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaInLoco.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaUscita.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaEntrata.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaInLoco.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaEntrata.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaInLoco.fxml" afterDir="false" />
+    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/SceneController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/PopUpErrore.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/PopUpInformazione.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/CSS/SchermataTimbraturaUscita.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/PopUpErrore.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/PopUpInformazione.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML/SchermataTimbraturaUscita.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/JavaMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlTimbratura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlTimbratura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlUscitaDimenticata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Control/ControlUscitaDimenticata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/FileDiSistema/Daemon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/BoundaryTempo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/BoundaryTempo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupInformazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/PopupInformazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaEntrata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaEntrata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaInLoco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Schermate/SchermataTimbraturaInLoco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/progetto2/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,19 +33,23 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Giuseppe Barone &lt;giuseppebarone2028@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -61,10 +68,19 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/alisiabarrovecchio/IdeaProjects/Progetto2/src/main/resources/com/example/progetto2/Gestione Timbratura In Loco/FXML",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -87,6 +103,21 @@
       <workItem from="1673717579583" duration="1000" />
       <workItem from="1673746092796" duration="380000" />
     </task>
+    <task id="LOCAL-00001" summary="commit iniziale">
+      <created>1673779856856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673779856856</updated>
+    </task>
+    <task id="LOCAL-00002" summary="per alisia">
+      <created>1673779941548</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673779941548</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,7 +134,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="alisia" />
+                        <option value="origin/Giuseppe" />
                       </list>
                     </value>
                   </entry>
@@ -114,5 +145,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit iniziale" />
+    <MESSAGE value="per alisia" />
+    <option name="LAST_COMMIT_MESSAGE" value="per alisia" />
   </component>
 </project>

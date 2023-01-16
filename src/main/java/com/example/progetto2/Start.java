@@ -1,5 +1,6 @@
 package com.example.progetto2;
 
+import com.example.progetto2.FileDiSistema.DatePicker;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,12 +18,12 @@ public class Start extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        //DatePicker datePicker = new DatePicker();
+        DatePicker datePicker = new DatePicker();
         //Thread orologio = new Thread(datePicker);
         //orologio.start();
         mainStage = stage;
         Parent root;
-        //FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/progetto2/Autenticazione/FXML/Login.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);

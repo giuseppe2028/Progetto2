@@ -12,7 +12,7 @@ public class ControlUscitaDimenticata {
     public ControlUscitaDimenticata(){
         LocalTime time = DatePicker.checkTime();
         LocalDate date = DatePicker.checkDate();
-
-
     }
+
+
 }
