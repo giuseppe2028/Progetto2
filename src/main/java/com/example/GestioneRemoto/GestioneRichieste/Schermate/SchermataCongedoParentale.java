@@ -18,9 +18,9 @@ public class SchermataCongedoParentale {
         this.controlGestioneRichieste=controlGestioneRichieste;
     }
     public void clickInvia(ActionEvent e ){
-        int matricola= EntityUtente.getMatricola();
+
         LocalDate dataInizio= dataI.getValue();
         LocalDate dataFine= dataF.getValue();
-        controlGestioneRichieste.clickInviaParentale(dataInizio, dataFine, matricola);
+        controlGestioneRichieste.clickInviaParentale(dataInizio, dataFine);
     }
 }

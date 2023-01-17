@@ -191,7 +191,8 @@ public class ControlGestioneRichieste {
     public void clickRichiestaSciopero(){
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaSciopero.fxml", stage, c-> new SchermataRichiestaSciopero(this));
     }
-    public void clickInviaSciopero(LocalDate data, String motivazione, String svolgimento, int matricola){
+    public void clickInviaSciopero(LocalDate data, String motivazione, String svolgimento){
+        int matricola= EntityUtente.getMatricola();
       int matricolaDatore=  Daemon.getMatricolaDatore();
       //TODO implementare l'invio della mail al datore
         Alert a= new Alert(Alert.AlertType.INFORMATION);
@@ -208,14 +209,16 @@ public class ControlGestioneRichieste {
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoParentale.fxml", stage, c-> new SchermataCongedoParentale(this));
     }
 
-    public void clickInviaParentale(LocalDate dataInizio, LocalDate dataFine, int matricola){
+    public void clickInviaParentale(LocalDate dataInizio, LocalDate dataFine){
+        int matricola= EntityUtente.getMatricola();
         //TODO inserire nel DBMS la richiesta ed il popup
 
     }
     public void clickCongedoLutto(){
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoLutto.fxml", stage, c-> new SchermataCongedoLutto(this));
     }
-    public void clickInviaLutto(int matricola, LocalDate dataInizio, LocalDate dataFine) {
+    public void clickInviaLutto(LocalDate dataInizio, LocalDate dataFine) {
+        int matricola=EntityUtente.getMatricola();
         //TODO inserire nel DBMS la richiesta ed il popup
     }
     public void clickRichiestaMaternita(){
@@ -225,7 +228,25 @@ public class ControlGestioneRichieste {
         int matricola=EntityUtente.getMatricola();
 
     }
+    public void clickRichiestaMalattia(){
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMalattia.fxml", stage, c-> new SchermataRichiestaMalattia(this));
+    }
+    public void clickInviaMalattia(LocalDate dataInizio, LocalDate dataFine, String motivazione) {
+        int matricola= EntityUtente.getMatricola();
+        //TODO query al DBMS
 
+    }
+
+public void clickRichiestaCambio(){
+        int matricola= EntityUtente.getMatricola();
+        List<Object> turni= Daemon.getTurni(matricola);
+
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaCambioTurno.fxml", stage, c-> new SchermataRichiestaCambioTurno(this, turni, matricola));
+}
+
+    public void clickConferma(LocalDate turnoOrigine, LocalDate turnoDestinazione, String turnoDesiderato, int matricola) {
+        //TODO query per servizio ed altre cose, poi l'invio della mail ed il popup inform.
+    }
 
 
 

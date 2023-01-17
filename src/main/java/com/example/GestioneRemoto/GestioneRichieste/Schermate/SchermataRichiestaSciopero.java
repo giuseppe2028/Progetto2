@@ -25,7 +25,7 @@ public void clickInvia(ActionEvent e){
        String motivazione= motivazioneL.getText();
        String svolgimento= svolgimentoL.getText();
         int matricola= EntityUtente.getMatricola();
-        controlGestioneRichieste.clickInviaSciopero(data, motivazione,svolgimento, matricola);
+        controlGestioneRichieste.clickInviaSciopero(data, motivazione,svolgimento);
 
 
 }

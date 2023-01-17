@@ -65,6 +65,12 @@ public class SchermataGestioneRichieste implements Initializable {
 public void clickRichiestaMaternita(ActionEvent e){
        controlGestioneRichieste.clickRichiestaMaternita();
 }
+public void clickRichiestaMalattia(ActionEvent e){
+       controlGestioneRichieste.clickRichiestaMalattia();
+}
+public void clickRichiestaCambio(ActionEvent e){
+       controlGestioneRichieste.clickRichiestaCambio();
+}
     public static class Richiesta {
 
 
