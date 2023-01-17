@@ -17,11 +17,12 @@ public class SchermataCongedoLutto {
 public SchermataCongedoLutto(ControlGestioneRichieste controlGestioneRichieste){
     this.controlGestioneRichieste= controlGestioneRichieste;
 }
+/*
 public void clickInvia(ActionEvent e ){
 
     LocalDate dataInizio= dataIn.getValue();
     LocalDate dataFine= dataFi.getValue();
 
     controlGestioneRichieste.clickInviaLutto( dataInizio, dataFine);
-}
+}*/
 }

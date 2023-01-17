@@ -3,6 +3,7 @@ module com.example.GestioneRemoto {
     requires javafx.fxml;
     requires java.sql;
     requires java.mail;
+    requires jdk.jfr;
 
 
     opens com.example.GestioneRemoto to javafx.fxml;

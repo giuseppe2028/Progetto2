@@ -17,11 +17,12 @@ public class SchermataRichiestaMaternita {
     public SchermataRichiestaMaternita(ControlGestioneRichieste controlGestioneRichieste){
         this.controlGestioneRichieste=controlGestioneRichieste;
     }
+    /*
     public void clickInvia(ActionEvent e){
         LocalDate dataInizio= dataIn.getValue();
         LocalDate dataFine= dataFi.getValue();
 
         controlGestioneRichieste.clickInviaMaternita(dataInizio, dataFine);
 
-    }
+    }*/
 }

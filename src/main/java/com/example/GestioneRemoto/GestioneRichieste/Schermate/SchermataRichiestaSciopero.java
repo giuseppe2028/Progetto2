@@ -20,6 +20,7 @@ public class SchermataRichiestaSciopero {
     public SchermataRichiestaSciopero(ControlGestioneRichieste controlGestioneRichieste){
         this.controlGestioneRichieste=controlGestioneRichieste;
     }
+    /*
 public void clickInvia(ActionEvent e){
        LocalDate data= dataPicker.getValue();
        String motivazione= motivazioneL.getText();
@@ -32,4 +33,6 @@ public void clickInvia(ActionEvent e){
 public void clickIndietro(ActionEvent e){
 
 }
+*/
+
 }

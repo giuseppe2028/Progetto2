@@ -20,10 +20,11 @@ public class SchermataRichiestaMalattia {
     public SchermataRichiestaMalattia(ControlGestioneRichieste controlGestioneRichieste){
         this.controlGestioneRichieste=controlGestioneRichieste;
     }
+    /*
 public void clickInvia(ActionEvent e ){
     LocalDate dataInizio= dataIn.getValue();
     LocalDate dataFine= dataFi.getValue();
     String motivazione= motivazioneL.getText();
         controlGestioneRichieste.clickInviaMalattia(dataInizio, dataFine, motivazione);
-}
+}*/
 }

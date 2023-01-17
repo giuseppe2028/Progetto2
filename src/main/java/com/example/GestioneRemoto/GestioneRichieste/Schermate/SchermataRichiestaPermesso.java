@@ -55,7 +55,7 @@ minutoInizio.getItems().addAll(minutoIn);
         oraFine.setValue(endHours.get(0));
 
     }
-
+/*
     public void clickInvia(ActionEvent e){
 LocalDate data= dataPicker.getValue();
 String oraIni=  oraInizio.getValue();
@@ -68,5 +68,5 @@ String minutFin= minutoFine.getValue();
     public void clickIndietro(){
         // controlGestioneRichieste.clickIndietro();
 
-    }
+    }*/
 }

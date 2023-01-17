@@ -41,12 +41,13 @@ public class SchermataGestioneRichieste implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            controlGestioneRichieste.loadDate(richiesteList);
+            controlGestioneRichieste.loadDate();
         } catch (SQLException e) {
             System.out.println("err");
         }
 
     }
+    /*
     public void clickRichiestaFerie(ActionEvent e){
        controlGestioneRichieste.clickRichiestaFerie();
     }
@@ -141,4 +142,6 @@ public void clickRichiestaCambio(ActionEvent e){
             return stato;
         }
     }
+
+     */
 }

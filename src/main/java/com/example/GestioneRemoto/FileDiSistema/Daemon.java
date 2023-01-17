@@ -1,6 +1,7 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
 import com.example.GestioneRemoto.Contenitori.Richieste;
+import com.example.GestioneRemoto.GestioneRichieste.Schermate.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -141,21 +142,7 @@ public class Daemon {
         return false;
     }
 
-    public static List<Richieste> getRichieste(int matricola){
-        ArrayList<Richieste> listaRitorno=new ArrayList();
-        try{
-            String sql="SELECT * from Richiesta where matricola=?";
-            preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet=preparedStatement.executeQuery();
-            while (resultSet.next()){
-                listaRitorno.add(new Richieste(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getBoolean(4),resultSet.getDate(5).toLocalDate(),resultSet.getDate(6).toLocalDate(),resultSet.getDate(7).toLocalDate(),resultSet.getDate(8).toLocalDate(),resultSet.getTime(9).toLocalTime(),resultSet.getTime(10).toLocalTime(),resultSet.getString(11),resultSet.getString(12),resultSet.getString(13),resultSet.getString(14),resultSet.getString(15),resultSet.getString(16),resultSet.getBlob(17)));
-            }
-        }catch (SQLException e){
-            System.out.println("Errore Comunicazione DBMS");
-        }
-        return listaRitorno;
-    }
+
     public static void delete(int ID_richiesta) throws SQLException {
         Connection conn = DriverManager.getConnection(URL, username, passwordDBMS);
         String deleteSQL = "DELETE FROM Richiesta WHERE id = ?";
@@ -165,5 +152,118 @@ public class Daemon {
         preparedStatement.executeUpdate();
 
     }
+
+    public static List<Object> getRichieste(int matricola){
+        ArrayList<Object> listaRitorno=new ArrayList();
+        listaRitorno.add(getRichiesta(matricola));
+        listaRitorno.add(getCongedi(matricola));
+        listaRitorno.add(getFerie(matricola));
+        listaRitorno.add(getPermessi(matricola));
+        listaRitorno.add(getRichiesteRicevute(matricola));
+        listaRitorno.add(getScioperi(matricola));
+        System.out.println(listaRitorno);
+        return listaRitorno;
+    }
+
+    private static List<Richiesta> getRichiesta(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList();
+        try{
+            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from Richiesta where ref_impiegato=?";
+            preparedStatement= conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(new Richiesta(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
+            }
+            return listaRitorno;
+        }catch(SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+    private static List<Congedo> getCongedi(int matricola){
+        System.out.println(matricola);
+        ArrayList<Congedo> listaRitorno=new ArrayList();
+        try{
+            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,tipo as Tipo,motivazione as Motivazione,allegato as Allegato from Congedo where ref_impiegato=?";
+            preparedStatement= conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(new Congedo(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getString(6),resultSet.getString(7),resultSet.getBlob(8)));
+            }
+            return listaRitorno;
+        }catch(SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+    private static List<GiorniFerie> getFerie(int matricola){
+        ArrayList<GiorniFerie> listaRitorno=new ArrayList();
+        try{
+            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from giorniFerie where ref_impiegato=?";
+            preparedStatement= conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(new
+                        GiorniFerie(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
+            }
+            return listaRitorno;
+        }catch(SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+    private static List<Permesso> getPermessi(int matricola){
+        ArrayList<Permesso> listaRitorno=new ArrayList();
+        try{
+            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,ora_inizio as OraInizio,ora_fine as OraFine from permesso where ref_impiegato=?";
+            preparedStatement= conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(new Permesso(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getTime(6).toLocalTime(),resultSet.getTime(7).toLocalTime()));
+            }
+            return listaRitorno;
+        }catch(SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+    private static List<RichiestaRicevuta> getRichiesteRicevute(int matricola){
+        ArrayList<RichiestaRicevuta> listaRitorno=new ArrayList();
+        try{
+            String sql="select id as ID,ref_impiegato as Matricola,matricola_destinazione as MatricolaDestinazione,categoria as Categoria,stato as Stato,tipo_turno_origine as TipoTurnoOrigine,tipo_turno_destinazione as TipoTurnoDestinazione,data_turno_origine as DataTurnoOrigine,data_turno_destinazione as DataTurnoDestinazione from richiestaRicevuta where ref_impiegato=?;";
+            preparedStatement= conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(new RichiestaRicevuta(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getString(4),resultSet.getBoolean(5),resultSet.getString(6),resultSet.getString(7),resultSet.getDate(8).toLocalDate(),resultSet.getDate(9).toLocalDate()));
+            }
+            return listaRitorno;
+        }catch(SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+    private static List<Sciopero> getScioperi(int matricola){
+        ArrayList<Sciopero> listaRitorno=new ArrayList();
+        try{
+            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,motivazione as Motivazione,svolgimento as Svolgimento from sciopero where ref_impiegato=?";
+            preparedStatement= conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet= preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(new Sciopero(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getString(6),resultSet.getString(7)));
+            }
+            return listaRitorno;
+        }catch(SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+
+
 
 }

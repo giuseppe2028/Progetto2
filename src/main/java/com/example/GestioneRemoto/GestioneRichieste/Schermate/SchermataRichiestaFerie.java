@@ -22,7 +22,7 @@ public SchermataRichiestaFerie(ControlGestioneRichieste controlGestioneRichieste
         this.controlGestioneRichieste=controlGestioneRichieste;
 
     }
-
+/*
     public void clickInvia(ActionEvent e){
         LocalDate dataInizio = dataInizioDatePicker.getValue();;
         LocalDate dataFine = dataFineDatePicker.getValue();
@@ -33,7 +33,7 @@ public SchermataRichiestaFerie(ControlGestioneRichieste controlGestioneRichieste
        // controlGestioneRichieste.clickIndietro();
 
     }
-
+*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
      //   String giorniPro= Daemon.getGiorniProibiti();

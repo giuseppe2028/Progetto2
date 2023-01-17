@@ -1,8 +1,5 @@
 package com.example.GestioneRemoto.GestioneRichieste.Control;
 
-import com.example.GestioneRemoto.Contenitori.Richieste;
-
-import java.time.*;
 
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
@@ -30,21 +27,21 @@ import java.util.List;
 
 
 public class ControlGestioneRichieste {
-    ObservableList<SchermataGestioneRichieste.Richiesta> richiesteList;
+    ObservableList<Richiesta> richiesteList;
     @FXML
-    private TableView<SchermataGestioneRichieste.Richiesta> richiesteTableView;
+    private TableView<Richiesta> richiesteTableView;
     @FXML
-    private TableColumn<SchermataGestioneRichieste.Richiesta, Integer> idCol;
+    private TableColumn<Richiesta, Integer> idCol;
     @FXML
-    private TableColumn<SchermataGestioneRichieste.Richiesta, String> catCol;
+    private TableColumn<Richiesta, String> catCol;
     @FXML
-    private TableColumn<SchermataGestioneRichieste.Richiesta, String> motCol;
+    private TableColumn<Richiesta, String> motCol;
     @FXML
-    private TableColumn<SchermataGestioneRichieste.Richiesta, Date> dataInCol;
+    private TableColumn<Richiesta, Date> dataInCol;
     @FXML
-    private TableColumn<SchermataGestioneRichieste.Richiesta, Date> dataFineCol;
+    private TableColumn<Richiesta, Date> dataFineCol;
     @FXML
-    private TableColumn<SchermataGestioneRichieste.Richiesta, Integer> statoCol;
+    private TableColumn<Richiesta, Integer> statoCol;
     @FXML
     private TableColumn editCol;
 
@@ -61,14 +58,11 @@ public class ControlGestioneRichieste {
         SchermataGestioneRichieste schermataGestioneRichieste= Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c-> new SchermataGestioneRichieste(this) );
     }
 
-    public void loadDate(ObservableList<SchermataGestioneRichieste.Richiesta> richiesteList) throws SQLException {
+    public void loadDate() throws SQLException {
         richiesteList =FXCollections.observableArrayList();
-        List<Richieste> richieste= Daemon.getRichieste(1001);
+        List<Object> richieste= Daemon.getRichieste(1012);
 
-        for (int i = 0; i < richiesteList.size(); i++) {
-            SchermataGestioneRichieste.Richiesta r = richiesteList.get(i);
-            System.out.println(richiesteList.get(i));
-        }
+
 
         idCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(0).toString()));
         catCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(1).toString()));
@@ -83,9 +77,9 @@ public class ControlGestioneRichieste {
         richiesteTableView.setItems(richiesteList);
         richiesteTableView.getItems();
 
-        Callback<TableColumn<SchermataGestioneRichieste.Richiesta, String>, TableCell<SchermataGestioneRichieste.Richiesta, String>> cellFactory = /*(TableColumn<Richieste, String>*/ (param) -> {
+        Callback<TableColumn<Richiesta, String>, TableCell<Richiesta, String>> cellFactory = /*(TableColumn<Richieste, String>*/ (param) -> {
 
-            final TableCell<SchermataGestioneRichieste.Richiesta, String> cell = new TableCell<>() {
+            final TableCell<Richiesta, String> cell = new TableCell<>() {
 
                 @Override
                 public void updateItem(String item, boolean empty) {
@@ -103,7 +97,7 @@ public class ControlGestioneRichieste {
 
                         eliminaButton.setOnAction((ActionEvent event) -> {
 
-                            SchermataGestioneRichieste.Richiesta richiesta = richiesteTableView.getSelectionModel().getSelectedItem();
+                            Richiesta richiesta = richiesteTableView.getSelectionModel().getSelectedItem();
                             try {
                                 Daemon.delete(richiesta.getID_richiesta());
                             } catch (SQLException e) {
@@ -133,11 +127,12 @@ public class ControlGestioneRichieste {
 
 
     }
+    /*
     public void clickInviaFerie(LocalDate dI, LocalDate dF){
        int matricola= EntityUtente.getMatricola();
         Period periodo = Period.between(dI, dF);
         int giorniInseriti = periodo.getDays();
-         List<LocalDate> giorniProibiti= Daemon.getGiorniProibiti();
+        List<LocalDate> giorniProibiti= Daemon.getGiorniProibiti();
         for(LocalDate date: giorniProibiti){
              if (date.isAfter(dI) && date.isBefore(dF)) {
              Alert a= new Alert(Alert.AlertType.ERROR);
@@ -167,7 +162,7 @@ public class ControlGestioneRichieste {
     public void clickRichiestaPermesso() {
       Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c-> new SchermataRichiestaPermesso(this));
     }
-    public void clickInviaPermesso(LocalDate data, String oraInizio, String minutiInizio, String oraFine, String minutiFine){
+   public void clickInviaPermesso(LocalDate data, String oraInizio, String minutiInizio, String oraFine, String minutiFine){
         int matricola= EntityUtente.getMatricola();
         //TODO aggiungere i controlli sulla data
         int orePermesso= Daemon.getOrePermesso(matricola);
@@ -193,7 +188,7 @@ public class ControlGestioneRichieste {
     }
     public void clickInviaSciopero(LocalDate data, String motivazione, String svolgimento){
         int matricola= EntityUtente.getMatricola();
-      int matricolaDatore=  Daemon.getMatricolaDatore();
+      //int matricolaDatore=  Daemon.getMatricolaDatore();
       //TODO implementare l'invio della mail al datore
         Alert a= new Alert(Alert.AlertType.INFORMATION);
         a.setContentText("Richiesta inoltrata");
@@ -248,6 +243,6 @@ public void clickRichiestaCambio(){
         //TODO query per servizio ed altre cose, poi l'invio della mail ed il popup inform.
     }
 
-
+*/
 
 }

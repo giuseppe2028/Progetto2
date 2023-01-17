@@ -38,10 +38,10 @@
         </AnchorPane>
         <Button layoutX="78.0" layoutY="548.0" mnemonicParsing="false" style="-fx-background-radius: 20; -fx-background-color: rgba(0, 110, 157, 0.6);" text="indietro" />
         <Button layoutX="769.0" layoutY="551.0" mnemonicParsing="false" onAction="#clickSalva" prefHeight="28.0" prefWidth="59.0" style="-fx-background-radius: 20; -fx-background-color: rgba(0, 110, 157, 0.6);" text="salva" />
-        <ImageView fitHeight="119.0" fitWidth="114.0" layoutX="155.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="imageView" fitHeight="119.0" fitWidth="114.0" layoutX="155.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../Icon/ImmaginiGestioneProfilo/fotoPro.png" />
             </image></ImageView>
-        <Button layoutX="169.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-radius: 20; -fx-background-color: rgba(0, 110, 157, 0.6);" text="carica foto" />
+        <Button fx:id="carica" layoutX="169.0" layoutY="242.0" mnemonicParsing="false" onAction="#clickCarica" style="-fx-background-radius: 20; -fx-background-color: rgba(0, 110, 157, 0.6);" text="carica foto" />
     </children>
 </AnchorPane>

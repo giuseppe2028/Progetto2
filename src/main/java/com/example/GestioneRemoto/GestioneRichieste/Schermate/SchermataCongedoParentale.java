@@ -17,10 +17,11 @@ public class SchermataCongedoParentale {
     public SchermataCongedoParentale(ControlGestioneRichieste controlGestioneRichieste){
         this.controlGestioneRichieste=controlGestioneRichieste;
     }
+    /*
     public void clickInvia(ActionEvent e ){
 
         LocalDate dataInizio= dataI.getValue();
         LocalDate dataFine= dataF.getValue();
         controlGestioneRichieste.clickInviaParentale(dataInizio, dataFine);
-    }
+    }*/
 }

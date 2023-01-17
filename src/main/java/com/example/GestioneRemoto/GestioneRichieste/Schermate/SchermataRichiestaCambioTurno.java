@@ -28,7 +28,7 @@ public SchermataRichiestaCambioTurno(ControlGestioneRichieste controlGestioneRic
     this.turni=turni;
     this.matricola=matricola;
 }
-
+/*
 public LocalDate selezionaTurnoOrigine(){
     LocalDate turnoOrigine= dataOrigine.getValue();
     //restituisce il turno di quella data
@@ -56,6 +56,6 @@ public void clickConferma(ActionEvent e){
     controlGestioneRichieste.clickConferma(turnoOrigine, turnoDestinazione, turnoDesiderato, matricola);
 
 }
-
+*/
 
 }
