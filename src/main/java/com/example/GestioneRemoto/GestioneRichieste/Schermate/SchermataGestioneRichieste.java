@@ -50,7 +50,21 @@ public class SchermataGestioneRichieste implements Initializable {
     public void clickRichiestaFerie(ActionEvent e){
        controlGestioneRichieste.clickRichiestaFerie();
     }
-
+    public void clickRichiestaPermesso(ActionEvent e){
+       controlGestioneRichieste.clickRichiestaPermesso();
+    }
+    public void clickRichiestaSciopero(ActionEvent e){
+       controlGestioneRichieste.clickRichiestaSciopero();
+    }
+    public void clickCongedoParentale(ActionEvent e){
+       controlGestioneRichieste.clickCongedoParentale();
+    }
+    public void clickCongedoLutto(ActionEvent e ){
+       controlGestioneRichieste.clickCongedoLutto();
+    }
+public void clickRichiestaMaternita(ActionEvent e){
+       controlGestioneRichieste.clickRichiestaMaternita();
+}
     public static class Richiesta {
 
 

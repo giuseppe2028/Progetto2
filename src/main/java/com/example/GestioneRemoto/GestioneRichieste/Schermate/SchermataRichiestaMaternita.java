@@ -1,0 +1,27 @@
+package com.example.GestioneRemoto.GestioneRichieste.Schermate;
+
+import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+
+import java.time.LocalDate;
+
+public class SchermataRichiestaMaternita {
+    @FXML
+    DatePicker dataIn;
+    @FXML
+    DatePicker dataFi;
+
+    ControlGestioneRichieste controlGestioneRichieste;
+    public SchermataRichiestaMaternita(ControlGestioneRichieste controlGestioneRichieste){
+        this.controlGestioneRichieste=controlGestioneRichieste;
+    }
+    public void clickInvia(ActionEvent e){
+        LocalDate dataInizio= dataIn.getValue();
+        LocalDate dataFine= dataFi.getValue();
+
+        controlGestioneRichieste.clickInviaMaternita(dataInizio, dataFine);
+
+    }
+}

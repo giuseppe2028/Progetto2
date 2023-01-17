@@ -1,5 +1,7 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
+import com.example.GestioneRemoto.Contenitori.Richieste;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -139,25 +141,20 @@ public class Daemon {
         return false;
     }
 
-    public static ResultSet getRichiesta() throws SQLException {
-        ResultSet rs = null;
-
-
-        try {
-
-            Connection conn = DriverManager.getConnection(URL, username, passwordDBMS);
-            int matricola= EntityUtente.getMatricola();
-            String sql = "SELECT * FROM Richiesta WHERE ref_impiegato=?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, matricola);
-            rs = pstm.executeQuery();
-            return rs;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public static List<Richieste> getRichieste(int matricola){
+        ArrayList<Richieste> listaRitorno=new ArrayList();
+        try{
+            String sql="SELECT * from Richiesta where matricola=?";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaRitorno.add(new Richieste(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getBoolean(4),resultSet.getDate(5).toLocalDate(),resultSet.getDate(6).toLocalDate(),resultSet.getDate(7).toLocalDate(),resultSet.getDate(8).toLocalDate(),resultSet.getTime(9).toLocalTime(),resultSet.getTime(10).toLocalTime(),resultSet.getString(11),resultSet.getString(12),resultSet.getString(13),resultSet.getString(14),resultSet.getString(15),resultSet.getString(16),resultSet.getBlob(17)));
+            }
+        }catch (SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
         }
-
-
+        return listaRitorno;
     }
     public static void delete(int ID_richiesta) throws SQLException {
         Connection conn = DriverManager.getConnection(URL, username, passwordDBMS);

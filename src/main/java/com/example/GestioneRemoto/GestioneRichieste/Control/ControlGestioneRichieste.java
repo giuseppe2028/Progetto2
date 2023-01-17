@@ -1,9 +1,13 @@
 package com.example.GestioneRemoto.GestioneRichieste.Control;
 
+import com.example.GestioneRemoto.Contenitori.Richieste;
+
+import java.time.*;
+
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
+import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.FileDiSistema.Util;
-import com.example.GestioneRemoto.GestioneRichieste.Schermate.SchermataGestioneRichieste;
-import com.example.GestioneRemoto.GestioneRichieste.Schermate.SchermataRichiestaFerie;
+import com.example.GestioneRemoto.GestioneRichieste.Schermate.*;
 import com.example.GestioneRemoto.Start;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,10 +22,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
+
+
 
 
 public class ControlGestioneRichieste {
@@ -43,9 +48,7 @@ public class ControlGestioneRichieste {
     @FXML
     private TableColumn editCol;
 
-    public void clickRichiestaFerie() {
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaFerie.fxml", stage, c-> new SchermataRichiestaFerie(this));
-    }
+
 
     public class CustomTableRowSkin<T> extends TableRowSkin<T> {
             public CustomTableRowSkin(TableRow<T> tableRow) {
@@ -59,23 +62,20 @@ public class ControlGestioneRichieste {
     }
 
     public void loadDate(ObservableList<SchermataGestioneRichieste.Richiesta> richiesteList) throws SQLException {
-        richiesteList = FXCollections.observableArrayList();
-        ResultSet rs1 = Daemon.getRichiesta();
+        richiesteList =FXCollections.observableArrayList();
+        List<Richieste> richieste= Daemon.getRichieste(1001);
 
-
-        while (rs1.next()) {
-            richiesteList.add(new SchermataGestioneRichieste.Richiesta(rs1.getInt("ID_richiesta"),
-                    rs1.getString("categoria"), rs1.getString("motivazione"),
-                    rs1.getDate("data_inizio"), rs1.getDate("data_fine"),
-                    rs1.getString("stato")));
+        for (int i = 0; i < richiesteList.size(); i++) {
+            SchermataGestioneRichieste.Richiesta r = richiesteList.get(i);
+            System.out.println(richiesteList.get(i));
         }
 
-        idCol.setCellValueFactory(new PropertyValueFactory<>("ID_richiesta"));
-        catCol.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        motCol.setCellValueFactory(new PropertyValueFactory<>("motivazione"));
-        dataInCol.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
-        dataFineCol.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
-        statoCol.setCellValueFactory(new PropertyValueFactory<>("stato"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(0).toString()));
+        catCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(1).toString()));
+        motCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(2).toString()));
+        dataInCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(3).toString()));
+        dataFineCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(4).toString()));
+        statoCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(5).toString()));
 
 
 
@@ -133,4 +133,100 @@ public class ControlGestioneRichieste {
 
 
     }
+    public void clickInviaFerie(LocalDate dI, LocalDate dF){
+       int matricola= EntityUtente.getMatricola();
+        Period periodo = Period.between(dI, dF);
+        int giorniInseriti = periodo.getDays();
+         List<LocalDate> giorniProibiti= Daemon.getGiorniProibiti();
+        for(LocalDate date: giorniProibiti){
+             if (date.isAfter(dI) && date.isBefore(dF)) {
+             Alert a= new Alert(Alert.AlertType.ERROR);
+             a.setContentText("Il periodo selezionato corrisponde con i giorni proibiti");
+             a.showAndWait();
+    }
+}
+
+        int giorniFerie =Daemon.getGiorniFerie(matricola);
+        if (giorniFerie>= giorniInseriti){
+         Daemon.insertRichiestaFerie(matricola, dI, dF);
+         Daemon.updateGiorniFerie(matricola, giorniInseriti);
+         Alert a= new Alert(Alert.AlertType.INFORMATION);
+         a.setContentText("Richiesta accettata");
+         a.showAndWait();
+        }else{
+         Alert a= new Alert(Alert.AlertType.ERROR);
+        a.setContentText("Non hai giorni sufficienti per effettuare la richiesta!");
+        a.showAndWait();
+    }
+
+    }
+
+    public void clickRichiestaFerie(){
+        Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/SchermataRichiestaFerie.fxml", stage, c-> new SchermataRichiestaFerie(this));
+    }
+    public void clickRichiestaPermesso() {
+      Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c-> new SchermataRichiestaPermesso(this));
+    }
+    public void clickInviaPermesso(LocalDate data, String oraInizio, String minutiInizio, String oraFine, String minutiFine){
+        int matricola= EntityUtente.getMatricola();
+        //TODO aggiungere i controlli sulla data
+        int orePermesso= Daemon.getOrePermesso(matricola);
+        LocalDateTime inizio = LocalDateTime.of(data, LocalTime.of(Integer.parseInt(oraInizio), Integer.parseInt(minutiInizio)));
+        LocalDateTime fine = LocalDateTime.of(data, LocalTime.of(Integer.parseInt(oraFine), Integer.parseInt(minutiFine)));
+        Duration duration = Duration.between(inizio, fine);
+        long minutiInseriti = duration.toMinutes();
+        System.out.println("I minuti inseriti sono: " + minutiInseriti);
+        if(orePermesso>= minutiInseriti){
+            Alert a= new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Richiesta accettata");
+            a.showAndWait();
+        }else{
+            Alert a= new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Non hai ore sufficienti per effettuare la richiesta!");
+            a.showAndWait();
+        }
+
+    }
+
+    public void clickRichiestaSciopero(){
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaSciopero.fxml", stage, c-> new SchermataRichiestaSciopero(this));
+    }
+    public void clickInviaSciopero(LocalDate data, String motivazione, String svolgimento, int matricola){
+      int matricolaDatore=  Daemon.getMatricolaDatore();
+      //TODO implementare l'invio della mail al datore
+        Alert a= new Alert(Alert.AlertType.INFORMATION);
+        a.setContentText("Richiesta inoltrata");
+        a.showAndWait();
+        //TODO inserire la richiesta in sciopero DBMS
+
+
+
+
+    }
+
+    public void clickCongedoParentale(){
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoParentale.fxml", stage, c-> new SchermataCongedoParentale(this));
+    }
+
+    public void clickInviaParentale(LocalDate dataInizio, LocalDate dataFine, int matricola){
+        //TODO inserire nel DBMS la richiesta ed il popup
+
+    }
+    public void clickCongedoLutto(){
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoLutto.fxml", stage, c-> new SchermataCongedoLutto(this));
+    }
+    public void clickInviaLutto(int matricola, LocalDate dataInizio, LocalDate dataFine) {
+        //TODO inserire nel DBMS la richiesta ed il popup
+    }
+    public void clickRichiestaMaternita(){
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMaternita.fxml", stage, c-> new SchermataRichiestaMaternita(this));
+    }
+    public void clickInviaMaternita(LocalDate dataInizio, LocalDate dataFine){
+        int matricola=EntityUtente.getMatricola();
+
+    }
+
+
+
+
 }
