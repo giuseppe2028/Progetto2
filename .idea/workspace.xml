@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="Sto risolvendo i vari problemi">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Congedo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Esegue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/GiorniFerie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/GiorniProibiti.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Impiegati.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Periodi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Permesso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Richiesta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/RichiestaRicevuta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Sciopero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Stipendio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Timbratura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/TimbraturaRemoto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Turno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Daemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Daemon.java" afterDir="false" />
-    </list>
+    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="E' incompleto perchè mancano alcuni metodi" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Giacomo" />
+        <entry key="$PROJECT_DIR$" value="Daemon" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,7 +124,7 @@
       <workItem from="1673717579583" duration="13585000" />
       <workItem from="1673893423732" duration="1703000" />
       <workItem from="1673940542390" duration="7925000" />
-      <workItem from="1673948531976" duration="14441000" />
+      <workItem from="1673948531976" duration="14511000" />
     </task>
     <task id="LOCAL-00001" summary="Ho sistemato il login">
       <created>1673741328099</created>
@@ -159,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673750184586</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="E' incompleto perchè mancano alcuni metodi">
+      <created>1673968540176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673968540176</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +164,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Daemon" />
+                        <option value="origin/Daemon" />
                       </list>
                     </value>
                   </entry>
@@ -191,6 +179,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ho sistemato il login" />
     <MESSAGE value="Sto risolvendo i vari problemi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sto risolvendo i vari problemi" />
+    <MESSAGE value="E' incompleto perchè mancano alcuni metodi" />
+    <option name="LAST_COMMIT_MESSAGE" value="E' incompleto perchè mancano alcuni metodi" />
   </component>
 </project>
