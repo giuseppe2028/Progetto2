@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -33,15 +34,34 @@ public class ControlGestioneRichieste {
     @FXML
     private TableColumn<Richiesta, Integer> idCol;
     @FXML
-    private TableColumn<Richiesta, String> catCol;
+    private TableColumn<Richiesta, Date> dataiCol;
+    @FXML
+    private TableColumn<Richiesta, Date> datafCol;
+    @FXML
+    private TableColumn<Richiesta, String> tipoCol ;
+    @FXML
+    private TableColumn<Richiesta, String> statoCol ;
     @FXML
     private TableColumn<Richiesta, String> motCol;
     @FXML
-    private TableColumn<Richiesta, Date> dataInCol;
+    private TableColumn<Richiesta, String> allCol;
     @FXML
-    private TableColumn<Richiesta, Date> dataFineCol;
+    private TableColumn<Richiesta, String> svolgCol;
     @FXML
-    private TableColumn<Richiesta, Integer> statoCol;
+    private TableColumn<Richiesta, String> oraInCol;
+    @FXML
+    private TableColumn<Richiesta, String> oraFCol;
+    @FXML
+    private TableColumn<Richiesta, String> matrCol;
+    @FXML
+    private TableColumn<Richiesta, String> turnoOCol;
+    @FXML
+    private TableColumn<Richiesta, String> turnoDCol;
+    @FXML
+    private TableColumn<Richiesta, String> dataTOCol;
+    @FXML
+    private TableColumn<Richiesta, String> dataTDCol;
+
     @FXML
     private TableColumn editCol;
 
@@ -55,27 +75,53 @@ public class ControlGestioneRichieste {
         }
     private Stage stage = Start.mainStage;
     public void clickGestioneRichieste() {
-        SchermataGestioneRichieste schermataGestioneRichieste= Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c-> new SchermataGestioneRichieste(this) );
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c-> new SchermataGestioneRichieste(this) );
     }
 
     public void loadDate() throws SQLException {
         richiesteList =FXCollections.observableArrayList();
-        List<Object> richieste= Daemon.getRichieste(1012);
+      List<Richiesta> richieste= Daemon.getRichieste(1012);
+        for (Richiesta richiesta : richieste) {
+            switch (richiesta.getTipo()) {
+                case "congedo":
+                    Congedo congedo = (Congedo)richiesta;
+                    richiesteList.add(new Richiesta("congedo", congedo.getId(), congedo.isStato(), congedo.getData_inizio(), congedo.getData_fine(), congedo.getTipo(), congedo.getMotivazione()));
+                    break;
+                case "ferie":
+                    Ferie ferie = (Ferie)richiesta;
+                    richiesteList.add(new Richiesta("ferie", ferie.getId(), ferie.isStato(), ferie.getData_inizio(), ferie.getData_fine(), ferie.getTipo()));
+                    break;
+                case "permesso":
+                    Permessi permessi = (Permessi)richiesta;
+                    richiesteList.add(new Richiesta("permessi", permessi.getId(), permessi.isStato(), permessi.getData_inizio(), permessi.getData_fine(), permessi.getTipo(), permessi.getMotivazione()));
+                    break;
+                case "richieste ricevute":
+                    RichiesteRicevute richiesteRicevute = (RichiesteRicevute)richiesta;
+                    richiesteList.add(new Richiesta("richieste ricevute", richiesteRicevute.getId(), richiesteRicevute.isStato(), richiesteRicevute.getData_inizio(), permessi.getData_fine(), permessi.getTipo()
 
 
 
-        idCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(0).toString()));
-        catCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(1).toString()));
-        motCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(2).toString()));
-        dataInCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(3).toString()));
-        dataFineCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(4).toString()));
-        statoCol.setCellValueFactory(new PropertyValueFactory<>(richiesteList.get(5).toString()));
-
+        idCol.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        dataiCol.setCellValueFactory(new PropertyValueFactory<>("data inizio"));
+        datafCol.setCellValueFactory(new PropertyValueFactory<>("data fine"));
+        tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        statoCol.setCellValueFactory(new PropertyValueFactory<>("stato"));
+        motCol.setCellValueFactory(new PropertyValueFactory<>("motivazione"));
+        allCol.setCellValueFactory(new PropertyValueFactory<>("allegato"));
+        svolgCol.setCellValueFactory(new PropertyValueFactory<>("svolgimento"));
+        oraInCol.setCellValueFactory(new PropertyValueFactory<>("ora inizio"));
+        oraFCol.setCellValueFactory(new PropertyValueFactory<>("ora fine"));
+        matrCol.setCellValueFactory(new PropertyValueFactory<>("matricola"));
+        turnoOCol.setCellValueFactory(new PropertyValueFactory<>("turno origine"));
+        turnoDCol.setCellValueFactory(new PropertyValueFactory<>("turno destinazione"));
+        dataTOCol.setCellValueFactory(new PropertyValueFactory<>("data turno origine"));
+        dataTDCol.setCellValueFactory(new PropertyValueFactory<>("data turno destinazione"));
 
 
 
         richiesteTableView.setItems(richiesteList);
-        richiesteTableView.getItems();
+
+
 
         Callback<TableColumn<Richiesta, String>, TableCell<Richiesta, String>> cellFactory = /*(TableColumn<Richieste, String>*/ (param) -> {
 
@@ -97,7 +143,7 @@ public class ControlGestioneRichieste {
 
                         eliminaButton.setOnAction((ActionEvent event) -> {
 
-                            Richiesta richiesta = richiesteTableView.getSelectionModel().getSelectedItem();
+                            Richiesta richiesta = (Richiesta) richiesteTableView.getSelectionModel().getSelectedItem();
                             try {
                                 Daemon.delete(richiesta.getID_richiesta());
                             } catch (SQLException e) {

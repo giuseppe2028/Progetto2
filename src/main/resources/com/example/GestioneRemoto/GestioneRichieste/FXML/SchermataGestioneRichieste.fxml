@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GestioneRemoto.GestioneRichieste.Schermate.SchermataGestioneRichieste">
     <children>
-        <TableView fx:id="richiesteTableView" layoutX="2.0" layoutY="121.0" prefHeight="456.0" prefWidth="893.0" style="-fx-base: rgba(0, 110, 157, 0.6); -fx-background-color: ffffffff; -fx-border-color: rgba(0, 110, 157, 0.6);">
-            <columns>
-                <TableColumn fx:id="idCol" prefWidth="117.49395513534546" text="ID" />
-                <TableColumn fx:id="catCol" prefWidth="150.22628021240234" text="categoria" />
-                <TableColumn fx:id="motCol" prefWidth="210.27374267578125" text="motivazione" />
-                <TableColumn fx:id="dataInCol" prefWidth="100.53219604492188" text="data Inizio" />
-                <TableColumn fx:id="dataFineCol" prefWidth="120.767578125" text="data Fine" />
-                <TableColumn fx:id="statoCol" prefWidth="80.908447265625" text="stato" />
-                <TableColumn fx:id="editCol" prefWidth="402.09149169921875" />
-            </columns>
-        </TableView>
         <Button fx:id="richiestaFerieButton" layoutX="418.0" layoutY="24.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="118.0" style="-fx-background-color: #D2D2D2; -fx-border-color: #808080; -fx-effect: dropshadow(gaussian, #808080, 10, 0, 0, 0);" text="Richiesta Ferie" />
         <Button layoutX="252.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: #D2D2D2; -fx-border-color: #808080; -fx-effect: dropshadow(gaussian, #808080, 10, 0, 0, 0);;" text="Richiesta Permesso" />
         <Button layoutX="41.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="175.0" style="-fx-background-color: #D2D2D2D2; -fx-border-color: #808080; -fx-effect: dropshadow(gaussian, #808080, 10, 0, 0, 0);" text="Richiesta Congedo per Lutto" textAlignment="CENTER" />
@@ -28,5 +18,33 @@
         <Button layoutX="24.0" layoutY="594.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 110, 157, 0.6);" text="indietro" />
         <Button layoutX="749.0" layoutY="23.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 110, 157, 0.6);" text="Richieste ricevute" />
         <Button layoutX="583.0" layoutY="66.0" mnemonicParsing="false" style="-fx-background-color: #D2D2D2; -fx-border-color: #808080; -fx-effect: dropshadow(gaussian, #808080, 10, 0, 0, 0);" text="Richiesta Cambio Turno" />
+      <ScrollPane hbarPolicy="ALWAYS" layoutX="14.0" layoutY="139.0" prefHeight="439.0" prefWidth="843.0" vbarPolicy="NEVER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="1530.0">
+               <children>
+                    <TableView fx:id="richiesteTableView" layoutX="5.0" prefHeight="443.0" prefWidth="1530.0" style="-fx-base: rgba(0, 110, 157, 0.6); -fx-background-color: ffffffff; -fx-border-color: rgba(0, 110, 157, 0.6);">
+                        <columns>
+                            <TableColumn fx:id="idCol" prefWidth="72.90610122680664" text="ID" />
+                            <TableColumn fx:id="dataiCol" prefWidth="78.36856079101562" text="data inizio" />
+                            <TableColumn fx:id="datafCol" prefWidth="79.39990234375" text="data fine" />
+                            <TableColumn fx:id="tipoCol" prefWidth="112.5" text="tipo" />
+                        <TableColumn fx:id="statoCol" prefWidth="96.0" text="stato" />
+                            <TableColumn fx:id="motCol" prefWidth="121.136962890625" text="motivazione" />
+                            <TableColumn fx:id="allCol" prefWidth="51.2152099609375" text="allegato" />
+                        <TableColumn fx:id="svolCol" prefWidth="150.76483154296875" text="svolgimento" />
+                        <TableColumn fx:id="oraInCol" minWidth="0.0" prefWidth="87.3438720703125" text="ora inizio" />
+                        <TableColumn fx:id="oraFCol" prefWidth="79.9117431640625" text="ora fine" />
+                        <TableColumn fx:id="matrCol" prefWidth="57.08819580078125" text="matricola" />
+                        <TableColumn fx:id="turnoOCol" prefWidth="82.27252197265625" text="turno origine" />
+                        <TableColumn fx:id="turnoDCol" prefWidth="106.8575439453125" text="turno destinazione" />
+                        <TableColumn fx:id="dataTOCol" prefWidth="130.8250732421875" text="data turno origine" />
+                        <TableColumn fx:id="dataTDCol" prefWidth="170.175048828125" text="data turno destinazione" />
+                            <TableColumn fx:id="editCol" prefWidth="402.1815185546875" />
+                        </columns>
+                    </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
     </children>
 </AnchorPane>

@@ -153,19 +153,20 @@ public class Daemon {
 
     }
 
-    public static List<Object> getRichieste(int matricola){
-        ArrayList<Object> listaRitorno=new ArrayList();
-        listaRitorno.add(getRichiesta(matricola));
-        listaRitorno.add(getCongedi(matricola));
-        listaRitorno.add(getFerie(matricola));
-        listaRitorno.add(getPermessi(matricola));
-        listaRitorno.add(getRichiesteRicevute(matricola));
-        listaRitorno.add(getScioperi(matricola));
-        System.out.println(listaRitorno);
+    public static List<Richiesta> getRichieste(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
+
+       // listaRitorno.add(getRichiesta(matricola));
+        listaRitorno.add((Richiesta) getCongedi(matricola));
+        listaRitorno.add((Richiesta) getFerie(matricola));
+        listaRitorno.add((Richiesta) getPermessi(matricola));
+        listaRitorno.add((Richiesta) getRichiesteRicevute(matricola));
+        listaRitorno.add((Richiesta) getScioperi(matricola));
+        System.out.println(getCongedi(matricola).toString());
         return listaRitorno;
     }
 
-    private static List<Richiesta> getRichiesta(int matricola){
+   /* private static List<Richiesta> getRichiesta(int matricola){
         ArrayList<Richiesta> listaRitorno=new ArrayList();
         try{
             String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from Richiesta where ref_impiegato=?";
@@ -180,17 +181,19 @@ public class Daemon {
             System.out.println("Errore Comunicazione DBMS");
         }
         return null;
-    }
-    private static List<Congedo> getCongedi(int matricola){
-        System.out.println(matricola);
-        ArrayList<Congedo> listaRitorno=new ArrayList();
+    }*/
+    private static List<Richiesta> getCongedi(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList();
+
+
         try{
-            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,tipo as Tipo,motivazione as Motivazione,allegato as Allegato from Congedo where ref_impiegato=?";
+
+            String sql="select id as ID, ref_impiegato,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,tipo as Tipo,motivazione as Motivazione from Congedo where ref_impiegato=?";
             preparedStatement= conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
             resultSet= preparedStatement.executeQuery();
             while(resultSet.next()){
-                listaRitorno.add(new Congedo(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getString(6),resultSet.getString(7),resultSet.getBlob(8)));
+               listaRitorno.add(new Congedo(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getString(6),resultSet.getString(7)));
             }
             return listaRitorno;
         }catch(SQLException e){
@@ -198,16 +201,16 @@ public class Daemon {
         }
         return null;
     }
-    private static List<GiorniFerie> getFerie(int matricola){
-        ArrayList<GiorniFerie> listaRitorno=new ArrayList();
+    private static List<Richiesta> getFerie(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList();
         try{
-            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from giorniFerie where ref_impiegato=?";
+            //String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from giorniFerie where ref_impiegato=?";
+            String sql = "select id, ref_impiegato, stato, data_inizio, data_fine from Ferie where ref_impiegato = ?";
             preparedStatement= conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
             resultSet= preparedStatement.executeQuery();
             while(resultSet.next()){
-                listaRitorno.add(new
-                        GiorniFerie(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
+                listaRitorno.add(new GiorniFerie(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
             }
             return listaRitorno;
         }catch(SQLException e){
@@ -215,10 +218,10 @@ public class Daemon {
         }
         return null;
     }
-    private static List<Permesso> getPermessi(int matricola){
-        ArrayList<Permesso> listaRitorno=new ArrayList();
+    private static List<Richiesta> getPermessi(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
         try{
-            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,ora_inizio as OraInizio,ora_fine as OraFine from permesso where ref_impiegato=?";
+            String sql="select id as ID,ref_impiegato,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,ora_inizio as OraInizio,ora_fine as OraFine from permesso where ref_impiegato=?";
             preparedStatement= conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
             resultSet= preparedStatement.executeQuery();
@@ -231,10 +234,10 @@ public class Daemon {
         }
         return null;
     }
-    private static List<RichiestaRicevuta> getRichiesteRicevute(int matricola){
-        ArrayList<RichiestaRicevuta> listaRitorno=new ArrayList();
+    private static List<Richiesta> getRichiesteRicevute(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
         try{
-            String sql="select id as ID,ref_impiegato as Matricola,matricola_destinazione as MatricolaDestinazione,categoria as Categoria,stato as Stato,tipo_turno_origine as TipoTurnoOrigine,tipo_turno_destinazione as TipoTurnoDestinazione,data_turno_origine as DataTurnoOrigine,data_turno_destinazione as DataTurnoDestinazione from richiestaRicevuta where ref_impiegato=?;";
+            String sql="select id as ID,ref_impiegato,matricola_destinazione as MatricolaDestinazione,categoria as Categoria,stato as Stato,tipo_turno_origine as TipoTurnoOrigine,tipo_turno_destinazione as TipoTurnoDestinazione,data_turno_origine as DataTurnoOrigine,data_turno_destinazione as DataTurnoDestinazione from richiestaRicevuta where ref_impiegato=?;";
             preparedStatement= conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
             resultSet= preparedStatement.executeQuery();
@@ -247,10 +250,10 @@ public class Daemon {
         }
         return null;
     }
-    private static List<Sciopero> getScioperi(int matricola){
-        ArrayList<Sciopero> listaRitorno=new ArrayList();
+    private static List<Richiesta> getScioperi(int matricola){
+        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
         try{
-            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,motivazione as Motivazione,svolgimento as Svolgimento from sciopero where ref_impiegato=?";
+            String sql="select id as ID,ref_impiegato,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,motivazione as Motivazione,svolgimento as Svolgimento from sciopero where ref_impiegato=?";
             preparedStatement= conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
             resultSet= preparedStatement.executeQuery();
