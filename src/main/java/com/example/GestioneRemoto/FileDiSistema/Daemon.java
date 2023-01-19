@@ -1,5 +1,7 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
+import com.example.GestioneRemoto.Contenitori.Impiegati;
+import com.example.GestioneRemoto.Contenitori.Periodi;
 import com.example.GestioneRemoto.Contenitori.PropostaTurno;
 
 import java.sql.*;
@@ -27,10 +29,16 @@ public class Daemon {
 
         try{
             //faccio la query
-            String sql = "SELECT matricola FROM Utente WHERE matricola = ? AND password = ?";
+
+            //String sql = "SELECT matricola FROM Utente WHERE matricola = ? AND password = ?";
+            String sql = "SELECT matricola,Impiegato.password,ruolo FROM Impiegato WHERE matricola = ? AND Impiegato.password = ? UNION SELECT matricola,Amministrativo.password,ruolo FROM amministrativo WHERE matricola = ? AND Amministrativo.password = ? UNION SELECT matricola,Datore.password,ruolo FROM datore WHERE matricola = ? AND Datore.password = ?";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
             preparedStatement.setString(2,password);
+            preparedStatement.setInt(3,matricola);
+            preparedStatement.setString(4,password);
+            preparedStatement.setInt(5,matricola);
+            preparedStatement.setString(6,password);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                 return true;
@@ -41,6 +49,7 @@ public class Daemon {
         }
         catch (SQLException e){
             System.out.println("Errore Comunicazione DBMS");
+            System.out.println("ciao");
         }
         //return fittizzio
         return false;
@@ -48,9 +57,11 @@ public class Daemon {
     public static List<Object> getDatiProfilo(int matricola){
         try {
             ritorno = new ArrayList<>();
-            String sql = "SELECT * FROM Utente WHERE matricola = ?";
+            String sql = "SELECT matricola,nome,cognome,cf,data_nascita,foto_profilo,indirizzo_residenza,ruolo,mail,Impiegato.password,iban,recapito_telefonico,mail_personale FROM Impiegato WHERE matricola = ?  UNION SELECT matricola,nome,cognome,cf,data_nascita,foto_profilo,indirizzo_residenza,ruolo,mail,Datore.password,iban,recapito_telefonico,mail_personale FROM Datore WHERE matricola = ? UNION SELECT matricola,nome,cognome,cf,data_nascita,foto_profilo,indirizzo_residenza,ruolo,mail,Amministrativo.password,iban,recapito_telefonico,mail_personale FROM Amministrativo WHERE matricola = ?";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,matricola);
+            preparedStatement.setInt(2,matricola);
+            preparedStatement.setInt(3,matricola);
             resultSet = preparedStatement.executeQuery();
             //ho messo tutto nella lista
             while(resultSet.next()){
@@ -67,9 +78,8 @@ public class Daemon {
                 ritorno.add(resultSet.getString("IBAN"));
                 ritorno.add(resultSet.getLong("recapito_telefonico"));
                 ritorno.add(resultSet.getString("mail_personale"));
-
             }
-            System.out.println(ritorno.get(7));
+
             return ritorno;
 
         } catch (SQLException e) {
@@ -101,7 +111,8 @@ public class Daemon {
         }
 
     }    */
-    public static ResultSet getNuoveNotifiche(int matricola){
+
+   /* public static ResultSet getNuoveNotifiche(int matricola){
         ResultSet rs;
         try {
 
@@ -114,7 +125,7 @@ public class Daemon {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
     public static int getMatricola(String mail){
         ResultSet rs;
         try{
@@ -140,7 +151,7 @@ public class Daemon {
     }*/
 
 
-    public boolean verifyDati(String nome,String congome,int matricola){
+    public static boolean verifyDati(String nome,String congome,int matricola){
 
         try {
             String sql = "Select * from Impiegato where nome =? and cognome = ? and matricola = ?";
@@ -205,6 +216,7 @@ public class Daemon {
 public static  List<PropostaTurno> getPropostaTurni(){
 
     ArrayList<PropostaTurno> listaRitorno = new ArrayList<>();
+    //todo mettere dataTurno
     try {
         String sql = "Select id,tipo_turno, cognome, I.ref_servizio,I.ruolo,data_turno from PropostaTurno PT,Impiegato I where PT.ref_impiegato = I.matricola";
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -221,4 +233,70 @@ public static  List<PropostaTurno> getPropostaTurni(){
 
 
 }
+
+
+public static List<Periodi> getPeriodi(){
+   List<Periodi> lista = new ArrayList<>();
+    try {
+        String sql = "select data_Inizio,data_Fine,categoria from FestivitaFerie";
+        preparedStatement = conn.prepareStatement(sql);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            lista.add(new Periodi(resultSet.getDate(1).toLocalDate(),resultSet.getDate(1).toLocalDate(),resultSet.getString(1)));
+        }
+        return lista;
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+}
+
+public static List<Impiegati> getImpiegati(int servizio,String ruolo){
+    List<Impiegati> listaDaRitornare = new ArrayList<>();
+    try {
+        String sql = "select matricola, nome,cognome,ref_servizio, ruolo from Impiegato where ref_servizio = ? and ruolo = ?";
+        preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1,servizio);
+        preparedStatement.setString(2,ruolo);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            listaDaRitornare.add(new Impiegati(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+        }
+        return listaDaRitornare;
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+}
+    public static List<Impiegati> getImpiegati(String ruolo){
+        List<Impiegati> listaDaRitornare = new ArrayList<>();
+        try {
+            String sql = "select matricola, nome,cognome,ref_servizio, ruolo from Impiegato where ruolo = ? ORDER BY ref_servizio";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,ruolo);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaDaRitornare.add(new Impiegati(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+            }
+            return listaDaRitornare;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public static List<Impiegati> getImpiegati(){
+        List<Impiegati> listaDaRitornare = new ArrayList<>();
+        try {
+            String sql = "select matricola, nome,cognome,ref_servizio, ruolo from Impiegato ORDER BY ref_servizio";
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaDaRitornare.add(new Impiegati(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+            }
+            return listaDaRitornare;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

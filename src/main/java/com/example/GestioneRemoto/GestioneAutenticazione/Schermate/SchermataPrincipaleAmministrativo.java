@@ -1,6 +1,7 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
 import com.example.GestioneRemoto.GestioneTurni.Control.ControlVisualizzaPropostaTurni;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,9 +14,9 @@ public class SchermataPrincipaleAmministrativo extends SchermataPrincipaleDipend
         super(controlLogin,datiProfilo);
     }
     public void clickGestioneDipendenti(){
-
+        ControlGestioneImpiegati controlGestioneImpiegati = new ControlGestioneImpiegati();
     }
-    public void clickTimbraturaDipendenti(){
+    public void clickTimbraturaImpiegati(){
 
     }
     public void clickVisualizzaCalendario(){

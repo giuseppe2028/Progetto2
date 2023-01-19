@@ -47,7 +47,7 @@
             <MenuButton fx:id="menuButtonGestioneTimbratura" layoutX="465.0" layoutY="1.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="246.0" style="-fx-background-color: #526475;" text="Gestione Dipendenti" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" text="Gestione Festivita e ferie" />
-                  <MenuItem mnemonicParsing="false" text="Gestione Dipendenti" />
+                  <MenuItem mnemonicParsing="false" onAction="#clickGestioneImpiegati" text="Gestione Dipendenti" />
                </items>
                <font>
                   <Font size="18.0" />

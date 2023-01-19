@@ -1,0 +1,66 @@
+package com.example.GestioneRemoto.GestioneImpiegato.Schermate;
+
+import com.example.GestioneRemoto.Contenitori.Impiegati;
+import com.example.GestioneRemoto.FileDiSistema.Daemon;
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class SchermataVisualizzaImpiegato implements Initializable {
+    @FXML
+    Label matricolaLabel;
+    @FXML
+    Label mailLabel;
+    @FXML
+    Label dataNascitaLabel;
+    @FXML
+    Label cfLabel;
+    @FXML
+            Label nomeLabel;
+
+    @FXML
+    Label cognomeLabel;
+    @FXML
+    Label RecapitoLabel;
+    @FXML
+    Label IndirizzoLabel;
+    @FXML
+    Label RuoloLabel;
+    @FXML
+    Label IbanLabel;
+    @FXML
+    Label servizioLabel;
+List<Object> imp;
+    ControlGestioneImpiegati controlGestioneImpiegati;
+    public SchermataVisualizzaImpiegato(ControlGestioneImpiegati controlGestioneImpiegati, List<Object> imp){
+        this.controlGestioneImpiegati=controlGestioneImpiegati;
+        this.imp=imp;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        for(int i=0; i< imp.size();++i){
+            System.out.println(imp.get(i));
+        }
+        String matricola= String.valueOf(imp.get(0));
+matricolaLabel.setText(matricola);
+nomeLabel.setText(imp.get(1).toString());
+cognomeLabel.setText(imp.get(2).toString());
+cfLabel.setText(imp.get(3).toString());
+dataNascitaLabel.setText(imp.get(4).toString());
+IndirizzoLabel.setText(imp.get(6).toString());
+RuoloLabel.setText(imp.get(7).toString());
+IbanLabel.setText(imp.get(10).toString());
+RecapitoLabel.setText(imp.get(11).toString());
+//mailLabel.setText((String) imp.get(12));
+
+servizioLabel.setText(imp.get(13).toString());
+
+    }
+}

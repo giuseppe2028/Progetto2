@@ -34,14 +34,17 @@ public class ControlLogin {
 
         if(Daemon.verifyCredenziali(matricola,password)){
 
-            if(datiProfilo.get(7).equals("DATORE")){
+            if(datiProfilo.get(7).equals("Datore")){
+                System.out.println("n");
                 new EntityUtente((ArrayList<Object>) datiProfilo);
                 SchermataPrincipaleDatore schermataPrincipaleDatore =  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml", stage, c -> new SchermataPrincipaleDatore(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDatore);
                     thread.start();
+                System.out.println("bana");
 
             }
-            else if(datiProfilo.get(7).equals("IMPIEGATO")){
+            else if(datiProfilo.get(7).equals("Impiegato")){
+                System.out.println("9");
                 new EntityUtente((ArrayList<Object>) datiProfilo);
                     SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
@@ -51,6 +54,7 @@ public class ControlLogin {
             }
             else{
                 new EntityUtente((ArrayList<Object>) datiProfilo);
+                System.out.println("hh");
                     SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml", stage, c -> new SchermataPrincipaleAmministrativo(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
@@ -68,6 +72,7 @@ public class ControlLogin {
     //metodo che parte dalla Schermata Recupera Password
     public void clickIndietro(){
         //Util.setScene("/com/example/progettogaga/SchermataLogin.fxml",stage,c-> new SchermataLogin());
+        Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/Login.fxml",stage);
 
     }
     //metodo che parte dalla Schermata Recupera Password

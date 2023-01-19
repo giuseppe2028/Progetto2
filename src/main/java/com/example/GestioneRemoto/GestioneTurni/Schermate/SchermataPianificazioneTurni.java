@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class SchermataPianificazioneTurni {
+
     @FXML
     private TableColumn<PropostaTurno,String> turno;
     @FXML
@@ -178,7 +179,7 @@ public class SchermataPianificazioneTurni {
         //prendo la data corrente
         dataAttuale = LocalDate.now();
 
-        //lavoro sul choiche box
+        //lavoro sul choiche box aggiungenedo i mesi che vengono dopo il mese attuale
         selezionaMese.getItems().add(giorniSettimana[dataAttuale.getMonthValue()-1]);
         selezionaMese.getItems().add(giorniSettimana[dataAttuale.getMonthValue()]);
         selezionaMese.getItems().add(giorniSettimana[dataAttuale.getMonthValue()+1]);
@@ -193,7 +194,7 @@ public class SchermataPianificazioneTurni {
          successivamente prendo il primo giorno da calendario con la classe calendar
 
          */
-        //imposto i valori di default
+        //imposto i valori di default sul choichebox
         selezionaMese.setValue(giorniSettimana[dataAttuale.getMonthValue()-1]);
         //imposto il calendario di default
         visualizzaCalendarioBase(dataAttuale.getMonthValue()-1,dataAttuale.getYear());
@@ -221,13 +222,15 @@ public class SchermataPianificazioneTurni {
     }
 
     private void visualizzaCalendario(ActionEvent actionEvent) {
-
+//dico che quando clicco sul mese di cambiarlo
         visualizzaCalendarioBase(valoreMese(selezionaMese.getValue())-1,dataAttuale.getYear());
         selezionaMese.setOnAction(this::visualizzaCalendario);
     }
 
 
+    //trasformo il giorno del primo giorno del mese in giorno della settimana
     private int ottieniInizio(Date first){
+        //mi faccio dare la data e prendo solamento il giorno a parola
         String caso  = first.toString().substring(0,3);
         switch (caso){
             case "Mon":
@@ -249,7 +252,7 @@ public class SchermataPianificazioneTurni {
     }
 
 private void visualizzaCalendarioBase(int mese, int anno){
-
+//aggiungo tutti i bottoni in un array, per poi poterli settare comodamente
     ArrayList<Button> giorno = new ArrayList<>();
     giorno.add(b1);
     giorno.add(b2);
@@ -316,12 +319,12 @@ private void visualizzaCalendarioBase(int mese, int anno){
 
 
     }
+    //le aletre tabelle che vengono prima del primo giorno del mese li imposto a null
     for(int x = ottieniInizio(first)-1; x>=0; x--){
         giorno.get(x).setText("");
     }
     //se il mese è di 30 giorni faccio una cosa, altrimenti facciamo altro
     //quindi dal giorno di inizio, fino a quando finisce, allora io aggiungo la lunghezza del mese
-    //todo non so perchè ma mi da errore
        /* for(int y = giorno.size()-1; y>daysInMonth;y--){
             giorno.get(daysInMonth).setText("");
         }*/
@@ -333,6 +336,7 @@ private void visualizzaCalendarioBase(int mese, int anno){
 
 }
 
+//calcolo il valore del mese
     private int valoreMese(String mese) {
         switch (mese) {
             case "Gen":
@@ -540,7 +544,7 @@ visualizzaTabella(Integer.parseInt(b1.getText()));
     public void clickButtonb43(ActionEvent e){
         visualizzaTabella(Integer.parseInt(b43.getText()));
     }
-
+//visualizzo la tabella quando clicco
 private void visualizzaTabella(int giornoconsiderato){
     System.out.println("GiornoConsiderato "+giornoconsiderato);
     propostaTurniTabella = FXCollections.observableArrayList();

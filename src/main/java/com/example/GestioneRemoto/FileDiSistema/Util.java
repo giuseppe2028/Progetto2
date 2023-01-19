@@ -48,6 +48,20 @@ public class Util {
         }
 
     }
+    public static void setScene(String fxml, Stage stage){
+
+        Parent root;
+        try {
+            FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
+            root = loader.load();
+            scene = new Scene(root);
+            //lo stage che ho passato lo trasformo come main stage, ovvero lo inizializzo al mainstage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 

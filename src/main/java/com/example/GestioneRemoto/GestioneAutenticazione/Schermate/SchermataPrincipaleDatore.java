@@ -2,6 +2,8 @@ package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlFestivitaFerie;
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
 import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -133,15 +135,17 @@ public class SchermataPrincipaleDatore implements Runnable{
 
     }
     @FXML
-    public void clickGestioneFestivitaFerie(){
-
+    public void clickGestioneFestivitaFerie(ActionEvent e){
+       ControlFestivitaFerie controlFestivitaFerie = new ControlFestivitaFerie();
     }
     @FXML
     public void clickCalendarioComplessivo(){
 
     }
     @FXML
-    public void clickGestioneDipendenti(){
+    public void clickGestioneImpiegati(ActionEvent e){
+        ControlGestioneImpiegati controlGestioneImpiegati = new ControlGestioneImpiegati();
 
     }
+
 }

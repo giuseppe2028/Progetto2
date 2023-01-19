@@ -1,0 +1,10 @@
+#bottoneIndietro{
+    -fx-background-color: #5526475;
+}
+
+#matricola{
+    -fx-border-radius: 30px;
+    -fx-background-color: #deefff;
+    -fx-border-color: black;
+    -fx-border-width: 0.5;
+}
