@@ -32,10 +32,7 @@
                     </image>
                 </ImageView>
             </children></AnchorPane>
-        <ImageView fx:id="ImmagineProfilo" fitHeight="138.0" fitWidth="196.0" layoutX="379.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../Icon/ImmaginiGestioneProfilo/fotoPro.png" />
-            </image></ImageView>
+        <ImageView fx:id="immagineView" fitHeight="136.0" fitWidth="165.0" layoutX="404.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
         <AnchorPane fx:id="sfondoDropDownButton" layoutX="-1.0" layoutY="358.0" prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #526475;">
             <children>
                 <MenuButton fx:id="menuButtonGestioneProfilo" layoutY="6.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="302.0" style="-fx-background-color: #526475;" stylesheets="@../CSS/SchermataPrincipaleImpiegato.css" text="Gestione Profilo" textFill="WHITE">

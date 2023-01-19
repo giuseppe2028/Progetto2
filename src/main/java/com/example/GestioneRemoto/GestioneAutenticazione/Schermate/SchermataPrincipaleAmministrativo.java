@@ -2,6 +2,7 @@ package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
 import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
 import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaStipendio;
 import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
@@ -37,6 +38,11 @@ public class SchermataPrincipaleAmministrativo extends SchermataPrincipaleImpieg
     public void clickVisualizzaStipendio(ActionEvent e){
         ControlVisualizzaStipendio controlVisualizzaStipendio= new ControlVisualizzaStipendio();
         controlVisualizzaStipendio.clickVisualizzaStipendio();
+    }
+    @FXML
+    public void clickGestioneImpiegati(ActionEvent e){
+        ControlGestioneImpiegati controlGestioneImpiegati = new ControlGestioneImpiegati();
+
     }
 
 }

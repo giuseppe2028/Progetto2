@@ -1,5 +1,6 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
+import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
 import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
@@ -10,10 +11,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.*;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,8 +50,7 @@ public class SchermataPrincipaleDatore implements Runnable{
     @FXML
     Label dataCorrente;
 
-    @FXML
-    private ImageView ImmagineProfilo;
+
 
     @FXML
     private AnchorPane bottone;
@@ -66,6 +69,8 @@ public class SchermataPrincipaleDatore implements Runnable{
     private ImageView Iconatimbratura;
     @FXML
     private Button logout;
+    @FXML
+    private ImageView immagineView;
 
     @FXML
     private AnchorPane rettangoloUP;
@@ -83,7 +88,7 @@ public class SchermataPrincipaleDatore implements Runnable{
 
 
     @FXML
-    public void initialize(){
+    public void initialize() throws IOException {
         String stringNomeCognome =lista.get(1).toString() +" " +  lista.get(2).toString();
         nomeCognome.setText(stringNomeCognome);
         String stringMatricola =  lista.get(0).toString();
@@ -91,7 +96,19 @@ public class SchermataPrincipaleDatore implements Runnable{
         nomeCognome.setText(stringNomeCognome);
         matricola.setText(stringMatricola);
         ruolo.setText(stringRuolo);
+        List<Object> imm= EntityUtente.getDatiProfilo();
+     /*  ByteArrayInputStream clob= (ByteArrayInputStream) imm.get(11);
+        byte[] byteArr= clob.readAllBytes();
+       InputStream inputStream = new ByteArrayInputStream(byteArr);
 
+        immagineView.setImage(new Image(inputStream));
+
+
+        String filePath = (String) imm.get(11);
+        FileInputStream inputStream = new FileInputStream(filePath);
+        immagineView.setImage(new Image(inputStream));
+        inputStream.close();
+*/
     }
 
 

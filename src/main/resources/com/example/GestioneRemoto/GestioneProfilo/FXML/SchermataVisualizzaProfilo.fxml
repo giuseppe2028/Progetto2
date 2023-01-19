@@ -11,10 +11,8 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="900.0" stylesheets="@../CSS/SchermataVisualizzaProfilo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataVisualizzaProfilo">
     <children>
-        <ImageView fitHeight="87.0" fitWidth="87.0" layoutX="-159.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" translateX="250.0">
-            <image>
-                <Image url="@../../Icon/ImmaginiGestioneProfilo/fotoPro.png" />
-            </image>
+        <ImageView fx:id="ImmagineProfilo" fitHeight="121.0" fitWidth="142.0" layoutX="-198.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" translateX="250.0">
+
         </ImageView>
         <Label fx:id="mailLabel" layoutX="-127.0" layoutY="240.0" text="mail" translateX="250.0" />
         <Label fx:id="dataNascitaLabel" layoutX="-127.0" layoutY="293.0" text="dataNascita" translateX="250.0" />
@@ -30,7 +28,7 @@
             <font>
                 <Font size="14.0" />
             </font></Button>
-        <Button fx:id="indietroButton" layoutX="51.0" layoutY="570.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="27.0" prefWidth="77.0" style="-fx-font-size: 14; -fx-background-radius: 20;" text="indietro">
+        <Button fx:id="indietroButton" layoutX="51.0" layoutY="570.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" style="-fx-font-size: 14; -fx-background-radius: 20;" text="indietro">
             <font>
                 <Font size="10.0" />
             </font>

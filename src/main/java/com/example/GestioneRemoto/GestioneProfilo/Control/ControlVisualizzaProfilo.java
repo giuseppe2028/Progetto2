@@ -2,6 +2,7 @@ package com.example.GestioneRemoto.GestioneProfilo.Control;
 
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
+import com.example.GestioneRemoto.FileDiSistema.PreviousSceneController;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDatore;
@@ -10,16 +11,19 @@ import com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataModificaPro
 import com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControlVisualizzaProfilo {
     private Stage stage = Start.mainStage;
+    Parent root;
     private int matricola;
     private boolean esito;
     private String vecchia;
@@ -87,23 +91,25 @@ this.datiModificati= datiModificati;
 //TODO implementare
 
     }
-    public void clickIndietro(){
-        ArrayList<Object> dati = (ArrayList<Object>) EntityUtente.getDatiProfilo();
+   /* public void clickIndietro(){
+       List<Object> dati = EntityUtente.getDatiProfilo();
         ControlLogin c1= new ControlLogin();
     Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml", stage, c->new SchermataPrincipaleDatore(c1,dati ));
-    }
+    }*/
     public boolean verifyInsert(String recapito, String iban){
         boolean isValid= recapito.length()<=12;
         boolean isVali= iban.length()>26 ;
         return isValid && isVali;
     }
-    public void clickSalva(List<Object> datiModificati) throws IOException {
+    public void clickSalva(List<Object> datiModificati, InputStream path) throws IOException {
       String recapito= datiModificati.get(0).toString();
       String iban= datiModificati.get(1).toString();
         String indi= datiModificati.get(2).toString();
         String mail= datiModificati.get(3).toString();
+
         if(verifyInsert(recapito, iban)){
-            boolean modificata= Daemon.modificaDati(Double.valueOf(recapito), iban, indi, mail);
+            boolean modificata= Daemon.modificaDati(Double.valueOf(recapito), iban, indi, mail, path);
+
             if(modificata){
                 Alert a= new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Dati cambiati con successo!");
@@ -125,4 +131,10 @@ this.datiModificati= datiModificati;
         }
 
     }
-}
+
+    public void clickIndietro(){
+        Util.indietro("/com/example/GestioneRemoto/GestioneProfilo/FXML/SchermataVisualizzaProfilo.fxml",stage );
+    }
+
+    }
+

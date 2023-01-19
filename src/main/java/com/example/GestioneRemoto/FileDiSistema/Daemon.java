@@ -1,11 +1,17 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
-import com.example.GestioneRemoto.Contenitori.Richieste;
-import com.example.GestioneRemoto.GestioneRichieste.Schermate.*;
+import com.example.GestioneRemoto.Contenitori.Impiegati;
+import com.example.GestioneRemoto.Contenitori.Richiesta;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+
 
 public class Daemon {
     private static Connection conn;
@@ -59,31 +65,35 @@ public class Daemon {
                     ritorno.add(resultSet.getString("cognome"));
                     ritorno.add(resultSet.getString("cf"));
                     ritorno.add(resultSet.getDate("data_nascita"));
-                   // ritorno.add(resultSet.getBlob("foto_profilo"));
+                    // ritorno.add(resultSet.getBlob("foto_profilo"));
                     ritorno.add(resultSet.getString("indirizzo_residenza"));
                     ritorno.add(resultSet.getString("ruolo"));
                     ritorno.add(resultSet.getString("mail"));
-                   // ritorno.add(resultSet.getString("password"));
+                    // ritorno.add(resultSet.getString("password"));
                     ritorno.add(resultSet.getString("IBAN"));
                     ritorno.add(resultSet.getLong("recapito_telefonico"));
                     ritorno.add(resultSet.getString("mail_personale"));
+                   /* Blob clob = resultSet.getBlob("foto_profilo");
+                    byte[] byteArr = clob.getBytes(1, (int) clob.length());
+                    InputStream inputStream = new ByteArrayInputStream(byteArr);
+                    ritorno.add(inputStream);*/
+
+
 
                 }
+
+
+                return ritorno;
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
         } catch (SQLException e) {
-            System.out.println("Error in getDatiProfilo");
+            throw new RuntimeException(e);
         }
-        if (ritorno.isEmpty()) {
-            System.out.println("no data found for matricola: ");
-        }
-        return ritorno;
     }
 
-
-
-
-
-    public static int getMatricola(String mail){
+        public static int getMatricola(String mail){
         ResultSet rs;
         try{
             String sql = "SELECT * FROM Utente WHERE mail = ?";
@@ -97,17 +107,20 @@ public class Daemon {
         }
     }
 
-    public static boolean modificaDati(Double recapito,String indirizzo, String iban, String mail) {
+    public static boolean modificaDati(Double recapito,String indirizzo, String iban, String mail, InputStream path) {
         int matricola= EntityUtente.getMatricola();
 
         try{
-            String query= "UPDATE Utente SET indirizzo_residenza=?, recapito_telefonico=?, IBAN=?, mail_personale=?  WHERE matricola=?";
+            String query= "UPDATE Utente SET indirizzo_residenza=?, recapito_telefonico=?, IBAN=?, mail_personale=?, foto_profilo=?  WHERE matricola=?";
             PreparedStatement pstm1= conn.prepareStatement(query);
             pstm1.setString(1, indirizzo);
             pstm1.setDouble(2, recapito);
             pstm1.setString(3, iban);
             pstm1.setString(4, mail);
-            pstm1.setInt(5, matricola);
+
+            pstm1.setBlob(5, path);
+            pstm1.setInt(6, matricola);
+
             pstm1.execute();
             return true;
 
@@ -154,119 +167,89 @@ public class Daemon {
     }
 
     public static List<Richiesta> getRichieste(int matricola){
-        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
-
-       // listaRitorno.add(getRichiesta(matricola));
-        listaRitorno.add((Richiesta) getCongedi(matricola));
-        listaRitorno.add((Richiesta) getFerie(matricola));
-        listaRitorno.add((Richiesta) getPermessi(matricola));
-        listaRitorno.add((Richiesta) getRichiesteRicevute(matricola));
-        listaRitorno.add((Richiesta) getScioperi(matricola));
-        System.out.println(getCongedi(matricola).toString());
-        return listaRitorno;
-    }
-
-   /* private static List<Richiesta> getRichiesta(int matricola){
-        ArrayList<Richiesta> listaRitorno=new ArrayList();
-        try{
-            String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from Richiesta where ref_impiegato=?";
-            preparedStatement= conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet= preparedStatement.executeQuery();
-            while(resultSet.next()){
-                listaRitorno.add(new Richiesta(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
-            }
-            return listaRitorno;
-        }catch(SQLException e){
-            System.out.println("Errore Comunicazione DBMS");
-        }
-        return null;
-    }*/
-    private static List<Richiesta> getCongedi(int matricola){
         ArrayList<Richiesta> listaRitorno=new ArrayList();
 
+        try{
+            System.out.println(matricola);
+            String sql="select id, categoria, stato, data_inizio, data_fine, ora_inizio, ora_fine, svolgimento, motivazione, tipologia, matricola_destinazione, tipo_turno_origine,tipo_turno_destinazione, data_turno_origine, data_turno_destinazione from Richiesta where ref_impiegato=?";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            resultSet = preparedStatement.executeQuery();
 
-        try{
-
-            String sql="select id as ID, ref_impiegato,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,tipo as Tipo,motivazione as Motivazione from Congedo where ref_impiegato=?";
-            preparedStatement= conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet= preparedStatement.executeQuery();
-            while(resultSet.next()){
-               listaRitorno.add(new Congedo(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getString(6),resultSet.getString(7)));
+           while(resultSet.next()){
+                listaRitorno.add(new Richiesta(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getTime(6).toLocalTime(),resultSet.getTime(7).toLocalTime(),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getInt(11),resultSet.getString(12),resultSet.getString(13),resultSet.getDate(14).toLocalDate(),resultSet.getDate(15).toLocalDate()));
             }
             return listaRitorno;
-        }catch(SQLException e){
-            System.out.println("Errore Comunicazione DBMS");
-        }
-        return null;
-    }
-    private static List<Richiesta> getFerie(int matricola){
-        ArrayList<Richiesta> listaRitorno=new ArrayList();
-        try{
-            //String sql="select id as ID,ref_impiegato as Matricola,stato as Stato,data_inizio as DataInizio,data_fine as DataFine from giorniFerie where ref_impiegato=?";
-            String sql = "select id, ref_impiegato, stato, data_inizio, data_fine from Ferie where ref_impiegato = ?";
-            preparedStatement= conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet= preparedStatement.executeQuery();
-            while(resultSet.next()){
-                listaRitorno.add(new GiorniFerie(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
-            }
-            return listaRitorno;
-        }catch(SQLException e){
-            System.out.println("Errore Comunicazione DBMS");
-        }
-        return null;
-    }
-    private static List<Richiesta> getPermessi(int matricola){
-        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
-        try{
-            String sql="select id as ID,ref_impiegato,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,ora_inizio as OraInizio,ora_fine as OraFine from permesso where ref_impiegato=?";
-            preparedStatement= conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet= preparedStatement.executeQuery();
-            while(resultSet.next()){
-                listaRitorno.add(new Permesso(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getTime(6).toLocalTime(),resultSet.getTime(7).toLocalTime()));
-            }
-            return listaRitorno;
-        }catch(SQLException e){
-            System.out.println("Errore Comunicazione DBMS");
-        }
-        return null;
-    }
-    private static List<Richiesta> getRichiesteRicevute(int matricola){
-        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
-        try{
-            String sql="select id as ID,ref_impiegato,matricola_destinazione as MatricolaDestinazione,categoria as Categoria,stato as Stato,tipo_turno_origine as TipoTurnoOrigine,tipo_turno_destinazione as TipoTurnoDestinazione,data_turno_origine as DataTurnoOrigine,data_turno_destinazione as DataTurnoDestinazione from richiestaRicevuta where ref_impiegato=?;";
-            preparedStatement= conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet= preparedStatement.executeQuery();
-            while(resultSet.next()){
-                listaRitorno.add(new RichiestaRicevuta(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getString(4),resultSet.getBoolean(5),resultSet.getString(6),resultSet.getString(7),resultSet.getDate(8).toLocalDate(),resultSet.getDate(9).toLocalDate()));
-            }
-            return listaRitorno;
-        }catch(SQLException e){
-            System.out.println("Errore Comunicazione DBMS");
-        }
-        return null;
-    }
-    private static List<Richiesta> getScioperi(int matricola){
-        ArrayList<Richiesta> listaRitorno=new ArrayList<>();
-        try{
-            String sql="select id as ID,ref_impiegato,stato as Stato,data_inizio as DataInizio,data_fine as DataFine,motivazione as Motivazione,svolgimento as Svolgimento from sciopero where ref_impiegato=?";
-            preparedStatement= conn.prepareStatement(sql);
-            preparedStatement.setInt(1,matricola);
-            resultSet= preparedStatement.executeQuery();
-            while(resultSet.next()){
-                listaRitorno.add(new Sciopero(resultSet.getInt(1),resultSet.getInt(2),resultSet.getBoolean(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate(),resultSet.getString(6),resultSet.getString(7)));
-            }
-            return listaRitorno;
-        }catch(SQLException e){
+        }catch (SQLException e){
             System.out.println("Errore Comunicazione DBMS");
         }
         return null;
     }
 
 
+    public static List<Impiegati> getImpiegati(int servizio,String ruolo){
+        List<Impiegati> listaDaRitornare = new ArrayList<>();
+        try {
+            String sql = "select matricola, nome,cognome,ref_servizio, ruolo from Impiegato where ref_servizio = ? and ruolo = ?";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,servizio);
+            preparedStatement.setString(2,ruolo);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaDaRitornare.add(new Impiegati(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+            }
+            return listaDaRitornare;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-}
+    }
+    public static List<Impiegati> getImpiegati(String ruolo){
+        List<Impiegati> listaDaRitornare = new ArrayList<>();
+        try {
+            String sql = "select matricola, nome,cognome,ref_servizio, ruolo from Impiegato where ruolo = ? ORDER BY ref_servizio";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,ruolo);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaDaRitornare.add(new Impiegati(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+            }
+            return listaDaRitornare;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public static List<Impiegati> getImpiegati(){
+        List<Impiegati> listaDaRitornare = new ArrayList<>();
+        try {
+            String sql = "select matricola, nome,cognome,ref_servizio, ruolo from Impiegato ORDER BY ref_servizio";
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                listaDaRitornare.add(new Impiegati(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5)));
+            }
+            return listaDaRitornare;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static List<LocalDate> getGiorniProibiti(){
+        List<LocalDate> listaRitorno = new ArrayList();
+        try{
+            String sql="select data_inizio, data_fine from FestivitaFerie";
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                listaRitorno.add(resultSet.getDate("data_inizio").toLocalDate());
+                listaRitorno.add(resultSet.getDate("data_fine").toLocalDate());
+            }
+            return listaRitorno;
+        }catch (SQLException e){
+            System.out.println("Errore Comunicazione DBMS");
+        }
+        return null;
+    }
+
+
+    }

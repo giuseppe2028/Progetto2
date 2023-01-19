@@ -20,6 +20,9 @@ public class SchermataRichiestaMalattia {
     public SchermataRichiestaMalattia(ControlGestioneRichieste controlGestioneRichieste){
         this.controlGestioneRichieste=controlGestioneRichieste;
     }
+    public void clickIndietro(ActionEvent e){
+        controlGestioneRichieste.clickIndietro();
+    }
     /*
 public void clickInvia(ActionEvent e ){
     LocalDate dataInizio= dataIn.getValue();

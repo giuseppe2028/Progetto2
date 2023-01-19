@@ -4,7 +4,14 @@ import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfi
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 public class SchermataVisualizzaProfilo  {
@@ -41,7 +48,7 @@ this.datiProfilo=datiProfilo;
 
     }
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize() throws SQLException, FileNotFoundException {
 
         String matricola= datiProfilo.get(0).toString();
         matricolaLabel.setText(matricola);
@@ -57,6 +64,13 @@ this.datiProfilo=datiProfilo;
         String recapito= datiProfilo.get(9).toString();
         recapitoLabel.setText(recapito);
        mailPLabel.setText(datiProfilo.get(10).toString());
+     // String c= (String) datiProfilo.get(11);
+      //ByteArrayInputStream clob= (ByteArrayInputStream) datiProfilo.get(11);
+       // byte[] byteArr = clob.getBytes(1, (int) clob.length());
+       // byte[] byteArr= clob.readAllBytes();
+       // InputStream inputStream= new FileInputStream(c);
+       // InputStream inputStream = new ByteArrayInputStream(byteArr);
+       // ImmagineProfilo.setImage(new Image(inputStream));
 
 
 
@@ -67,9 +81,9 @@ this.datiProfilo=datiProfilo;
     public void clickModificaPassword(){
 controlVisualizzaProfilo.clickModificaPassword();
     }
-    public void clickIndietro(ActionEvent e){
+   /* public void clickIndietro(ActionEvent e){
 controlVisualizzaProfilo.clickIndietro();
-    }
+    }*/
     public void clickModifica(ActionEvent event) {
         controlVisualizzaProfilo.clickModifica();
     }

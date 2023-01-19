@@ -1,8 +1,8 @@
 package com.example.GestioneRemoto.GestioneRichieste.Control;
 
 
+import com.example.GestioneRemoto.Contenitori.Richiesta;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
-import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneRichieste.Schermate.*;
 import com.example.GestioneRemoto.Start;
@@ -20,7 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import java.sql.SQLException;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +66,17 @@ public class ControlGestioneRichieste {
     @FXML
     private TableColumn editCol;
 
+    public void clickCongedoLutto() {
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoLutto.fxml", stage, c->new SchermataCongedoLutto(this));
+    }
+
+    public void clickCongedoParentale() {
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoParentale.fxml", stage, c->new SchermataCongedoParentale(this));
+    }
+
+    public void clickRichiestaPermesso() {
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c-> new SchermataRichiestaPermesso(this));
+    }
 
 
     public class CustomTableRowSkin<T> extends TableRowSkin<T> {
@@ -78,101 +90,7 @@ public class ControlGestioneRichieste {
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c-> new SchermataGestioneRichieste(this) );
     }
 
-    public void loadDate() throws SQLException {
-        richiesteList =FXCollections.observableArrayList();
-      List<Richiesta> richieste= Daemon.getRichieste(1012);
-        for (Richiesta richiesta : richieste) {
-            switch (richiesta.getTipo()) {
-                case "congedo":
-                    Congedo congedo = (Congedo)richiesta;
-                    richiesteList.add(new Richiesta("congedo", congedo.getId(), congedo.isStato(), congedo.getData_inizio(), congedo.getData_fine(), congedo.getTipo(), congedo.getMotivazione()));
-                    break;
-                case "ferie":
-                    Ferie ferie = (Ferie)richiesta;
-                    richiesteList.add(new Richiesta("ferie", ferie.getId(), ferie.isStato(), ferie.getData_inizio(), ferie.getData_fine(), ferie.getTipo()));
-                    break;
-                case "permesso":
-                    Permessi permessi = (Permessi)richiesta;
-                    richiesteList.add(new Richiesta("permessi", permessi.getId(), permessi.isStato(), permessi.getData_inizio(), permessi.getData_fine(), permessi.getTipo(), permessi.getMotivazione()));
-                    break;
-                case "richieste ricevute":
-                    RichiesteRicevute richiesteRicevute = (RichiesteRicevute)richiesta;
-                    richiesteList.add(new Richiesta("richieste ricevute", richiesteRicevute.getId(), richiesteRicevute.isStato(), richiesteRicevute.getData_inizio(), permessi.getData_fine(), permessi.getTipo()
 
-
-
-        idCol.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        dataiCol.setCellValueFactory(new PropertyValueFactory<>("data inizio"));
-        datafCol.setCellValueFactory(new PropertyValueFactory<>("data fine"));
-        tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        statoCol.setCellValueFactory(new PropertyValueFactory<>("stato"));
-        motCol.setCellValueFactory(new PropertyValueFactory<>("motivazione"));
-        allCol.setCellValueFactory(new PropertyValueFactory<>("allegato"));
-        svolgCol.setCellValueFactory(new PropertyValueFactory<>("svolgimento"));
-        oraInCol.setCellValueFactory(new PropertyValueFactory<>("ora inizio"));
-        oraFCol.setCellValueFactory(new PropertyValueFactory<>("ora fine"));
-        matrCol.setCellValueFactory(new PropertyValueFactory<>("matricola"));
-        turnoOCol.setCellValueFactory(new PropertyValueFactory<>("turno origine"));
-        turnoDCol.setCellValueFactory(new PropertyValueFactory<>("turno destinazione"));
-        dataTOCol.setCellValueFactory(new PropertyValueFactory<>("data turno origine"));
-        dataTDCol.setCellValueFactory(new PropertyValueFactory<>("data turno destinazione"));
-
-
-
-        richiesteTableView.setItems(richiesteList);
-
-
-
-        Callback<TableColumn<Richiesta, String>, TableCell<Richiesta, String>> cellFactory = /*(TableColumn<Richieste, String>*/ (param) -> {
-
-            final TableCell<Richiesta, String> cell = new TableCell<>() {
-
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    //se la cella è vuota AND almeno un item è null non setta i bottoni
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-                    } else {
-
-                        richiesteTableView.setBackground(Background.fill(Color.WHITE));
-                        final Button eliminaButton = new Button("elimina");
-
-                        eliminaButton.setBackground(Background.fill(Color.AZURE));
-
-                        eliminaButton.setOnAction((ActionEvent event) -> {
-
-                            Richiesta richiesta = (Richiesta) richiesteTableView.getSelectionModel().getSelectedItem();
-                            try {
-                                Daemon.delete(richiesta.getID_richiesta());
-                            } catch (SQLException e) {
-                                throw new RuntimeException(e);
-                            }
-
-
-                        });
-
-                        HBox managebtn = new HBox(eliminaButton);
-                        managebtn.setStyle("-fx-alignment: center");
-                        HBox.setMargin(eliminaButton, new Insets(2, 2, 0, 3));
-
-                        setGraphic(managebtn);
-                        setText(null);
-                    }
-
-                }
-
-
-            };
-
-            return cell;
-        };
-        editCol.setCellFactory(cellFactory);
-        richiesteTableView.setItems(richiesteList);
-
-
-    }
     /*
     public void clickInviaFerie(LocalDate dI, LocalDate dF){
        int matricola= EntityUtente.getMatricola();
@@ -201,10 +119,29 @@ public class ControlGestioneRichieste {
     }
 
     }
-
+*/
     public void clickRichiestaFerie(){
-        Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/SchermataRichiestaFerie.fxml", stage, c-> new SchermataRichiestaFerie(this));
+        List<LocalDate> giorniPro= Daemon.getGiorniProibiti();
+        System.out.println( giorniPro.size());
+        List<LocalDate> dateI= new ArrayList<>();
+        List<LocalDate> dateF= new ArrayList<>();
+        for(int i=0; i<giorniPro.size(); ++i) {
+            if (i % 2 == 0) {
+
+                dateI.add(giorniPro.get(i));
+            }else{
+
+                    dateF.add(giorniPro.get(i));
+
+                }
+
+            }
+
+
+
+        Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaFerie.fxml", stage, c-> new SchermataRichiestaFerie(this, dateI, dateF));
     }
+    /*
     public void clickRichiestaPermesso() {
       Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c-> new SchermataRichiestaPermesso(this));
     }
@@ -228,10 +165,10 @@ public class ControlGestioneRichieste {
         }
 
     }
-
+*/
     public void clickRichiestaSciopero(){
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaSciopero.fxml", stage, c-> new SchermataRichiestaSciopero(this));
-    }
+    }/*
     public void clickInviaSciopero(LocalDate data, String motivazione, String svolgimento){
         int matricola= EntityUtente.getMatricola();
       //int matricolaDatore=  Daemon.getMatricolaDatore();
@@ -262,16 +199,18 @@ public class ControlGestioneRichieste {
         int matricola=EntityUtente.getMatricola();
         //TODO inserire nel DBMS la richiesta ed il popup
     }
+    */
     public void clickRichiestaMaternita(){
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMaternita.fxml", stage, c-> new SchermataRichiestaMaternita(this));
     }
+    /*
     public void clickInviaMaternita(LocalDate dataInizio, LocalDate dataFine){
         int matricola=EntityUtente.getMatricola();
 
-    }
+    }*/
     public void clickRichiestaMalattia(){
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMalattia.fxml", stage, c-> new SchermataRichiestaMalattia(this));
-    }
+    }/*
     public void clickInviaMalattia(LocalDate dataInizio, LocalDate dataFine, String motivazione) {
         int matricola= EntityUtente.getMatricola();
         //TODO query al DBMS
@@ -290,5 +229,9 @@ public void clickRichiestaCambio(){
     }
 
 */
+
+    public void clickIndietro(){
+
+    }
 
 }

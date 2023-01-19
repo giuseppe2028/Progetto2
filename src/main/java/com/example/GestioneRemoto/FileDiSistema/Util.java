@@ -1,16 +1,22 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
+import com.example.GestioneRemoto.GestioneImpiegato.Schermate.SchermataVisualizzaImpiegato;
+import com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Util {
     public static Scene scene;
+
     public static void setScene(String fxml, Stage stage, Callback controller){
 
         Parent root;
@@ -48,7 +54,42 @@ public class Util {
         }
 
     }
+    /*public static void setScene(String fxml, Stage stage){
+
+        Parent root;
+try {
+    FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
+    root = loader.load();
+    PreviousSceneController controller = loader.getController();
+    Scene scene = new Scene(root);
+     stage = (Stage) btn.getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    pre
+}catch (IOException e){
+    e.printStackTrace();
+}
 
 
+    }*/
+
+public static void goBack(){
+    scene.getWindow().hide();
+}
+
+public static void indietro(String fxml,Stage stage){
+
+    try {
+        FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
+        stage.setScene(new Scene(loader.load()));
+        SchermataVisualizzaProfilo schermataVisualizzaProfilo = loader.getController();
+        schermataVisualizzaProfilo.initialize();
+        stage.show();
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
 
 }

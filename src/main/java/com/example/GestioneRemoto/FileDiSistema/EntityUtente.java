@@ -1,5 +1,6 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class EntityUtente {
     private static String IBAN;
     private static long recapito_telefonico;
     private static String mail_personale;
+    private static InputStream inputStream;
    
 
     public EntityUtente(ArrayList<Object> arrayList){
@@ -36,6 +38,7 @@ public class EntityUtente {
         this.IBAN = (String) arrayList.get(8);
         this.recapito_telefonico = (long) arrayList.get(9);
         this.mail_personale = (String) arrayList.get(10);
+       // this.inputStream= (InputStream) arrayList.get(11);
 
     }
     public static List<Object> getDatiProfilo(){
@@ -52,6 +55,7 @@ public class EntityUtente {
         lista.add(IBAN);
         lista.add(recapito_telefonico);
         lista.add(mail_personale);
+        lista.add(inputStream);
 
         return lista;
     }

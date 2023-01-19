@@ -1,12 +1,16 @@
 package com.example.GestioneRemoto.GestioneProfilo.Schermate;
 
 
+import com.example.GestioneRemoto.FileDiSistema.Daemon;
+import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
+
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -14,18 +18,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+
 
 import static jdk.jfr.consumer.EventStream.openFile;
 
 
-public class SchermataModificaProfilo {
+public class SchermataModificaProfilo /*implements Initializable*/ {
+    @FXML
+    Button indietro;
     @FXML
     TextField recapitoField;
     @FXML
@@ -37,7 +44,7 @@ public class SchermataModificaProfilo {
 @FXML
 Button carica;
 @FXML
-    ImageView imageView;
+    ImageView immagineView;
 
     private ControlVisualizzaProfilo controlVisualizzaProfilo;
 
@@ -49,17 +56,24 @@ Button carica;
     }
 
     public void clickSalva(ActionEvent e) throws IOException {
-        Double recapito=  Double.parseDouble(recapitoField.getText());
+        Double recapito= Double.valueOf((recapitoField.getText()));
         String iban= ibanField.getText();
         String indi= indirizzoField.getText();
         String mail= mailField.getText();
+        Image foto= immagineView.getImage();
+
+        String path = foto.getUrl().substring(5);
+        FileInputStream inputStream = new FileInputStream(path);
+
+
         List<Object> datiModificati=new ArrayList<>();
         datiModificati.add(recapito);
         datiModificati.add(iban);
         datiModificati.add(indi);
         datiModificati.add(mail);
+
         controlVisualizzaProfilo.compila(datiModificati);
-        controlVisualizzaProfilo.clickSalva(datiModificati);
+        controlVisualizzaProfilo.clickSalva(datiModificati, inputStream);
     }
     @FXML
     public void clickCarica(ActionEvent event) {
@@ -74,7 +88,7 @@ Button carica;
                             try {
                                 openFile(file.toPath());
                                 Image image = new Image(file.toURI().toString());
-                                imageView.setImage(image);
+                                immagineView.setImage(image);
 
                             } catch (IOException ex) {
                                 throw new RuntimeException(ex);
@@ -92,7 +106,18 @@ Button carica;
             imageView.setImage(image);*/
         }
 
+   /* @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+       List<Object> imm= EntityUtente.getDatiProfilo();
+        ByteArrayInputStream clob= (ByteArrayInputStream) imm.get(11);
+        byte[] byteArr= clob.readAllBytes();
+        InputStream inputStream = new ByteArrayInputStream(byteArr);
+        immagineView.setImage(new Image(inputStream));
+    }*/
+    public void clickIndietro(ActionEvent e){
+        controlVisualizzaProfilo.clickIndietro();
     }
+}
 
 
 

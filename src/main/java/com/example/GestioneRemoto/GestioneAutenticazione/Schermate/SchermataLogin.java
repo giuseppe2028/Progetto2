@@ -1,5 +1,6 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
+import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
@@ -8,10 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 public class SchermataLogin {
     private Stage stage = Start.mainStage;
@@ -50,8 +55,7 @@ public class SchermataLogin {
 //DIRE NELL'ODD CHE NON METTIAMO IL METODO INSERSCI CREDENZIALI PER NON PREMERE IL TASTO INVIO
     @FXML
     public void clickLogin(ActionEvent e) throws IOException {
-        System.out.println("ciao");
-       controlLogin.create(Integer.parseInt(matricola.getText()), passwordField.getText());
+        controlLogin.create(Integer.parseInt(matricola.getText()), passwordField.getText());
         controlLogin.clickLogin(e);
     }
     @FXML

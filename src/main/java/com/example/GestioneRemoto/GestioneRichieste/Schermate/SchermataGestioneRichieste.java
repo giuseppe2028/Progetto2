@@ -1,16 +1,31 @@
 package com.example.GestioneRemoto.GestioneRichieste.Schermate;
 
+import com.example.GestioneRemoto.Contenitori.Richiesta;
+import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
 
 import java.net.URL;
+import java.sql.Blob;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SchermataGestioneRichieste implements Initializable {
@@ -21,13 +36,35 @@ public class SchermataGestioneRichieste implements Initializable {
     @FXML
     private TableColumn<Richiesta, Integer> idCol;
     @FXML
-    private TableColumn<Richiesta, String> catCol;
+    private TableColumn<Richiesta, Integer> matrCol;
+@FXML
+        private TableColumn<Richiesta, LocalTime> oraInCol;
+    @FXML
+    private TableColumn<Richiesta, LocalTime> oraFCol;
+
+    @FXML
+    private TableColumn<Richiesta, String> turnoOCol;
+    @FXML
+    private TableColumn<Richiesta, String> turnoDCol;
+    @FXML
+    private TableColumn<Richiesta, LocalDate> dataTOCol;
+    @FXML
+    private TableColumn<Richiesta, LocalDate> dataTDCol;
+
+    @FXML
+    private TableColumn<Richiesta, String> svolgCol;
+ //   @FXML
+   // private TableColumn<Richiesta, Blob> allCol;
+    @FXML
+    private TableColumn<Richiesta, String> tipoCol;
     @FXML
     private TableColumn<Richiesta, String> motCol;
     @FXML
-    private TableColumn<Richiesta, Date> dataInCol;
+    private TableColumn<Richiesta, String> catCol;
     @FXML
-    private TableColumn<Richiesta, Date> dataFineCol;
+    private TableColumn<Richiesta, Date> dataiCol;
+    @FXML
+    private TableColumn<Richiesta, Date> datafCol;
     @FXML
     private TableColumn<Richiesta, Integer> statoCol;
     @FXML
@@ -41,13 +78,96 @@ public class SchermataGestioneRichieste implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            controlGestioneRichieste.loadDate();
+           loadDate();
         } catch (SQLException e) {
             System.out.println("err");
         }
 
     }
-    /*
+    public void loadDate() throws SQLException {
+        richiesteList = FXCollections.observableArrayList();
+        List<Richiesta> richieste= Daemon.getRichieste(1027);
+        for (int i = 0; i<richieste.size();i++) {
+            richiesteList.add(new Richiesta(richieste.get(i).getId(),richieste.get(i).getCategoria(),richieste.get(i).getStato(), richieste.get(i).getData_inizio(),richieste.get(i).getData_fine(),richieste.get(i).getOra_inizio(),richieste.get(i).getOra_fine(),
+                    richieste.get(i).getSvolgimento(),richieste.get(i).getMotivazione(), richieste.get(i).getTipologia() , richieste.get(i).getMatricola_destinazione(),richieste.get(i).getTipo_turno_origine(),
+                    richieste.get(i).getTipo_turno_destinazione(), richieste.get(i).getData_turno_origine(),richieste.get(i).getData_turno_destinazione()));
+
+        }
+
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        catCol.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        statoCol.setCellValueFactory(new PropertyValueFactory<>("stato"));
+        dataiCol.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
+        datafCol.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
+        oraInCol.setCellValueFactory(new PropertyValueFactory<>("ora_inizio"));
+        oraFCol.setCellValueFactory(new PropertyValueFactory<>("ora_fine"));
+        svolgCol.setCellValueFactory(new PropertyValueFactory<>("svolgimento"));
+        motCol.setCellValueFactory(new PropertyValueFactory<>("motivazione"));
+        tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipologia"));
+        //allCol.setCellValueFactory(new PropertyValueFactory<>("allegato"));
+        matrCol.setCellValueFactory(new PropertyValueFactory<>("matricola_destinazione"));
+        turnoOCol.setCellValueFactory(new PropertyValueFactory<>("tipo_turno_origine"));
+        turnoDCol.setCellValueFactory(new PropertyValueFactory<>("tipo_turno_destinazione"));
+        dataTOCol.setCellValueFactory(new PropertyValueFactory<>("data_turno_origine"));
+        dataTDCol.setCellValueFactory(new PropertyValueFactory<>("data_turno_destinazione"));
+
+
+
+        richiesteTableView.setItems(richiesteList);
+
+
+
+        Callback<TableColumn<Richiesta, String>, TableCell<Richiesta, String>> cellFactory = /*(TableColumn<Richieste, String>*/ (param) -> {
+
+            final TableCell<Richiesta, String> cell = new TableCell<>() {
+
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    //se la cella è vuota AND almeno un item è null non setta i bottoni
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                        setText(null);
+                    } else {
+
+                        richiesteTableView.setBackground(Background.fill(Color.WHITE));
+                        final Button eliminaButton = new Button("elimina");
+
+                        eliminaButton.setBackground(Background.fill(Color.AZURE));
+
+                        eliminaButton.setOnAction((ActionEvent event) -> {
+
+                            Richiesta richiesta = (Richiesta) richiesteTableView.getSelectionModel().getSelectedItem();
+                            try {
+                                Daemon.delete(richiesta.getId());
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+
+
+                        });
+
+                        HBox managebtn = new HBox(eliminaButton);
+                        managebtn.setStyle("-fx-alignment: center");
+                        HBox.setMargin(eliminaButton, new Insets(2, 2, 0, 3));
+
+                        setGraphic(managebtn);
+                        setText(null);
+                    }
+
+                }
+
+
+            };
+
+            return cell;
+        };
+        editCol.setCellFactory(cellFactory);
+        richiesteTableView.setItems(richiesteList);
+
+
+    }
+
     public void clickRichiestaFerie(ActionEvent e){
        controlGestioneRichieste.clickRichiestaFerie();
     }
@@ -68,80 +188,9 @@ public void clickRichiestaMaternita(ActionEvent e){
 }
 public void clickRichiestaMalattia(ActionEvent e){
        controlGestioneRichieste.clickRichiestaMalattia();
-}
+}/*
 public void clickRichiestaCambio(ActionEvent e){
        controlGestioneRichieste.clickRichiestaCambio();
-}
-    public static class Richiesta {
+}*/
 
-
-        Integer ID_richiesta;
-        String categoria;
-        String motivazione;
-        Date data_inizio;
-        Date data_fine;
-        String stato;
-
-        public Richiesta(Integer ID_richiesta, String categoria, String motivazione, Date data_inizio,
-                         Date data_fine, String stato) {
-            this.ID_richiesta = ID_richiesta;
-            this.categoria = categoria;
-            this.motivazione = motivazione;
-            this.data_inizio = data_inizio;
-            this.data_fine = data_fine;
-            this.stato = stato;
-
-        }
-
-
-        public void setID_richiesta(Integer ID_richiesta) {
-            this.ID_richiesta = ID_richiesta;
-        }
-
-        public Integer getID_richiesta() {
-            return ID_richiesta;
-        }
-
-        public void setCategoria(String categoria) {
-            this.categoria = categoria;
-        }
-
-        public String getCategoria() {
-            return categoria;
-        }
-
-        public void setMotivazione(String motivazione) {
-            this.motivazione = motivazione;
-        }
-
-        public String getMotivazione() {
-            return motivazione;
-        }
-
-        public void setData_inizio(Date data_inizio) {
-            this.data_inizio = data_inizio;
-        }
-
-        public Date getData_inizio() {
-            return data_inizio;
-        }
-
-        public void setData_fine(Date data_fine) {
-            this.data_fine = data_fine;
-        }
-
-        public Date getData_fine() {
-            return data_fine;
-        }
-
-        public void setStato(String stato) {
-            this.stato = stato;
-        }
-
-        public String getStato() {
-            return stato;
-        }
-    }
-
-     */
 }

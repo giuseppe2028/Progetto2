@@ -10,14 +10,14 @@
     <children>
         <AnchorPane fx:id="rettangolo" layoutX="226.0" layoutY="25.0" prefHeight="600.0" prefWidth="447.0">
             <children>
-                <Button fx:id="bottoneIndietro" layoutX="73.0" layoutY="474.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="29.0" prefWidth="62.0" text="indietro" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="474.0" />
+                <Button fx:id="bottoneIndietro" layoutX="73.0" layoutY="474.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="indietro" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="474.0" />
                 <Text fill="WHITE" layoutX="29.0" layoutY="78.0" smooth="false" stroke="#ffffffc2" strokeType="OUTSIDE" strokeWidth="0.5" text="Schermata Congedo Parentale" textAlignment="CENTER" wrappingWidth="388.272705078125">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Text>
-                <Button fx:id="bottoneInvia" layoutX="323.0" layoutY="474.0" mnemonicParsing="false" onAction="#clickInvia" prefHeight="29.0" prefWidth="62.0" text="invia" />
-                <Button fx:id="certificato" layoutX="188.0" layoutY="368.0" mnemonicParsing="false" onAction="#clickCertificato" prefHeight="22.0" prefWidth="82.0" text="certificato" />
+                <Button fx:id="bottoneInvia" layoutX="323.0" layoutY="474.0" mnemonicParsing="false"  prefHeight="29.0" prefWidth="62.0" text="invia" />
+                <Button fx:id="certificato" layoutX="188.0" layoutY="368.0" mnemonicParsing="false"  prefHeight="22.0" prefWidth="82.0" text="certificato" />
                 <DatePicker fx:id="dataF" focusTraversable="false" layoutX="135.0" layoutY="250.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
                 <DatePicker fx:id="dataI" focusTraversable="false" layoutX="135.0" layoutY="161.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
             </children>
