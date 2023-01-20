@@ -7,6 +7,8 @@ import com.example.GestioneRemoto.GestioneImpiegato.Schermate.*;
 import com.example.GestioneRemoto.Start;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class ControlGestioneImpiegati {
@@ -38,4 +40,15 @@ public class ControlGestioneImpiegati {
     public void clickDisattiva() {
         Util.setScene("/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataDisattivaImpiegato.fxml", stage, c-> new SchermataDisattivaImpiegato(this));
     }
+    public void compila(LocalDate dataArrivo, LocalTime oraArrivo){
+    //todo da sistemare
+    }
+    public void compila(String nome, String cognome, String mailPersonale,String indirizzo,String iban,int servizio, String ruolo,char sesso, boolean reperibile,LocalDate dataNascita){
+        System.out.println(nome+cognome+mailPersonale+iban+indirizzo+servizio+ruolo+sesso+reperibile+dataNascita.toString());
+        //prendo la matricola massima
+        int matricola = Daemon.getMaxMatricola();
+
+    }
+
+
 }

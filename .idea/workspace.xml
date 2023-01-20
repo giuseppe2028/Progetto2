@@ -4,47 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="sono riuscito a risolvere il calendario">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Impiegati.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/Periodi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/RecordImpiegati.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Contenitori/RigaGiorniProibiti.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Control/ControlFestivitaFerie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Control/ControlGestioneImpiegati.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataDisattivaImpiegato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataFestivitaFerie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataGestioneImpiegati.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataRegistrazioneImpiegato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataTimbraturaImpiegato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataVisualizzaImpiegato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataVisualizzaStipendio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataDisattivaImpiegato.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataFestivitaFerie.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataGestioneImpiegati.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataRegistrazioneImpiegato.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataTimbraturaEntrata.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataTimbraturaImpiegato.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataVisualizzaImpiegato.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataDisattivaImpiegato.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataFesitivitaFerie.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataGestioneImpiegati.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataRegistrazioneImpiegato.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataTimbraturaImpiegato.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataVisualizzaImpiegato.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataVisualizzaStipendio.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/353fa958-9e68-4d88-b0c9-318901f916b7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/353fa958-9e68-4d88-b0c9-318901f916b7.xml" afterDir="false" />
+    <list default="true" id="cb856ba0-b3a9-4429-aacd-4de27cd26fef" name="Changes" comment="per alessia">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/CodiceFiscaleCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/datiGenerati.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/CSV/Elenco.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/Icon/calcolatrice.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Daemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Daemon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/FileDiSistema/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Control/ControlLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Control/ControlLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleAmministrativo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleAmministrativo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleDatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneAutenticazione/Schermate/SchermataPrincipaleDatore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneTurni/Control/ControlVisualizzaPropostaTurni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneTurni/Control/ControlVisualizzaPropostaTurni.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneTurni/Schermate/SchermataPianificazioneTurni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneTurni/Schermate/SchermataPianificazioneTurni.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleAmministrativo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Control/ControlGestioneImpiegati.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Control/ControlGestioneImpiegati.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataDisattivaImpiegato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataDisattivaImpiegato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataRegistrazioneImpiegato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataRegistrazioneImpiegato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataTimbraturaImpiegato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/GestioneImpiegato/Schermate/SchermataTimbraturaImpiegato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/GestioneRemoto/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataRegistrazioneImpiegato.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS/SchermataRegistrazioneImpiegato.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataRegistrazioneImpiegato.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataRegistrazioneImpiegato.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +103,7 @@
     "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "/Users/giuseppebarone/Desktop/Progetto2",
+    "last_opened_file_path": "/Users/giuseppebarone/Desktop/Progetto2/src/main/resources/com/example/GestioneRemoto/CSV",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -153,18 +126,18 @@
       <recent name="com.example.GestioneRemoto.GestioneImpiegato.Schermate" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/CSV" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/FXML" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni/CSS" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni/FXML" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/FXML" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/Icon" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato/CSS" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneImpiegato" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneTurni" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto" />
-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/GestioneRemoto/GestioneAutenticazione/CSS" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.GestioneRemoto.GestioneTurni" />
@@ -183,7 +156,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673717578438</updated>
       <workItem from="1673717579583" duration="95921000" />
-      <workItem from="1674078799293" duration="13108000" />
+      <workItem from="1674078799293" duration="29046000" />
     </task>
     <task id="LOCAL-00001" summary="Ho sistemato il login">
       <created>1673741328099</created>
@@ -241,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673891338324</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="per alessia">
+      <created>1674143349453</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674143349453</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,12 +254,12 @@
     <MESSAGE value="Ho sistemato il login" />
     <MESSAGE value="Sto risolvendo i vari problemi" />
     <MESSAGE value="Modificate tutte le schermate" />
-    <MESSAGE value="per alessia" />
     <MESSAGE value="per alisia" />
     <MESSAGE value="pur alì" />
     <MESSAGE value="Ho quasi finito il calendario" />
     <MESSAGE value="sono riuscito a risolvere il calendario" />
-    <option name="LAST_COMMIT_MESSAGE" value="sono riuscito a risolvere il calendario" />
+    <MESSAGE value="per alessia" />
+    <option name="LAST_COMMIT_MESSAGE" value="per alessia" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

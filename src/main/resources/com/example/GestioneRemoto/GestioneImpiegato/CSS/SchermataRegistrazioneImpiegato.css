@@ -53,6 +53,12 @@
     -fx-border-color: black;
     -fx-border-width: 0.5;
 }
+#luogoNascita{
+    -fx-border-radius: 30px;
+    -fx-background-color: #deefff;
+    -fx-border-color: black;
+    -fx-border-width: 0.5;
+}
 #indirizzoResidenza{
     -fx-border-radius: 30px;
     -fx-background-color: #deefff;

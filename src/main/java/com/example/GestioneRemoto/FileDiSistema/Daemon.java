@@ -5,6 +5,7 @@ import com.example.GestioneRemoto.Contenitori.Periodi;
 import com.example.GestioneRemoto.Contenitori.PropostaTurno;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -298,5 +299,23 @@ public static List<Impiegati> getImpiegati(int servizio,String ruolo){
             throw new RuntimeException(e);
         }
     }
+public static int getMaxMatricola(){
+    //todo fare sia impiegato che amministrativo
 
+    try {
+        String sql = "select max(matricola) from Impiegato";
+        preparedStatement = conn.prepareStatement(sql);
+        resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        return resultSet.getInt(1);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+
+}
+public static void updateImpiegato(int matricola, String nome, String cognome, char sesso, String cf, LocalDate dataNascita,String indirizzoResidenza,long recapitoTelefonico,String mailPersonale,String iban, String mail,String password,String ruolo, boolean reperibile,int servizio,LocalDate inizioServizio, LocalDate fineServizio,int giorniFerieRimanenti,double orePermesso,double oreStraordinario,boolean disattivato,Blob fotoProfilo){
+
+
+}
 }
