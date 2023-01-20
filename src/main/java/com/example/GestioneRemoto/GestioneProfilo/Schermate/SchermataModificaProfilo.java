@@ -115,10 +115,9 @@ Button carica;
         immagineView.setImage(new Image(inputStream));
     }*/
     public void clickIndietro(ActionEvent e){
-        controlVisualizzaProfilo.clickIndietro();
+        controlVisualizzaProfilo.clickIndietro("com/example/GestioneRemoto/GestioneProfilo/FXML/SchermataVisualizzaProfilo.fxml");
     }
 }
-
 
 
 

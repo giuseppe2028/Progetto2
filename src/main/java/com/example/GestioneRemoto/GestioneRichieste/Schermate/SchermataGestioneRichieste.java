@@ -2,6 +2,7 @@ package com.example.GestioneRemoto.GestioneRichieste.Schermate;
 
 import com.example.GestioneRemoto.Contenitori.Richiesta;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
+import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -86,7 +87,7 @@ public class SchermataGestioneRichieste implements Initializable {
     }
     public void loadDate() throws SQLException {
         richiesteList = FXCollections.observableArrayList();
-        List<Richiesta> richieste= Daemon.getRichieste(1027);
+        List<Richiesta> richieste= Daemon.getRichieste(EntityUtente.getMatricola());
         for (int i = 0; i<richieste.size();i++) {
             richiesteList.add(new Richiesta(richieste.get(i).getId(),richieste.get(i).getCategoria(),richieste.get(i).getStato(), richieste.get(i).getData_inizio(),richieste.get(i).getData_fine(),richieste.get(i).getOra_inizio(),richieste.get(i).getOra_fine(),
                     richieste.get(i).getSvolgimento(),richieste.get(i).getMotivazione(), richieste.get(i).getTipologia() , richieste.get(i).getMatricola_destinazione(),richieste.get(i).getTipo_turno_origine(),
@@ -137,9 +138,11 @@ public class SchermataGestioneRichieste implements Initializable {
 
                         eliminaButton.setOnAction((ActionEvent event) -> {
 
-                            Richiesta richiesta = (Richiesta) richiesteTableView.getSelectionModel().getSelectedItem();
+                             richiesta =  richiesteTableView.getSelectionModel().getSelectedItem();
                             try {
                                 Daemon.delete(richiesta.getId());
+                                updateTable();
+
                             } catch (SQLException e) {
                                 throw new RuntimeException(e);
                             }
@@ -183,8 +186,14 @@ public class SchermataGestioneRichieste implements Initializable {
     public void clickCongedoLutto(ActionEvent e ){
        controlGestioneRichieste.clickCongedoLutto();
     }
-public void clickRichiestaMaternita(ActionEvent e){
-       controlGestioneRichieste.clickRichiestaMaternita();
+public void clickRichiestaMaternita(ActionEvent e) {
+    String sesso = EntityUtente.getSesso();
+    if (sesso.equals("F")) {
+
+        controlGestioneRichieste.clickRichiestaMaternita();
+    } else {
+        System.out.println("Sei maschio AHAHAHAHA");
+    }
 }
 public void clickRichiestaMalattia(ActionEvent e){
        controlGestioneRichieste.clickRichiestaMalattia();
@@ -192,5 +201,11 @@ public void clickRichiestaMalattia(ActionEvent e){
 public void clickRichiestaCambio(ActionEvent e){
        controlGestioneRichieste.clickRichiestaCambio();
 }*/
+    public void updateTable() throws SQLException {
+        richiesteList.clear();
+        loadDate();
+        richiesteTableView.setItems(richiesteList);
+        richiesteTableView.refresh();
+    }
 
 }

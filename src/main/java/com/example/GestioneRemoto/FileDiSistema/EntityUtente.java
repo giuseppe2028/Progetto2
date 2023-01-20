@@ -22,6 +22,7 @@ public class EntityUtente {
     private static long recapito_telefonico;
     private static String mail_personale;
     private static InputStream inputStream;
+    private static String sesso;
    
 
     public EntityUtente(ArrayList<Object> arrayList){
@@ -39,6 +40,7 @@ public class EntityUtente {
         this.recapito_telefonico = (long) arrayList.get(9);
         this.mail_personale = (String) arrayList.get(10);
        // this.inputStream= (InputStream) arrayList.get(11);
+        this.sesso=(String) arrayList.get(11);;
 
     }
     public static List<Object> getDatiProfilo(){
@@ -67,5 +69,8 @@ public class EntityUtente {
     public  String toString(){
         String a = matricola + nome + cognome + cf + data_nascita + foto_profilo + indirizzo_residenza + ruolo + mail + password + IBAN + recapito_telefonico + mail_personale;
         return a;
+    }
+    public static String getSesso(){
+        return sesso;
     }
 }

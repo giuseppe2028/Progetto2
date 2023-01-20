@@ -11,12 +11,12 @@
     <children>
         <AnchorPane fx:id="rettangolo" layoutX="215.0" layoutY="20.0" prefHeight="600.0" prefWidth="470.0">
             <children>
-                <DatePicker fx:id="dataIn" layoutX="140.0" layoutY="159.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
-                <DatePicker fx:id="dataFi" layoutX="140.0" layoutY="232.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
-                <TextField  layoutX="141.0" layoutY="311.0" prefHeight="26.0" prefWidth="188.0" promptText="motivazione" />
-                <Button layoutX="193.0" layoutY="373.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="82.0" text="certificato" />
-                <Button  layoutX="78.0" layoutY="458.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="indietro" />
-                <Button  layoutX="329.0" layoutY="458.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="invia" />
+                <DatePicker fx:id="dataIn" focusTraversable="false" layoutX="140.0" layoutY="159.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
+                <DatePicker fx:id="dataFi" focusTraversable="false" layoutX="140.0" layoutY="232.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
+                <TextField fx:id="motivazioneL" focusTraversable="false" layoutX="141.0" layoutY="311.0" prefHeight="26.0" prefWidth="188.0" promptText="motivazione" />
+                <Button fx:id="certificato" layoutX="193.0" layoutY="373.0" mnemonicParsing="false" onAction="#clickCertificato" prefHeight="22.0" prefWidth="82.0" text="certificato" />
+                <Button layoutX="78.0" layoutY="458.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="29.0" prefWidth="62.0" text="indietro" />
+                <Button layoutX="329.0" layoutY="458.0" mnemonicParsing="false" onAction="#clickInvia" prefHeight="29.0" prefWidth="62.0" text="invia" />
                 <Text fill="WHITE" layoutX="142.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richiesta Malattia" AnchorPane.topAnchor="62.1015625">
                     <font>
                         <Font size="24.0" />

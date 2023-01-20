@@ -1,6 +1,7 @@
 package com.example.GestioneRemoto.GestioneRichieste.Schermate;
 
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
+import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +29,10 @@ public SchermataRichiestaCambioTurno(ControlGestioneRichieste controlGestioneRic
     this.turni=turni;
     this.matricola=matricola;
 }
+    public void clickIndietro(ActionEvent e)
+    {
+        Util.ritorno("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml");
+    }
 /*
 public LocalDate selezionaTurnoOrigine(){
     LocalDate turnoOrigine= dataOrigine.getValue();

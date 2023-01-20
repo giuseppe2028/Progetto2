@@ -33,8 +33,8 @@
                         <Font size="24.0" />
                     </font>
                 </Text>
-                <Button fx:id="bottoneInvia" layoutX="329.0" layoutY="422.0" mnemonicParsing="false"  prefHeight="29.0" prefWidth="62.0" text="invia" />
-                <Button fx:id="bottoneIndietro" layoutX="78.0" layoutY="422.0" mnemonicParsing="false"  prefHeight="29.0" prefWidth="62.0" text="indietro" />
+                <Button fx:id="bottoneInvia" layoutX="329.0" layoutY="422.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="invia" />
+                <Button fx:id="bottoneIndietro" layoutX="78.0" layoutY="422.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="29.0" prefWidth="62.0" text="indietro" />
             </children>
         </AnchorPane>
     </children>

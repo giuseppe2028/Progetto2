@@ -1,5 +1,6 @@
 package com.example.GestioneRemoto.GestioneRichieste.Schermate;
 
+import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,14 +8,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 
 import java.math.BigInteger;
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-public class SchermataRichiestaPermesso implements Initializable {
+public class SchermataRichiestaPermesso {
     private ControlGestioneRichieste controlGestioneRichieste;
     @FXML
     ChoiceBox<String> oraInizio;
@@ -26,41 +30,92 @@ public class SchermataRichiestaPermesso implements Initializable {
     ChoiceBox<String> minutoFine;
     @FXML
     DatePicker dataPicker;
-    private String[] oraIn= {"08", "09", "10", "11", "12", "13","14", "15", "16", "17", "18", "19", "20"};
+    private String[] oraIn = {"08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
 
-    private String[] oraFin= {"08", "09", "10", "11", "12", "13","14", "15", "16", "17", "18", "19", "20"};
-    private String[] minutoIn= {"00","05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"};
-    private String[] minutoFin= {"00","05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"};
-    public SchermataRichiestaPermesso(ControlGestioneRichieste controlGestioneRichieste){
-        this.controlGestioneRichieste=controlGestioneRichieste;
+    private String[] oraFin = {"08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
+    private String[] minutoIn = {"00", "30"};
+    private String[] minutoFin = {"00", "30"};
+
+    public SchermataRichiestaPermesso(ControlGestioneRichieste controlGestioneRichieste) {
+        this.controlGestioneRichieste = controlGestioneRichieste;
 
 
     }
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    public void initialize() {
         oraInizio.getItems().addAll(oraIn);
         minutoInizio.getItems().addAll(minutoIn);
+        oraFine.getItems().addAll(oraFin);
+        minutoFine.getItems().addAll(minutoFin);
         oraInizio.setOnAction(e -> updateEndHourChoiceBox());
+        minutoInizio.setOnAction(e -> updateEndHourChoiceBox());
         updateEndHourChoiceBox();
+        dataPicker.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate dateC, boolean empty) {
+                super.updateItem(dateC, empty);
+                if ((dateC.getDayOfWeek() == DayOfWeek.SUNDAY) || dateC.isBefore(LocalDate.now())) {
+                    setDisable(true);
+                    return;
+                }
+            }
+        });
     }
+
 
     private void updateEndHourChoiceBox() {
         String startHour = oraInizio.getValue();
-        if (startHour == null) {
+        String startMinute = minutoInizio.getValue();
+        if (startHour == null || startMinute == null) {
             return;
         }
+        // TODO: 20/01/23  da aggiustare il massimo orario perchè me so confusa 
         int startHourInt = Integer.parseInt(startHour);
+        int startMinuteInt = Integer.parseInt(startMinute);
+        int maxEndHour = startHourInt + 12;
+        System.out.println(maxEndHour);
+        if (maxEndHour >= oraFin.length) {
+            maxEndHour = oraFin.length;
+            System.out.println(maxEndHour);
+        }
+        ObservableList<String> endMinutes = FXCollections.observableArrayList();
         ObservableList<String> endHours = FXCollections.observableArrayList();
-        for (int i = startHourInt + 1; i <= oraFin.length; i++) {
-            String hour = String.valueOf(i);
-            endHours.add(hour);
+        for (int i = startHourInt + 1; i <= maxEndHour; i++) {
+
+            if (i < 10) {
+                String hour = "0" + String.valueOf(i);
+                endHours.add(hour);
+            } else {
+                String hour = String.valueOf(i);
+                endHours.add(hour);
+            }
+        }
+        for (int i = startMinuteInt; i <= minutoFin.length; i++) {
+            if (i < 10) {
+                String minute = "0" + String.valueOf(i);
+                endMinutes.add(minute);
+            } else {
+                String minute = String.valueOf(i);
+                endMinutes.add(minute);
+            }
+
         }
         oraFine.setItems(endHours);
+
         if (!endHours.isEmpty()) {
             oraFine.setValue(endHours.get(0));
         }
-    }
+        if (!endMinutes.isEmpty()) {
+            minutoFine.setValue(endMinutes.get(0));
+        }
 
+    }
+    public void clickIndietro(ActionEvent e)
+    {
+        Util.ritorno("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml");
+    }
+}
 /*
     public void clickInvia(ActionEvent e){
 LocalDate data= dataPicker.getValue();
@@ -71,8 +126,5 @@ String minutFin= minutoFine.getValue();
 
         controlGestioneRichieste.clickInviaPermesso(data, oraIni, minuIni, oraFin, minutFin);
     }
-    public void clickIndietro(){
-        // controlGestioneRichieste.clickIndietro();
+ */
 
-    }*/
-}

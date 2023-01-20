@@ -3,17 +3,16 @@ package com.example.GestioneRemoto.FileDiSistema;
 import com.example.GestioneRemoto.Contenitori.Impiegati;
 import com.example.GestioneRemoto.Contenitori.Richiesta;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 
 public class Daemon {
+    public static long largeupdate;
     private static Connection conn;
     public Daemon(){
         try {
@@ -77,7 +76,7 @@ public class Daemon {
                     byte[] byteArr = clob.getBytes(1, (int) clob.length());
                     InputStream inputStream = new ByteArrayInputStream(byteArr);
                     ritorno.add(inputStream);*/
-
+ritorno.add(resultSet.getString("sesso"));
 
 
                 }
@@ -252,4 +251,37 @@ public class Daemon {
     }
 
 
+    public static void insertMalattia(int matricola, LocalDate dataInizio, LocalDate dataFine, String motivazione, InputStream file) {
+
+        try {
+            String sql= "INSERT INTO Richiesta(ref_impiegato,categoria,stato,data_inizio,data_fine,ora_inizio,ora_fine,svolgimento,motivazione,tipologia,matricola_destinazione,tipo_turno_origine,tipo_turno_destinazione,data_turno_origine,data_turno_destinazione,allegato)values (?,'malattia','accettata',?,?,'','','',?,'',0,'','','1970-01-01','1970-01-01',?) ";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            preparedStatement.setDate(2, Date.valueOf(dataInizio));
+            preparedStatement.setDate(3, Date.valueOf(dataFine));
+            preparedStatement.setBlob(5, file);
+            preparedStatement.setString(4, motivazione);
+           // preparedStatement.executeLargeUpdate();
+            largeupdate = preparedStatement.executeLargeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
+
+    public static void insertMaternita(int matricola, LocalDate dataInizio, LocalDate dataFine, InputStream file) {
+        try {
+            String sql= "INSERT INTO Richiesta(ref_impiegato,categoria,stato,data_inizio,data_fine,ora_inizio,ora_fine,svolgimento,motivazione,tipologia,matricola_destinazione,tipo_turno_origine,tipo_turno_destinazione,data_turno_origine,data_turno_destinazione,allegato)values (?,'maternità','accettata',?,?,'','','','','',0,'','','1970-01-01','1970-01-01',?) ";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            preparedStatement.setDate(2, Date.valueOf(dataInizio));
+            preparedStatement.setDate(3, Date.valueOf(dataFine));
+            preparedStatement.setBlob(4, file);
+            largeupdate = preparedStatement.executeLargeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

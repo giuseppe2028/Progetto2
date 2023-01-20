@@ -13,7 +13,7 @@
                 <DatePicker fx:id="dataIn" focusTraversable="false" layoutX="140.0" layoutY="185.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
                 <Button fx:id="certificato" focusTraversable="false" layoutX="194.0" layoutY="386.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="82.0" text="certificato" />
                 <Button fx:id="bottoneInvia" focusTraversable="false" layoutX="328.0" layoutY="496.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="invia" />
-                <Button fx:id="bottoneIndietro" focusTraversable="false" layoutX="77.0" layoutY="496.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="indietro" />
+                <Button fx:id="bottoneIndietro" focusTraversable="false" layoutX="77.0" layoutY="496.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="29.0" prefWidth="62.0" text="indietro" />
                 <Text fill="WHITE" layoutX="85.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richiesta Congedo per Lutto">
                     <font>
                         <Font size="24.0" />

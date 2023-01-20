@@ -132,9 +132,10 @@ this.datiModificati= datiModificati;
 
     }
 
-    public void clickIndietro(){
-        Util.indietro("/com/example/GestioneRemoto/GestioneProfilo/FXML/SchermataVisualizzaProfilo.fxml",stage );
+    public void clickIndietro(String fxml){
+Util.ritorno(fxml);
     }
+
 
     }
 

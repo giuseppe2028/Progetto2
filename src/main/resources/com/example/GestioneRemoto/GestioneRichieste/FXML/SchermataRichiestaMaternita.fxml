@@ -10,16 +10,16 @@
     <children>
         <AnchorPane fx:id="rettangolo" layoutX="215.0" layoutY="20.0" prefHeight="600.0" prefWidth="470.0">
             <children>
-                <DatePicker fx:id="dataIn" layoutX="141.0" layoutY="188.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
-                <DatePicker fx:id="dataFi" layoutX="141.0" layoutY="268.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
-                <Button fx:id="certificato" layoutX="194.0" layoutY="360.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" text="certificato" textAlignment="CENTER" />
+                <DatePicker fx:id="dataIn" focusTraversable="false" layoutX="141.0" layoutY="188.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
+                <DatePicker fx:id="dataFi" focusTraversable="false" layoutX="141.0" layoutY="268.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
+                <Button fx:id="certificato" layoutX="194.0" layoutY="360.0" mnemonicParsing="false" onAction="#clickCertificato" prefHeight="30.0" prefWidth="82.0" text="certificato" textAlignment="CENTER" />
                 <Text fill="WHITE" layoutX="134.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Richiesta Maternità">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Text>
-                <Button fx:id="bottoneInvia" layoutX="329.0" layoutY="428.0" mnemonicParsing="false"  prefHeight="29.0" prefWidth="62.0" text="invia" />
-                <Button fx:id="bottoneIndietro" layoutX="78.0" layoutY="428.0" mnemonicParsing="false"  prefHeight="29.0" prefWidth="62.0" text="indietro" />
+                <Button fx:id="bottoneInvia" layoutX="329.0" layoutY="428.0" mnemonicParsing="false" onAction="#clickInvia" prefHeight="29.0" prefWidth="62.0" text="invia" />
+                <Button fx:id="bottoneIndietro" layoutX="78.0" layoutY="428.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="29.0" prefWidth="62.0" text="indietro" />
             </children>
         </AnchorPane>
     </children>

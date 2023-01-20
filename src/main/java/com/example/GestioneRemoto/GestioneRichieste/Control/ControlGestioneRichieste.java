@@ -1,8 +1,10 @@
 package com.example.GestioneRemoto.GestioneRichieste.Control;
 
 
+import com.example.GestioneRemoto.Contenitori.Impiegati;
 import com.example.GestioneRemoto.Contenitori.Richiesta;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
+import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneRichieste.Schermate.*;
 import com.example.GestioneRemoto.Start;
@@ -19,6 +21,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,9 +46,9 @@ public class ControlGestioneRichieste {
     @FXML
     private TableColumn<Richiesta, Date> datafCol;
     @FXML
-    private TableColumn<Richiesta, String> tipoCol ;
+    private TableColumn<Richiesta, String> tipoCol;
     @FXML
-    private TableColumn<Richiesta, String> statoCol ;
+    private TableColumn<Richiesta, String> statoCol;
     @FXML
     private TableColumn<Richiesta, String> motCol;
     @FXML
@@ -67,27 +74,29 @@ public class ControlGestioneRichieste {
     private TableColumn editCol;
 
     public void clickCongedoLutto() {
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoLutto.fxml", stage, c->new SchermataCongedoLutto(this));
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoLutto.fxml", stage, c -> new SchermataCongedoLutto(this));
     }
 
     public void clickCongedoParentale() {
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoParentale.fxml", stage, c->new SchermataCongedoParentale(this));
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoParentale.fxml", stage, c -> new SchermataCongedoParentale(this));
     }
 
     public void clickRichiestaPermesso() {
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c-> new SchermataRichiestaPermesso(this));
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c -> new SchermataRichiestaPermesso(this));
     }
 
 
     public class CustomTableRowSkin<T> extends TableRowSkin<T> {
-            public CustomTableRowSkin(TableRow<T> tableRow) {
-                super(tableRow);
-            }
-
+        public CustomTableRowSkin(TableRow<T> tableRow) {
+            super(tableRow);
         }
+
+    }
+
     private Stage stage = Start.mainStage;
+
     public void clickGestioneRichieste() {
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c-> new SchermataGestioneRichieste(this) );
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c -> new SchermataGestioneRichieste(this));
     }
 
 
@@ -120,27 +129,25 @@ public class ControlGestioneRichieste {
 
     }
 */
-    public void clickRichiestaFerie(){
-        List<LocalDate> giorniPro= Daemon.getGiorniProibiti();
-        System.out.println( giorniPro.size());
-        List<LocalDate> dateI= new ArrayList<>();
-        List<LocalDate> dateF= new ArrayList<>();
-        for(int i=0; i<giorniPro.size(); ++i) {
+    public void clickRichiestaFerie() {
+        List<LocalDate> giorniPro = Daemon.getGiorniProibiti();
+        System.out.println(giorniPro.size());
+        List<LocalDate> dateI = new ArrayList<>();
+        List<LocalDate> dateF = new ArrayList<>();
+        for (int i = 0; i < giorniPro.size(); ++i) {
             if (i % 2 == 0) {
 
                 dateI.add(giorniPro.get(i));
-            }else{
+            } else {
 
-                    dateF.add(giorniPro.get(i));
-
-                }
+                dateF.add(giorniPro.get(i));
 
             }
 
-
-
-        Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaFerie.fxml", stage, c-> new SchermataRichiestaFerie(this, dateI, dateF));
+        }
+        Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaFerie.fxml", stage, c -> new SchermataRichiestaFerie(this, dateI, dateF));
     }
+
     /*
     public void clickRichiestaPermesso() {
       Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c-> new SchermataRichiestaPermesso(this));
@@ -166,8 +173,8 @@ public class ControlGestioneRichieste {
 
     }
 */
-    public void clickRichiestaSciopero(){
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaSciopero.fxml", stage, c-> new SchermataRichiestaSciopero(this));
+    public void clickRichiestaSciopero() {
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaSciopero.fxml", stage, c -> new SchermataRichiestaSciopero(this));
     }/*
     public void clickInviaSciopero(LocalDate data, String motivazione, String svolgimento){
         int matricola= EntityUtente.getMatricola();
@@ -200,23 +207,29 @@ public class ControlGestioneRichieste {
         //TODO inserire nel DBMS la richiesta ed il popup
     }
     */
-    public void clickRichiestaMaternita(){
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMaternita.fxml", stage, c-> new SchermataRichiestaMaternita(this));
+
+    public void clickRichiestaMaternita() {
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMaternita.fxml", stage, c -> new SchermataRichiestaMaternita(this));
     }
-    /*
-    public void clickInviaMaternita(LocalDate dataInizio, LocalDate dataFine){
+
+
+    public void clickInviaMaternita(LocalDate dataInizio, LocalDate dataFine, InputStream file){
         int matricola=EntityUtente.getMatricola();
-
-    }*/
-    public void clickRichiestaMalattia(){
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMalattia.fxml", stage, c-> new SchermataRichiestaMalattia(this));
-    }/*
-    public void clickInviaMalattia(LocalDate dataInizio, LocalDate dataFine, String motivazione) {
-        int matricola= EntityUtente.getMatricola();
-        //TODO query al DBMS
-
+Daemon.insertMaternita(matricola, dataInizio, dataFine, file);
+    }
+    public void clickRichiestaMalattia() {
+        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaMalattia.fxml", stage, c -> new SchermataRichiestaMalattia(this));
     }
 
+    public void clickInviaMalattia(LocalDate dataInizio, LocalDate dataFine, String motivazione, InputStream file) {
+        int matricola = EntityUtente.getMatricola();
+
+        Daemon.insertMalattia(matricola, dataInizio, dataFine, motivazione,file);
+     /*   if (esito) {
+            // TODO: 20/01/23 inserire il popup richiesta effettuata
+
+        }
+/*
 public void clickRichiestaCambio(){
         int matricola= EntityUtente.getMatricola();
         List<Object> turni= Daemon.getTurni(matricola);
@@ -230,8 +243,7 @@ public void clickRichiestaCambio(){
 
 */
 
-    public void clickIndietro(){
+
 
     }
-
 }

@@ -1,46 +1,61 @@
 package com.example.GestioneRemoto.FileDiSistema;
 
-import com.example.GestioneRemoto.GestioneImpiegato.Schermate.SchermataVisualizzaImpiegato;
-import com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.LoadException;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class Util {
-    public static Scene scene;
-
-    public static void setScene(String fxml, Stage stage, Callback controller){
-
+    private static Scene previousScene;
+    private static Callback previousController;
+    private static Scene scene;
+    private static Stage previousStage;
+    private static Parent previousRoot;
+    private static FXMLLoader previouseLoader;
+    private static NavigationManager  navigationManager;
+    public static void setScene(String fxml, Stage stage, Callback controller) {
         Parent root;
         try {
+
+            navigationManager = NavigationManager.getInstance(stage);
+
+
             FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
+            previouseLoader = loader;
             loader.setControllerFactory(controller);
+            previousController = controller;
             root = loader.load();
+            previousRoot = root;
             scene = new Scene(root);
+            //NavigationManager.navigateTo(scene);
+            previousStage = stage;
+            previousScene = scene;
+            navigationManager.navigateTo(scene);
             //lo stage che ho passato lo trasformo come main stage, ovvero lo inizializzo al mainstage
-            stage.setScene(scene);
+            //stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
+
     //Lo uso quando ho bisogno di utilizzare una scene nel codice
-    public static <T> T setSpecificScene(String fxml, Stage stage, Callback controller){
+    public static <T> T setSpecificScene(String fxml, Stage stage, Callback controller) {
 
         Parent root;
 
 
         try {
+            navigationManager = NavigationManager.getInstance(stage);
+
+            //navigationManager.navigateBack();
             FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
+
             loader.setControllerFactory(controller);
             root = loader.load();
             scene = new Scene(root);
@@ -48,48 +63,36 @@ public class Util {
             //lo stage che ho passato lo trasformo come main stage, ovvero lo inizializzo al mainstage
             stage.setScene(scene);
             stage.show();
+            navigationManager.navigateTo(scene);
             return loader.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+
     }
-    /*public static void setScene(String fxml, Stage stage){
 
-        Parent root;
-try {
-    FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
-    root = loader.load();
-    PreviousSceneController controller = loader.getController();
-    Scene scene = new Scene(root);
-     stage = (Stage) btn.getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-    pre
-}catch (IOException e){
-    e.printStackTrace();
-}
+    /* public static void setScene(String fxml, Stage stage){
 
+         Parent root;
+         try {
 
-    }*/
+             FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
+             root = loader.load();
+             scene = new Scene(root);
+             //lo stage che ho passato lo trasformo come main stage, ovvero lo inizializzo al mainstage
+             stage.setScene(scene);
+             stage.show();
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
 
-public static void goBack(){
-    scene.getWindow().hide();
-}
+     */
+    public static void ritorno(String fxml) {
 
-public static void indietro(String fxml,Stage stage){
+        navigationManager.navigateBack();
+        navigationManager.getStage().setScene(navigationManager.getScene());
+        navigationManager.getStage().show();
 
-    try {
-        FXMLLoader loader = new FXMLLoader(Start.class.getResource(fxml));
-        stage.setScene(new Scene(loader.load()));
-        SchermataVisualizzaProfilo schermataVisualizzaProfilo = loader.getController();
-        schermataVisualizzaProfilo.initialize();
-        stage.show();
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
     }
-}
-
 }
