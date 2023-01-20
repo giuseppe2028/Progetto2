@@ -269,6 +269,35 @@ ritorno.add(resultSet.getString("sesso"));
         }
 
     }
+    public static void insertLutto(int matricola, LocalDate dataInizio, LocalDate dataFine, InputStream file){
+        try {
+            String sql= "INSERT INTO Richiesta(ref_impiegato,categoria,stato,data_inizio,data_fine,ora_inizio,ora_fine,svolgimento,motivazione,tipologia,matricola_destinazione,tipo_turno_origine,tipo_turno_destinazione,data_turno_origine,data_turno_destinazione,allegato)values (?,'congedo per lutto','accettata',?,?,'','','','','',0,'','','1970-01-01','1970-01-01',?) ";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            preparedStatement.setDate(2, Date.valueOf(dataInizio));
+            preparedStatement.setDate(3, Date.valueOf(dataFine));
+            preparedStatement.setBlob(4, file);
+            largeupdate = preparedStatement.executeLargeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void insertCongedoParentale(int matricola, LocalDate dataInizio, LocalDate dataFine, InputStream file){
+        try {
+            String sql= "INSERT INTO Richiesta( ref_impiegato,categoria,stato,data_inizio,data_fine,ora_inizio,ora_fine,svolgimento,motivazione,tipologia,matricola_destinazione,tipo_turno_origine,tipo_turno_destinazione,data_turno_origine,data_turno_destinazione,allegato)values (?,'congedo parentale','accettata',?,?,'','','','','',0,'','','1970-01-01','1970-01-01',?) ";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            preparedStatement.setDate(2, Date.valueOf(dataInizio));
+            preparedStatement.setDate(3, Date.valueOf(dataFine));
+            preparedStatement.setBlob(4, file);
+            largeupdate = preparedStatement.executeLargeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void insertMaternita(int matricola, LocalDate dataInizio, LocalDate dataFine, InputStream file) {
         try {
@@ -278,6 +307,23 @@ ritorno.add(resultSet.getString("sesso"));
             preparedStatement.setDate(2, Date.valueOf(dataInizio));
             preparedStatement.setDate(3, Date.valueOf(dataFine));
             preparedStatement.setBlob(4, file);
+            largeupdate = preparedStatement.executeLargeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void insertSciopero(int matricola, LocalDate data, String motivazione, String svolgimento){
+        try {
+            String s= "SELECT matricola FROM Utente WHERE ruolo='Datore' ";
+            preparedStatement = conn.prepareStatement(s);
+            String sql= "INSERT INTO Richiesta(ref_impiegato,categoria,stato,data_inizio,data_fine,ora_inizio,ora_fine,svolgimento,motivazione,tipologia,matricola_destinazione,tipo_turno_origine,tipo_turno_destinazione,data_turno_origine,data_turno_destinazione,allegato)values (?,'sciopero','in sospeso',?,'','','',?,?,'',?,'','','1970-01-01','1970-01-01',null) ";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,matricola);
+            preparedStatement.setDate(2, Date.valueOf(data));
+            preparedStatement.setString(3, motivazione);
+            preparedStatement.setString(4, svolgimento);
+            preparedStatement.setInt(5, Integer.parseInt(s));
             largeupdate = preparedStatement.executeLargeUpdate();
 
         } catch (SQLException e) {

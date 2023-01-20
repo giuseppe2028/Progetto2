@@ -16,10 +16,10 @@
                         <Font size="24.0" />
                     </font>
                 </Text>
-                <Button fx:id="bottoneInvia" layoutX="323.0" layoutY="474.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="invia" />
-                <Button fx:id="certificato" layoutX="188.0" layoutY="368.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="82.0" text="certificato" />
-                <DatePicker fx:id="dataF" focusTraversable="false" layoutX="135.0" layoutY="250.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
-                <DatePicker fx:id="dataI" focusTraversable="false" layoutX="135.0" layoutY="161.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
+                <Button fx:id="bottoneInvia" layoutX="323.0" layoutY="474.0" mnemonicParsing="false" onAction="#clickInvia" prefHeight="29.0" prefWidth="62.0" text="invia" />
+                <Button fx:id="certificato" layoutX="188.0" layoutY="368.0" mnemonicParsing="false" onAction="#clickCertificato" prefHeight="22.0" prefWidth="82.0" text="certificato" />
+                <DatePicker fx:id="dataFi" focusTraversable="false" layoutX="135.0" layoutY="250.0" prefHeight="39.0" prefWidth="188.0" promptText="data fine" />
+                <DatePicker fx:id="dataIn" focusTraversable="false" layoutX="135.0" layoutY="161.0" prefHeight="39.0" prefWidth="188.0" promptText="data inizio" />
             </children>
         </AnchorPane>
     </children>
