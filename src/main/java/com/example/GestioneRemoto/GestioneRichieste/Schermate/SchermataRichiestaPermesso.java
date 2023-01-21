@@ -113,6 +113,7 @@ public class SchermataRichiestaPermesso {
     }
     public void clickIndietro(ActionEvent e)
     {
+
         Util.ritorno("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml");
     }
 }

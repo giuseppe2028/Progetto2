@@ -4,6 +4,7 @@ import com.example.GestioneRemoto.Contenitori.Impiegati;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlRichiesteSciopero;
 import com.example.GestioneRemoto.Start;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -332,5 +333,9 @@ public class SchermataGestioneImpiegati implements Initializable {
 
     public void clickDisattiva(ActionEvent e){
         controlGestioneImpiegati.clickDisattiva();
+    }
+    public void clickRichiesteSciopero(ActionEvent e){
+        ControlRichiesteSciopero controlRichiesteSciopero= new ControlRichiesteSciopero();
+        controlRichiesteSciopero.clickRichiestaSciopero();
     }
 }

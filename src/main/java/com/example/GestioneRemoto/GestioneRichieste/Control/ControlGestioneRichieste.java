@@ -1,71 +1,26 @@
 package com.example.GestioneRemoto.GestioneRichieste.Control;
 
-
-import com.example.GestioneRemoto.Contenitori.Richiesta;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneRichieste.Schermate.*;
 import com.example.GestioneRemoto.Start;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.skin.TableRowSkin;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 
 
 public class ControlGestioneRichieste {
-    ObservableList<Richiesta> richiesteList;
-    @FXML
-    private TableView<Richiesta> richiesteTableView;
-    @FXML
-    private TableColumn<Richiesta, Integer> idCol;
-    @FXML
-    private TableColumn<Richiesta, Date> dataiCol;
-    @FXML
-    private TableColumn<Richiesta, Date> datafCol;
-    @FXML
-    private TableColumn<Richiesta, String> tipoCol;
-    @FXML
-    private TableColumn<Richiesta, String> statoCol;
-    @FXML
-    private TableColumn<Richiesta, String> motCol;
-    @FXML
-    private TableColumn<Richiesta, String> allCol;
-    @FXML
-    private TableColumn<Richiesta, String> svolgCol;
-    @FXML
-    private TableColumn<Richiesta, String> oraInCol;
-    @FXML
-    private TableColumn<Richiesta, String> oraFCol;
-    @FXML
-    private TableColumn<Richiesta, String> matrCol;
-    @FXML
-    private TableColumn<Richiesta, String> turnoOCol;
-    @FXML
-    private TableColumn<Richiesta, String> turnoDCol;
-    @FXML
-    private TableColumn<Richiesta, String> dataTOCol;
-    @FXML
-    private TableColumn<Richiesta, String> dataTDCol;
-
-    @FXML
-    private TableColumn editCol;
 
     public void clickCongedoLutto() {
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataCongedoLutto.fxml", stage, c -> new SchermataCongedoLutto(this));
     }
-
-
 
     public void clickRichiestaPermesso() {
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaPermesso.fxml", stage, c -> new SchermataRichiestaPermesso(this));
@@ -82,7 +37,7 @@ public class ControlGestioneRichieste {
     private Stage stage = Start.mainStage;
 
     public void clickGestioneRichieste() {
-        Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c -> new SchermataGestioneRichieste(this));
+        Util.setSpecificScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataGestioneRichieste.fxml", stage, c -> new SchermataGestioneRichieste(this));
     }
 
 
@@ -211,26 +166,33 @@ Daemon.insertMaternita(matricola, dataInizio, dataFine, file);
     public void clickInviaMalattia(LocalDate dataInizio, LocalDate dataFine, String motivazione, InputStream file) {
         int matricola = EntityUtente.getMatricola();
 
-        Daemon.insertMalattia(matricola, dataInizio, dataFine, motivazione,file);
+        Daemon.insertMalattia(matricola, dataInizio, dataFine, motivazione, file);
      /*   if (esito) {
             // TODO: 20/01/23 inserire il popup richiesta effettuata
 
-        }
-/*
+        }*/
+    }
 public void clickRichiestaCambio(){
         int matricola= EntityUtente.getMatricola();
         List<Object> turni= Daemon.getTurni(matricola);
 
+
         Util.setScene("/com/example/GestioneRemoto/GestioneRichieste/FXML/SchermataRichiestaCambioTurno.fxml", stage, c-> new SchermataRichiestaCambioTurno(this, turni, matricola));
 }
 
-    public void clickConferma(LocalDate turnoOrigine, LocalDate turnoDestinazione, String turnoDesiderato, int matricola) {
-        //TODO query per servizio ed altre cose, poi l'invio della mail ed il popup inform.
+    public void clickConferma(LocalDate turnoOrigine, LocalDate turnoDestinazione, String turnoDesiderato, int matricola, String turnoPrecedente) {
+        int servizio=Daemon.getServizio(matricola);
+        List<Integer> matricole=Daemon.getMatricoleDestinazione(turnoDestinazione, turnoDesiderato, servizio);
+        for(int i=0; i<matricole.size();++i){
+            System.out.println(matricole.get(i));
+        }
+        Daemon.insertCambioTurno(matricola, turnoOrigine, turnoDestinazione, turnoDesiderato, turnoPrecedente);
+
+        //TODO  l'invio della mail ed il popup inform.
     }
 
-*/
+
 
 
 
     }
-}

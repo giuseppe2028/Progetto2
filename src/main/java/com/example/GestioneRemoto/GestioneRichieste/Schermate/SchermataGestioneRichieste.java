@@ -3,7 +3,9 @@ package com.example.GestioneRemoto.GestioneRichieste.Schermate;
 import com.example.GestioneRemoto.Contenitori.Richiesta;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
+import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneRichieste.Control.ControlGestioneRichieste;
+import com.example.GestioneRemoto.GestioneRichieste.Control.ControlRichiesteRicevute;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,7 +31,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class SchermataGestioneRichieste implements Initializable {
+public class SchermataGestioneRichieste  {
     private final ControlGestioneRichieste controlGestioneRichieste;
     ObservableList<Richiesta> richiesteList;
     @FXML
@@ -63,9 +65,9 @@ public class SchermataGestioneRichieste implements Initializable {
     @FXML
     private TableColumn<Richiesta, String> catCol;
     @FXML
-    private TableColumn<Richiesta, Date> dataiCol;
+    private TableColumn<Richiesta, LocalDate> dataiCol;
     @FXML
-    private TableColumn<Richiesta, Date> datafCol;
+    private TableColumn<Richiesta, LocalDate> datafCol;
     @FXML
     private TableColumn<Richiesta, Integer> statoCol;
     @FXML
@@ -76,15 +78,58 @@ public class SchermataGestioneRichieste implements Initializable {
 
    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
+
+    public void initialize() throws SQLException {
+
            loadDate();
-        } catch (SQLException e) {
-            System.out.println("err");
-        }
+
+
+
+        datafCol.setCellFactory(column -> {
+            return new TableCell<Richiesta, LocalDate>() {
+                @Override
+                protected void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || item.equals(LocalDate.MIN)) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        setText(item.toString());
+                    }
+                }
+            };
+        });
+        dataTOCol.setCellFactory(column -> {
+            return new TableCell<Richiesta, LocalDate>() {
+                @Override
+                protected void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || item.equals(LocalDate.MIN)) {
+                        setText(null);
+                        setGraphic(null);
+                    } else {
+                        setText(item.toString());
+                    }
+                }
+            };
+        });
+        dataTDCol.setCellFactory(column -> new TableCell<Richiesta, LocalDate>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || item.equals(LocalDate.MIN)) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.toString());
+                }
+            }
+        });
 
     }
+
+
+
     public void loadDate() throws SQLException {
         richiesteList = FXCollections.observableArrayList();
         List<Richiesta> richieste= Daemon.getRichieste(EntityUtente.getMatricola());
@@ -112,19 +157,35 @@ public class SchermataGestioneRichieste implements Initializable {
         dataTOCol.setCellValueFactory(new PropertyValueFactory<>("data_turno_origine"));
         dataTDCol.setCellValueFactory(new PropertyValueFactory<>("data_turno_destinazione"));
 
-
-
         richiesteTableView.setItems(richiesteList);
+        dataiCol.setCellFactory(column -> new TableCell<Richiesta, LocalDate>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item==null) {
+                    setText(null);
+                    setGraphic(null);
+                    System.out.println(item);
+                } else if(item.isEqual(LocalDate.MIN) ){
+                    setText(null);
+                    setGraphic(null);
+                }else{
+                    setText(item.toString());
+                }
+            }
+        });
 
 
 
         Callback<TableColumn<Richiesta, String>, TableCell<Richiesta, String>> cellFactory = /*(TableColumn<Richieste, String>*/ (param) -> {
 
+
+
             final TableCell<Richiesta, String> cell = new TableCell<>() {
 
                 @Override
                 public void updateItem(String item, boolean empty) {
-                    //se la cella è vuota AND almeno un item è null non setta i bottoni
+                    //se la cella è vuota non setta i bottoni
                     super.updateItem(item, empty);
                     if (empty) {
                         setGraphic(null);
@@ -166,7 +227,9 @@ public class SchermataGestioneRichieste implements Initializable {
             return cell;
         };
         editCol.setCellFactory(cellFactory);
+
         richiesteTableView.setItems(richiesteList);
+
 
 
     }
@@ -197,15 +260,18 @@ public void clickRichiestaMaternita(ActionEvent e) {
 }
 public void clickRichiestaMalattia(ActionEvent e){
        controlGestioneRichieste.clickRichiestaMalattia();
-}/*
+}
 public void clickRichiestaCambio(ActionEvent e){
        controlGestioneRichieste.clickRichiestaCambio();
-}*/
+}
     public void updateTable() throws SQLException {
         richiesteList.clear();
         loadDate();
         richiesteTableView.setItems(richiesteList);
         richiesteTableView.refresh();
     }
-
+public void clickRichiesteRicevute(ActionEvent e){
+    ControlRichiesteRicevute controlRichiesteRicevute=new ControlRichiesteRicevute();
+    controlRichiesteRicevute.clickRichiesteRicevute();
+}
 }

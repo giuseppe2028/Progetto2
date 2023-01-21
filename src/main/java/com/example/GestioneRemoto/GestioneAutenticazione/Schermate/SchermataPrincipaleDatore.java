@@ -3,6 +3,7 @@ package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
+import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
 import com.example.GestioneRemoto.GestioneProfilo.Control.ControlVisualizzaProfilo;
 import com.example.GestioneRemoto.Start;
 import javafx.application.Platform;
@@ -163,7 +164,8 @@ public class SchermataPrincipaleDatore implements Runnable{
 
     }
     @FXML
-    public void clickGestioneDipendenti(){
+    public void clickGestioneImpiegati(ActionEvent e){
+        ControlGestioneImpiegati controlGestioneImpiegati = new ControlGestioneImpiegati();
 
     }
 }

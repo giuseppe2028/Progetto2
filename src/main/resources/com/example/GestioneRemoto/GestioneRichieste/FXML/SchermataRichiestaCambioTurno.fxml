@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="640.0" prefWidth="900.0" stylesheets="@../CSS/SchermataRichiestaCambioTurno.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GestioneRemoto.GestioneRichieste.Schermate.SchermataRichiestaCambioTurno">
     <children>
         <DatePicker fx:id="dataOrigine" layoutX="53.0" layoutY="293.0" prefHeight="40.0" prefWidth="307.0" promptText="Data" />
-        <DatePicker fx:id="dataDestionazione" layoutX="540.0" layoutY="293.0" prefHeight="40.0" prefWidth="307.0" promptText="Data" />
+        <DatePicker fx:id="dataDestinazione" layoutX="540.0" layoutY="293.0" prefHeight="40.0" prefWidth="307.0" promptText="Data" />
         <Label fx:id="turnoOri" layoutX="53.0" layoutY="228.0" prefHeight="40.0" prefWidth="307.0" text="Label" textAlignment="CENTER">
             <font>
                 <Font size="25.0" />
@@ -27,12 +27,12 @@
             </font>
         </Label>
         <ChoiceBox fx:id="turno" layoutX="540.0" layoutY="228.0" prefHeight="40.0" prefWidth="307.0" />
-        <Button fx:id="bottoneConferma" layoutX="596.0" layoutY="499.0" mnemonicParsing="false" onAction="#clickConferma" prefHeight="41.0" prefWidth="195.0" stylesheets="@../../SchermateTimbrature/SchermataTimbraturaEntrataRemoto/SchermataTimbraturaEntrataRemoto.css" text="Conferma" textFill="WHITE">
+        <Button fx:id="bottoneConferma" layoutX="596.0" layoutY="499.0" mnemonicParsing="false" onAction="#clickConferma" prefHeight="41.0" prefWidth="195.0" stylesheets="@../../GestioneImpiegato/CSS/SchermataTimbraturaEntrata.css" text="Conferma" textFill="WHITE">
             <font>
                 <Font size="25.0" />
             </font>
         </Button>
-        <Button fx:id="bottoneIndietro" layoutX="109.0" layoutY="499.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="40.0" prefWidth="195.0" stylesheets="@../../SchermateTimbrature/SchermataTimbraturaEntrataRemoto/SchermataTimbraturaEntrataRemoto.css" text="Indietro" textFill="WHITE">
+        <Button fx:id="bottoneIndietro" layoutX="109.0" layoutY="499.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="40.0" prefWidth="195.0" stylesheets="@../../GestioneImpiegato/CSS/SchermataTimbraturaEntrata.css" text="Indietro" textFill="WHITE">
             <font>
                 <Font size="25.0" />
             </font>

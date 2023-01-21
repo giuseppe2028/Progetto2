@@ -30,6 +30,24 @@ public class Richiesta{
         this.data_turno_destinazione=data_turno_destinazione;
         this.allegato=allegato;
     }
+   public Richiesta(String categoria, int ref_impiegato, String tipo_turno_origine, String tipo_turno_destinazione, LocalDate data_turno_origine, LocalDate data_turno_destinazione){
+       this.categoria=categoria;
+       this.ref_impiegato=ref_impiegato;
+       this.tipo_turno_origine=tipo_turno_origine;
+       this.tipo_turno_destinazione=tipo_turno_destinazione;
+       this.data_turno_origine=data_turno_origine;
+       this.data_turno_destinazione=data_turno_destinazione;
+   }
+    public Richiesta( int ref_impiegato, LocalDate data_inizio, LocalDate data_fine, String stato, String svolgimento, String motivazione, int id){
+        this.ref_impiegato=ref_impiegato;
+        this.stato=stato;
+        this.data_inizio=data_inizio;
+        this.data_fine=data_fine;
+        this.svolgimento=svolgimento;
+        this.motivazione=motivazione;
+        this.id=id;
+
+    }
     @Override
     public String toString(){
         return Integer.toString(this.id);
