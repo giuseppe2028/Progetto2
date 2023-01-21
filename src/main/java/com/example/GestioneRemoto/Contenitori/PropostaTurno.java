@@ -13,7 +13,7 @@ public class PropostaTurno {
     private String ruolo;
     private LocalDate dataTurno;
 
-    public PropostaTurno(int id,String turno, String dipendente,int refServizio,String ruolo ,LocalDate dataTurno){
+    public PropostaTurno(String turno, String dipendente,int refServizio,String ruolo ,LocalDate dataTurno){
 
         this.id = id;
         this.dataTurno = dataTurno;
@@ -48,10 +48,6 @@ public class PropostaTurno {
         return dataTurno;
     }
 
-    public void setDataTurno(LocalDate dataTurno) {
-        this.dataTurno = dataTurno;
-    }
-
     public int getServizio() {
         return servizio;
     }
@@ -74,6 +70,11 @@ public class PropostaTurno {
 
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
+    }
+
+    @Override
+    public String toString(){
+        return dataTurno.toString() + dipendente + servizio + ruolo + dipendente;
     }
 
 }

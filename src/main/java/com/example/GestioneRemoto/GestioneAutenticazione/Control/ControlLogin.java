@@ -1,11 +1,8 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Control;
 
-import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleAmministrativo;
-import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDatore;
+import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.*;
 import com.example.GestioneRemoto.FileDiSistema.*;
 
-import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataPrincipaleDipendente;
-import com.example.GestioneRemoto.GestioneAutenticazione.Schermate.SchermataRecuperoPassword;
 import com.example.GestioneRemoto.Start;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -46,7 +43,7 @@ public class ControlLogin {
             else if(datiProfilo.get(7).equals("Impiegato")){
                 System.out.println("9");
                 new EntityUtente((ArrayList<Object>) datiProfilo);
-                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/progettogaga/SchermataPrincipale/SchermataPrincipaleDipendente.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo));
+                    SchermataPrincipaleDipendente schermataPrincipaleDipendente1=  Util.setSpecificScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleImpiegato.fxml", stage, c -> new SchermataPrincipaleDipendente(this, (ArrayList<Object>) datiProfilo));
                     Thread thread = new Thread(schermataPrincipaleDipendente1);
                     thread.start();
 
@@ -72,7 +69,7 @@ public class ControlLogin {
     //metodo che parte dalla Schermata Recupera Password
     public void clickIndietro(){
         //Util.setScene("/com/example/progettogaga/SchermataLogin.fxml",stage,c-> new SchermataLogin());
-        Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/Login.fxml",stage);
+        //Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/Login.fxml",stage);
 
     }
     //metodo che parte dalla Schermata Recupera Password
@@ -96,7 +93,7 @@ public class ControlLogin {
     }
     public void clickLogout(ActionEvent e){
         //TODO implementare clickLogout
-        //Util.setScene("/com/example/progetto2/Autenticazione/FXML/Login.fxml", stage, c-> );
+        Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/Login.fxml", stage, c->new SchermataLogin());
     }
     private String generaPassword(){
         String passwordGenerata = "";

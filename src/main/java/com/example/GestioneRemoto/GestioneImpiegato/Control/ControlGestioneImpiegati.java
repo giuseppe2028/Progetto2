@@ -5,11 +5,13 @@ import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneImpiegato.Schermate.*;
 import com.example.GestioneRemoto.Start;
+import javafx.collections.FXCollections;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControlGestioneImpiegati {
     Stage stage = Start.mainStage;
@@ -41,14 +43,37 @@ public class ControlGestioneImpiegati {
         Util.setScene("/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataDisattivaImpiegato.fxml", stage, c-> new SchermataDisattivaImpiegato(this));
     }
     public void compila(LocalDate dataArrivo, LocalTime oraArrivo){
-    //todo da sistemare
+        //todo da sistemare
     }
-    public void compila(String nome, String cognome, String mailPersonale,String indirizzo,String iban,int servizio, String ruolo,char sesso, boolean reperibile,LocalDate dataNascita){
+    public void compila(String nome, String cognome,long recapito, String mailPersonale,String indirizzo,String iban,int servizio, String ruolo,char sesso, boolean reperibile,LocalDate dataNascita,String coficeFiscale){
         System.out.println(nome+cognome+mailPersonale+iban+indirizzo+servizio+ruolo+sesso+reperibile+dataNascita.toString());
         //prendo la matricola massima
-        int matricola = Daemon.getMaxMatricola();
+        int matricola = Daemon.getMaxMatricola()+1;
+        String mail = nome+"."+cognome+"@azienda.it";
+        String password = nome+cognome+"123";
+        Daemon.updateImpiegato(matricola,nome,cognome,sesso,coficeFiscale,dataNascita,indirizzo,recapito,mailPersonale,iban,mail,password,ruolo,reperibile,servizio,LocalDate.now(),null,26,30,6,false,null);
 
     }
+    List<Impiegati> listaFiltrata;
+    public List<Impiegati> filtra(String ruolo, int servizio,List<Impiegati> lista){
+        List<Impiegati> listaDaritornare;
+        if(servizio == 0 && ruolo == null){
+            return Daemon.getImpiegati();
+        }
+       if(servizio != 0){
+           listaFiltrata = lista.stream().filter(s-> s.getServizio() == servizio).toList();
+           return listaFiltrata;
+       }
+       else{
+           listaDaritornare = lista;
+       }
+       if(ruolo != null){
+           listaFiltrata = lista.stream().filter(s-> s.getRuolo().startsWith(ruolo)).collect(Collectors.toList());
+           return listaFiltrata;
+       }else{
+           listaDaritornare = lista;
+       }
 
-
+        return listaDaritornare;
+    }
 }

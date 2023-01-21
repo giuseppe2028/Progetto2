@@ -219,12 +219,12 @@ public static  List<PropostaTurno> getPropostaTurni(){
     ArrayList<PropostaTurno> listaRitorno = new ArrayList<>();
     //todo mettere dataTurno
     try {
-        String sql = "Select id,tipo_turno, cognome, I.ref_servizio,I.ruolo,data_turno from PropostaTurno PT,Impiegato I where PT.ref_impiegato = I.matricola";
+        String sql = "Select tipo_turno,cognome, I.ref_servizio,I.ruolo,data_turno,nome from PropostaTurno PT,Impiegato I where PT.ref_impiegato = I.matricola";
         PreparedStatement pstm = conn.prepareStatement(sql);
         resultSet = pstm.executeQuery();
 
         while (resultSet.next()){
-            listaRitorno.add(new PropostaTurno(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getDate(6).toLocalDate()));
+            listaRitorno.add(new PropostaTurno(resultSet.getString(1),resultSet.getString(2)+resultSet.getString(6),resultSet.getInt(3),resultSet.getString(4),resultSet.getDate(5).toLocalDate()));
         }
         return listaRitorno;
 
@@ -315,6 +315,44 @@ public static int getMaxMatricola(){
 
 }
 public static void updateImpiegato(int matricola, String nome, String cognome, char sesso, String cf, LocalDate dataNascita,String indirizzoResidenza,long recapitoTelefonico,String mailPersonale,String iban, String mail,String password,String ruolo, boolean reperibile,int servizio,LocalDate inizioServizio, LocalDate fineServizio,int giorniFerieRimanenti,double orePermesso,double oreStraordinario,boolean disattivato,Blob fotoProfilo){
+
+
+    try {
+        String sessoConvert = String.valueOf(sesso);
+        String sql ="insert into Impiegato values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1,matricola);
+        preparedStatement.setString(2,nome);
+        preparedStatement.setString(3,cognome);
+        preparedStatement.setString(4,sessoConvert);
+        preparedStatement.setString(5,cf);
+        preparedStatement.setDate(6,Date.valueOf(dataNascita));
+        preparedStatement.setString(7,indirizzoResidenza);
+        preparedStatement.setLong(8,recapitoTelefonico);
+        preparedStatement.setString(9,mailPersonale);
+        preparedStatement.setString(10,iban);
+        preparedStatement.setString(11,mail);
+        preparedStatement.setString(12,password);
+        preparedStatement.setString(13,ruolo);
+        preparedStatement.setBoolean(14,reperibile);
+        preparedStatement.setInt(15,servizio);
+        preparedStatement.setDate(16,Date.valueOf(inizioServizio));
+        if(fineServizio == null){
+            preparedStatement.setDate(17,null);
+        }else{
+            preparedStatement.setDate(17,Date.valueOf(fineServizio));
+        }
+        preparedStatement.setInt(18,giorniFerieRimanenti);
+        preparedStatement.setDouble(19,orePermesso);
+        preparedStatement.setDouble(20,oreStraordinario);
+        preparedStatement.setBoolean(21,disattivato);
+        preparedStatement.setBlob(22,fotoProfilo);
+
+
+        preparedStatement.execute();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
 
 
 }

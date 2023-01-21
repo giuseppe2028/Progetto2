@@ -1,6 +1,7 @@
 package com.example.GestioneRemoto.GestioneImpiegato.Schermate;
 
 import com.example.GestioneRemoto.FileDiSistema.CodiceFiscaleCalculator;
+import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlFestivitaFerie;
 import com.example.GestioneRemoto.GestioneImpiegato.Control.ControlGestioneImpiegati;
 import javafx.event.ActionEvent;
@@ -12,7 +13,9 @@ import java.time.LocalDate;
 
 public class SchermataRegistrazioneImpiegato {
     @FXML
-    private TextField nome,cognome,mailPersonale,idirizzoResidenza,IBAN;
+    private TextField nome,cognome,mailPersonale,IBAN,recapito;
+    @FXML
+    private TextField indirizzoResidenza;
     @FXML
     private ChoiceBox<String> ruolo;
     @FXML
@@ -65,17 +68,19 @@ public class SchermataRegistrazioneImpiegato {
         System.out.println(sesso);
     }
         public void compilaDatiProfilo(){
-
-
-            controlGestioneImpiegati.compila(nome.getText(),cognome.getText(),mailPersonale.getText(),idirizzoResidenza.getText(),IBAN.getText(),servizio.getValue(),ruolo.getValue(),sesso,reperibile.isSelected(),dataPicker.getValue());
+            controlGestioneImpiegati.compila(nome.getText(),cognome.getText(),Long.parseLong(recapito.getText()),mailPersonale.getText(),indirizzoResidenza.getText(),IBAN.getText(),servizio.getValue(),ruolo.getValue(),sesso,reperibile.isSelected(),dataPicker.getValue(),cf);
     }
+    String cf;
     public void calculate(){
         nomeTesto = nome.getText();
         cognomeTesto = cognome.getText();
         dataNascitaTesto = dataPicker.getValue();
         luogoNascitaTesto = luogoNascita.getText();
-       String cf = codiceFiscaleCalculator.computeCodiceFiscale(nomeTesto,cognomeTesto,dataNascitaTesto,sessoBool, luogoNascitaTesto);
+        cf = codiceFiscaleCalculator.computeCodiceFiscale(nomeTesto,cognomeTesto,dataNascitaTesto,sessoBool, luogoNascitaTesto);
         codiceFiscale.setText(cf);
+    }
+    public void clickIndietro(ActionEvent e){
+        Util.ritorno("/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataGestioneImpiegati.fxml");
     }
     }
 

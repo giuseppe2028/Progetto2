@@ -29,7 +29,7 @@ public class CodiceFiscaleCalculator {
         codiceFiscale = computeNomeCognome(nome,cognome);
         int giorno = dataNascita.getDayOfMonth();
         int mese = dataNascita.getMonthValue();
-        int anno = dataNascita.getYear();
+        int anno = dataNascita.getYear()%100;
         String meseCF = computeMese(mese);
         if(!sesso) {
             giorno += 40;

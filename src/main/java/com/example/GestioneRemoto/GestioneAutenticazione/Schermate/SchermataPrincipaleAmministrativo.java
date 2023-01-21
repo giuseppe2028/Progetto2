@@ -13,7 +13,7 @@ public class SchermataPrincipaleAmministrativo extends SchermataPrincipaleDipend
     public SchermataPrincipaleAmministrativo(ControlLogin controlLogin, List<Object> datiProfilo){
         super(controlLogin,datiProfilo);
     }
-    public void clickGestioneDipendenti(){
+    public void clickGestioneImpiegati(){
         ControlGestioneImpiegati controlGestioneImpiegati = new ControlGestioneImpiegati();
     }
     public void clickTimbraturaImpiegati(){
@@ -23,7 +23,7 @@ public class SchermataPrincipaleAmministrativo extends SchermataPrincipaleDipend
 
     }
 @FXML
-public void clickTurnazioneTrimestrale(ActionEvent e){
+public void clickTurnazioneTrimestrale(ActionEvent e) {
     ControlVisualizzaPropostaTurni controlVisualizzaPropostaTurni = new ControlVisualizzaPropostaTurni();
 }
 }

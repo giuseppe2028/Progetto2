@@ -12,6 +12,7 @@ public class NavigationManager {
     private  Stage stage= Start.mainStage;
 
    private NavigationManager(Stage stage) {
+
         this.stage = stage;
     }
     public static NavigationManager getInstance(Stage stage){

@@ -17,12 +17,14 @@
                <font>
                   <Font size="25.0" />
                </font></Label>
-            <Button fx:id="logout" contentDisplay="GRAPHIC_ONLY" layoutX="799.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="78.0" text="Button" />
-                <ImageView fx:id="Iconlogout" fitHeight="40.0" fitWidth="36.0" layoutX="813.0" layoutY="10.0" preserveRatio="true">
-                    <image>
-                        <Image url="@../../Icon/Logout.png" />
-                    </image>
-                </ImageView>
+            <Button fx:id="logout" contentDisplay="GRAPHIC_ONLY" layoutX="818.0" layoutY="8.0" mnemonicParsing="false" onAction="#clickLogout" prefHeight="45.0" prefWidth="25.0" text="Button">
+               <graphic>
+                      <ImageView fx:id="Iconlogout" fitHeight="40.0" fitWidth="36.0" preserveRatio="true">
+                          <image>
+                              <Image url="@../../Icon/Logout.png" />
+                          </image>
+                      </ImageView>
+               </graphic></Button>
             </children></AnchorPane>
         <ImageView fx:id="ImmagineProfilo" fitHeight="138.0" fitWidth="196.0" layoutX="379.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>

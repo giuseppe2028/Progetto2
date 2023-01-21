@@ -551,8 +551,12 @@ private void visualizzaTabella(int giornoconsiderato){
     //scorro la lista e vedo quale oggetto ha il giorno selezionato
     for(int i = 0; i< proposta.size(); i++){
         System.out.println("giorno query "+ proposta.get(i).getDataTurno().getDayOfMonth());;
-        if(proposta.get(i).getDataTurno().getDayOfMonth() == giornoconsiderato){
+        if(proposta.get(i).getDataTurno().getDayOfMonth() == giornoconsiderato && proposta.get(i).getDataTurno().getMonthValue() == valoreMese(selezionaMese.getValue())){
+            System.out.println(proposta.get(i).getRuolo());
+            System.out.println("Giorno proposta"+ proposta.get(i).getDataTurno().getDayOfMonth());
+            System.out.println("Giorno considerato"+ giornoconsiderato);
             System.out.println(proposta.get(i).getDataTurno().getDayOfMonth());
+            System.out.println("faccio il toString" + proposta.get(i).toString());
             propostaTurniTabella.add(new RigaPropostaTurnazione(proposta.get(i).getTurno(),proposta.get(i).getDipendente(),proposta.get(i).getServizio(),proposta.get(i).getRuolo()));
 
         }

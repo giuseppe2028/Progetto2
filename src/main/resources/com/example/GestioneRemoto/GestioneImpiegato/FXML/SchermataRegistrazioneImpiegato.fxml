@@ -23,7 +23,7 @@
         </TextField>
         <RadioButton fx:id="femmina" layoutX="740.0" layoutY="317.0" mnemonicParsing="false" onAction="#selezionaSessoFemmina" prefHeight="50.0" prefWidth="47.0" text="F" />
         <RadioButton fx:id="maschio" layoutX="679.0" layoutY="317.0" mnemonicParsing="false" onAction="#selezionaSessoMaschio" prefHeight="50.0" prefWidth="47.0" text="M" />
-        <Label fx:id="codiceFiscale" alignment="CENTER" blendMode="SRC_ATOP" graphicTextGap="0.0" layoutX="153.0" layoutY="399.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="28.0" prefWidth="255.0" style="-fx-background-radius: 20;" text="Codice Fiscale" textFill="#a4a4a4">
+        <Label fx:id="codiceFiscale" alignment="CENTER" blendMode="SRC_ATOP" graphicTextGap="0.0" layoutX="530.0" layoutY="417.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="28.0" prefWidth="250.0" style="-fx-background-radius: 20;" text="Codice Fiscale" textFill="#a4a4a4">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -39,12 +39,12 @@
          <font>
             <Font size="12.0" />
          </font></CheckBox>
-        <Button layoutX="53.0" layoutY="504.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@../CSS/SchermataTimbraturaEntrata.css" text="Indietro" textFill="WHITE">
+        <Button layoutX="53.0" layoutY="504.0" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="35.0" prefWidth="180.0" stylesheets="@../CSS/SchermataTimbraturaEntrata.css" text="Indietro" textFill="WHITE">
             <font>
                 <Font size="25.0" />
             </font>
         </Button>
-        <Button layoutX="651.0" layoutY="504.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@../CSS/SchermataTimbraturaEntrata.css" text="Registra" textFill="WHITE">
+        <Button layoutX="651.0" layoutY="504.0" mnemonicParsing="false" onAction="#compilaDatiProfilo" prefHeight="35.0" prefWidth="180.0" stylesheets="@../CSS/SchermataTimbraturaEntrata.css" text="Registra" textFill="WHITE">
             <font>
                 <Font size="25.0" />
             </font>
@@ -83,7 +83,7 @@
       </Button>
       <Text layoutX="567.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servizio" />
       <Text layoutX="706.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ruolo" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="372.0" layoutY="399.0" mnemonicParsing="false" onAction="#calculate" prefHeight="7.0" prefWidth="10.0" style="-fx-background-color: trasparent;" text="Button">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="741.0" layoutY="416.0" mnemonicParsing="false" onAction="#calculate" prefHeight="7.0" prefWidth="10.0" style="-fx-background-color: trasparent;" text="Button">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -93,6 +93,11 @@
          </graphic>
       </Button>
       <TextField fx:id="luogoNascita" alignment="CENTER" focusTraversable="false" layoutX="314.0" layoutY="344.0" prefHeight="28.0" prefWidth="186.0" promptText="Luogo Nascita" style="-fx-background-radius: 30; -fx-opacity: 1;" stylesheets="@../CSS/SchermataTimbraturaEntrata.css">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="recapito" layoutX="203.0" layoutY="398.0" promptText="recapito" style="-fx-background-radius: 30; -fx-alignment: center;">
          <font>
             <Font size="16.0" />
          </font>

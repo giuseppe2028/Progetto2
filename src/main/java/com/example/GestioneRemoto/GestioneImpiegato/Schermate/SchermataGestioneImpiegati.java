@@ -37,22 +37,37 @@ public class SchermataGestioneImpiegati implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle){
 
-        servizio.getItems().add(1);
-        servizio.getItems().add(2);
-        servizio.getItems().add(3);
-        servizio.getItems().add(4);
+        servizio.getItems().add("1");
+        servizio.getItems().add("2");
+        servizio.getItems().add("3");
+        servizio.getItems().add("4");
+        servizio.getItems().add("Tutti");
+        servizio.setValue("Tutti");
         //aggiungo i ruoli alla schermata
 
        ruolo.getItems().add("Impiegato");
         ruolo.getItems().add("Amministrativo");
         ruolo.getItems().add("Tutti");
-        ruolo.setValue("tutti");
-        ruolo.setOnAction((event)-> {
-            visualizzaTabellaRuolo(ruolo.getValue());
+        ruolo.setValue("Tutti");
+       ruolo.setOnAction((event)-> {
+
+            if(ruolo.getValue().equals("Tutti")){
+
+                visualizzaTabellaFiltrata(0,null);
+            }
+            else{
+                visualizzaTabellaFiltrata(0,ruolo.getValue());
+            }
         });
         //gestisco il cambiamento
         servizio.setOnAction((event)-> {
-           visualizzaTabellaServizio(servizio.getValue());
+           if(servizio.getValue().equals("Tutti")){
+               visualizzaTabellaFiltrata(0,null);
+           }
+           else{
+               visualizzaTabellaFiltrata(Integer.parseInt(servizio.getValue()),null);
+           }
+
         });
 
         //lista = Daemon.getImpiegati(servizio.getValue(),ruolo.getValue());
@@ -129,7 +144,7 @@ public class SchermataGestioneImpiegati implements Initializable {
 
     }
     @FXML
-    private ChoiceBox<Integer> servizio;
+    private ChoiceBox<String> servizio;
     @FXML
     private ChoiceBox<String> ruolo;
 
@@ -166,7 +181,9 @@ public class SchermataGestioneImpiegati implements Initializable {
 
     @FXML
     void clickIndietro(ActionEvent event) {
-        Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml",stage);
+        System.out.println("sesso con cavalli");
+       // Util.setScene("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml",stage);
+        Util.ritorno("/com/example/GestioneRemoto/GestioneAutenticazione/FXML/SchermataPrincipaleDatore.fxml");
     }
 /*private List<Impiegati> visualizzaTabellaServizio(int filtro){
         List<Impiegati> listaFiltrata ;
@@ -250,11 +267,13 @@ List<Impiegati> listaFiltrata = lista.stream().filter(s-> s.getRuolo().startsWit
 
 
 }
-private void visualizzaTabellaServizio(int filtro){
-    List<Impiegati> listaFiltrata = lista.stream().filter(s-> s.getServizio() == filtro).toList();
-    listaTabella = FXCollections.observableArrayList();
-    for(int i = 0; i<listaFiltrata.size();i++){
-        listaTabella.add(new Impiegati(listaFiltrata.get(i).getMatricola(), listaFiltrata.get(i).getNome(),listaFiltrata.get(i).getCognome(),listaFiltrata.get(i).getServizio(),listaFiltrata.get(i).getRuolo()));
+private void visualizzaTabellaFiltrata(int servizio, String ruolo){
+    //List<Impiegati> listaFiltrata = controlGestioneImpiegati.filtra(ruolo,servizio,lista);
+    lista = controlGestioneImpiegati.filtra(ruolo,servizio,lista);
+
+            listaTabella = FXCollections.observableArrayList();
+    for(int i = 0; i<lista.size();i++){
+        listaTabella.add(new Impiegati(lista.get(i).getMatricola(), lista.get(i).getNome(),lista.get(i).getCognome(),lista.get(i).getServizio(),lista.get(i).getRuolo()));
 
     }
 

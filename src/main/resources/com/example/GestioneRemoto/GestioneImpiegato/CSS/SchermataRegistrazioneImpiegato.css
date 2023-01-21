@@ -35,6 +35,12 @@
     -fx-border-color: black;
     -fx-border-width: 0.5;
 }
+#recapito{
+    -fx-border-radius: 30px;
+    -fx-background-color: #deefff;
+    -fx-border-color: black;
+    -fx-border-width: 0.5;
+}
 #cognome{
     -fx-border-radius: 30px;
     -fx-background-color: #deefff;
