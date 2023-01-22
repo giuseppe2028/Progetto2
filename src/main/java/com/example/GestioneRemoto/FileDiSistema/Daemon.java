@@ -2,13 +2,11 @@ package com.example.GestioneRemoto.FileDiSistema;
 
 import com.example.GestioneRemoto.Contenitori.Impiegati;
 import com.example.GestioneRemoto.Contenitori.Richiesta;
-import javafx.scene.image.Image;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -559,6 +557,76 @@ public class Daemon {
         }
 
         return false;
+    }
+
+    public static boolean verifyTimbratura(LocalDate data, LocalTime orario, int matricola) throws SQLException {
+        ResultSet rs = null;
+
+            String query = "SELECT * FROM Timbratura WHERE data_timbratura=? AND ora=? AND ref_impiegato=?";
+            PreparedStatement pstm1 = conn.prepareStatement(query);
+            pstm1.setDate(1, Date.valueOf(data));
+            pstm1.setTime(2, Time.valueOf(orario));
+            pstm1.setInt(3, matricola);
+            pstm1.execute();
+        if (rs.next()) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean controlloTimbr(LocalDate data, int matricola) throws SQLException {
+        ResultSet rs = null;
+
+        String query = "SELECT * FROM Turno WHERE data_turno=? AND ref_impiegato=?";
+        PreparedStatement pstm1 = conn.prepareStatement(query);
+        pstm1.setDate(1, Date.valueOf(data));
+        pstm1.setInt(2, matricola);
+        pstm1.execute();
+        if (rs.next()) {
+            return true;
+        }
+        return false;
+    }
+
+    public String getTipoTurno(LocalDate data, int matricola) throws SQLException {
+        ResultSet rs = null;
+        String query = "SELECT tipo_turno FROM Turno WHERE data_turno=? AND ref_impiegato=?";
+        PreparedStatement pstm1 = conn.prepareStatement(query);
+        pstm1.setDate(1, Date.valueOf(data));
+        pstm1.setInt(2, matricola);
+        pstm1.execute();
+        if (rs.next()) {
+            return rs.getString("tipo_turno");
+        }
+        return null;
+    }
+    public static LocalDate getDataTurno(LocalDate data, int matricola) throws SQLException {
+        ResultSet rs = null;
+        String query = "SELECT ref_data FROM Timbratura WHERE data_turno=? AND ref_impiegato=?";
+        PreparedStatement pstm1 = conn.prepareStatement(query);
+        pstm1.setDate(1, Date.valueOf(data));
+        pstm1.setInt(2, matricola);
+        pstm1.execute();
+        if (rs.next()) {
+            return rs.getDate("ref_data").toLocalDate();
+        }
+        return null;
+    }
+
+    public static void insertTimbratura(LocalDate data, LocalTime orario, int matricola, String tipoTurno, LocalDate dataTurno) {
+        try {
+            String sql = "INSERT INTO Timbratura(ref_data,ref_impiegato,tipo_timbratura,data_timbratura,ora)values (?,?,?,?,?) ";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setDate(1, Date.valueOf(dataTurno));
+            preparedStatement.setInt(2, matricola);
+            preparedStatement.setString(3, tipoTurno);
+            preparedStatement.setDate(4, Date.valueOf(data));
+            preparedStatement.setTime(5, Time.valueOf((orario)));
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

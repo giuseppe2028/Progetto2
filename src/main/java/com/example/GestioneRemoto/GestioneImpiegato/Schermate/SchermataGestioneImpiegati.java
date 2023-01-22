@@ -295,12 +295,12 @@ public class SchermataGestioneImpiegati implements Initializable {
                             controlGestioneImpiegati.clickVisualizzaStipendio();
 
 
-                        });
+                        });*/
                         timbra.setOnAction((ActionEvent event)->{
                             impiegato= tabella.getSelectionModel().getSelectedItem();
-                            controlGestioneImpiegati.clickTimbraturaImpiegato();
+                            controlGestioneImpiegati.clickTimbraturaImpiegato(impiegato.getMatricola());
 
-                        });*/
+                        });
 
                         HBox managebtn = new HBox(visualizzaDati,visualizzaStipendio,timbra);
                         managebtn.setStyle("-fx-alignment: center");

@@ -4,10 +4,12 @@ import com.example.GestioneRemoto.Contenitori.Impiegati;
 import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneImpiegato.Schermate.*;
-import com.example.GestioneRemoto.GestioneProfilo.Schermate.SchermataVisualizzaStipendio;
 import com.example.GestioneRemoto.Start;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class ControlGestioneImpiegati {
@@ -38,5 +40,29 @@ public class ControlGestioneImpiegati {
 
     public void clickDisattiva() {
         Util.setScene("/com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataDisattivaImpiegato.fxml", stage, c-> new SchermataDisattivaImpiegato(this));
+    }
+
+    public void clickTimbraturaImpiegato(int matricola) {
+        Util.setSpecificScene("com/example/GestioneRemoto/GestioneImpiegato/FXML/SchermataTimbraturaImpiegato.fxml", stage, c-> new SchermataTimbraturaImpiegato(this, matricola));
+    }
+    public void clickIndietro(String fxml){
+        Util.ritorno(fxml);
+    }
+
+    public void clickConferma(LocalDate data, LocalTime orario, int matricola) throws SQLException {
+        Boolean es=Daemon.controlloTimbr(data, matricola);
+        if (es) {
+            Boolean esito = Daemon.verifyTimbratura(data, orario, matricola);
+            if (esito) {
+                //todo popup errore
+            } else {
+                String tipoTurno= Daemon.getTurno(data, matricola);
+                LocalDate dataTurno= Daemon.getDataTurno(data, matricola);
+                Daemon.insertTimbratura(data, orario, matricola, tipoTurno, dataTurno);
+                //todo popup informazione
+            }
+        }else {
+            //todo popup errore
+        }
     }
 }

@@ -54,7 +54,7 @@ public class SchermataVisualizzaImpiegato  {
         RecapitoLabel.setText(imp.get(11).toString());
 //mailLabel.setText((String) imp.get(12));
 
-        servizioLabel.setText(imp.get(13).toString());
+        servizioLabel.setText(imp.get(12).toString());
 
     }
 }
