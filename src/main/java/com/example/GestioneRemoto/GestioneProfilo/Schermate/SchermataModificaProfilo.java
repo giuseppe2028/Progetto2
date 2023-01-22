@@ -51,6 +51,13 @@ Button carica;
     public SchermataModificaProfilo(ControlVisualizzaProfilo controlVisualizzaProfilo) {
         this.controlVisualizzaProfilo=controlVisualizzaProfilo;
     }
+    public void initialize() throws IOException {
+        Image im;
+        InputStream is= Daemon.getFotoProfilo(EntityUtente.getMatricola());
+        im = new Image(is);
+        immagineView.setImage(im);
+        is.close();
+    }
     public void clickModifica(ActionEvent e){
         controlVisualizzaProfilo.clickModifica();
     }

@@ -1,5 +1,6 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
+import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.Util;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
@@ -14,10 +15,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,8 +50,7 @@ public class SchermataPrincipaleImpiegato implements Runnable {
         this.controlLogin = controlLogin;
     }
 
-    String data;
-    @FXML
+      @FXML
     ImageView Iconlogout;
     @FXML
     Label dataCorrente;
@@ -78,15 +81,20 @@ public class SchermataPrincipaleImpiegato implements Runnable {
     Stage stage = Start.mainStage;
     private  Timer timer = new Timer();
     @FXML
-    public void initialize(){
+    public void initialize() throws IOException {
 
         String stringNomeCognome =  datiProfilo.get(1).toString() +" "+ datiProfilo.get(2).toString();
             nomeCognome.setText(stringNomeCognome);
             String stringMatricola = datiProfilo.get(0).toString();
-            String stringRuolo =datiProfilo.get(7).toString();
+            String stringRuolo =datiProfilo.get(6).toString();
             nomeCognome.setText(stringNomeCognome);
             matricola.setText(stringMatricola);
             ruolo.setText(stringRuolo);
+        Image im;
+        InputStream is= Daemon.getFotoProfilo((Integer)  datiProfilo.get(11));
+        im = new Image(is);
+        ImmagineProfilo.setImage(im);
+        is.close();
 
     }
     @Override

@@ -28,7 +28,7 @@
             <font>
                 <Font size="14.0" />
             </font></Button>
-        <Button fx:id="indietroButton" layoutX="51.0" layoutY="570.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" style="-fx-font-size: 14; -fx-background-radius: 20;" text="indietro">
+        <Button fx:id="indietroButton" layoutX="51.0" layoutY="570.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickIndietro" prefHeight="27.0" prefWidth="77.0" style="-fx-font-size: 14; -fx-background-radius: 20;" text="indietro">
             <font>
                 <Font size="10.0" />
             </font>

@@ -39,7 +39,7 @@ public class EntityUtente {
         this.IBAN = (String) arrayList.get(8);
         this.recapito_telefonico = (long) arrayList.get(9);
         this.mail_personale = (String) arrayList.get(10);
-       // this.inputStream= (InputStream) arrayList.get(11);
+    // this.inputStream= (InputStream) arrayList.get(11);
         this.sesso=(String) arrayList.get(11);;
 
     }

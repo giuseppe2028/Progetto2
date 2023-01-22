@@ -1,5 +1,6 @@
 package com.example.GestioneRemoto.GestioneAutenticazione.Schermate;
 
+import com.example.GestioneRemoto.FileDiSistema.Daemon;
 import com.example.GestioneRemoto.FileDiSistema.EntityUtente;
 import com.example.GestioneRemoto.GestioneAutenticazione.Control.ControlLogin;
 import com.example.GestioneRemoto.FileDiSistema.DatePicker;
@@ -97,7 +98,17 @@ public class SchermataPrincipaleDatore implements Runnable{
         nomeCognome.setText(stringNomeCognome);
         matricola.setText(stringMatricola);
         ruolo.setText(stringRuolo);
-        List<Object> imm= EntityUtente.getDatiProfilo();
+        Image im;
+        InputStream is= Daemon.getFotoProfilo((Integer) lista.get(0));
+        im = new Image(is);
+        immagineView.setImage(im);
+        is.close();
+       /* Image im;
+        InputStream is = (InputStream) lista.get(11);
+        im = new Image(is);
+        immagineView.setImage(im);
+        is.close();
+
      /*  ByteArrayInputStream clob= (ByteArrayInputStream) imm.get(11);
         byte[] byteArr= clob.readAllBytes();
        InputStream inputStream = new ByteArrayInputStream(byteArr);

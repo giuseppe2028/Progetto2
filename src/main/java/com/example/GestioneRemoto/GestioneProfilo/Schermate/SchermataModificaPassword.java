@@ -18,10 +18,6 @@ public class SchermataModificaPassword {
 
     public SchermataModificaPassword(ControlVisualizzaProfilo controlVisualizzaProfilo) {
         this.controlVisualizzaProfilo = controlVisualizzaProfilo;
-
-
-
-
     }
 
     @FXML
@@ -56,6 +52,9 @@ public class SchermataModificaPassword {
         controlVisualizzaProfilo.compila(vecpass,nuovapass,confpass);
         controlVisualizzaProfilo.clickConferma(e,vecpass,nuovapass,confpass);
 
+    }
+    public void clickIndietro(ActionEvent e){
+        controlVisualizzaProfilo.clickIndietro("com/example/GestioneRemoto/GestioneProfilo/FXML/SchermataVisualizzaProfilo.fxml");
     }
 
 

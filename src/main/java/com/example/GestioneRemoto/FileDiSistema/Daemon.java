@@ -2,7 +2,10 @@ package com.example.GestioneRemoto.FileDiSistema;
 
 import com.example.GestioneRemoto.Contenitori.Impiegati;
 import com.example.GestioneRemoto.Contenitori.Richiesta;
+import javafx.scene.image.Image;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
@@ -73,7 +76,11 @@ public class Daemon {
                     ritorno.add(resultSet.getString("IBAN"));
                     ritorno.add(resultSet.getLong("recapito_telefonico"));
                     ritorno.add(resultSet.getString("mail_personale"));
-                   /* Blob clob = resultSet.getBlob("foto_profilo");
+                   /* Blob blob = resultSet.getBlob("foto_profilo");
+                    byte[] data = blob.getBinaryStream().readAllBytes();
+                    InputStream inputStream = new ByteArrayInputStream(data);
+                    ritorno.add(inputStream);
+                    /* Blob clob = resultSet.getBlob("foto_profilo");
                     byte[] byteArr = clob.getBytes(1, (int) clob.length());
                     InputStream inputStream = new ByteArrayInputStream(byteArr);
                     ritorno.add(inputStream);*/
@@ -92,6 +99,25 @@ public class Daemon {
             throw new RuntimeException(e);
         }
     }
+    public static InputStream getFotoProfilo(int matricola) {
+        String sql = "SELECT foto_profilo FROM Utente WHERE matricola = ?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, matricola);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    Blob blob = resultSet.getBlob("foto_profilo");
+                    return blob.getBinaryStream();
+                } else {
+                    throw new SQLException("Immagine non trovata");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 
     public static int getMatricola(String mail) {
         ResultSet rs;
