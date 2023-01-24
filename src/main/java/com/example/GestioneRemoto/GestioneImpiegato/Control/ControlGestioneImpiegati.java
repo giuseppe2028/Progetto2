@@ -45,7 +45,7 @@ public class ControlGestioneImpiegati {
     public void compila(LocalDate dataArrivo, LocalTime oraArrivo){
         //todo da sistemare
     }
-    public void compila(String nome, String cognome,long recapito, String mailPersonale,String indirizzo,String iban,int servizio, String ruolo,char sesso, boolean reperibile,LocalDate dataNascita,String coficeFiscale){
+    public void clickRegistra(String nome, String cognome,long recapito, String mailPersonale,String indirizzo,String iban,int servizio, String ruolo,char sesso, boolean reperibile,LocalDate dataNascita,String coficeFiscale){
         System.out.println(nome+cognome+mailPersonale+iban+indirizzo+servizio+ruolo+sesso+reperibile+dataNascita.toString());
         //prendo la matricola massima
         int matricola = Daemon.getMaxMatricola()+1;
