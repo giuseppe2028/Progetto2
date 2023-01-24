@@ -52,7 +52,6 @@ public class ControlGestioneImpiegati {
         String mail = nome+"."+cognome+"@azienda.it";
         String password = nome+cognome+"123";
         Daemon.updateImpiegato(matricola,nome,cognome,sesso,coficeFiscale,dataNascita,indirizzo,recapito,mailPersonale,iban,mail,password,ruolo,reperibile,servizio,LocalDate.now(),null,26,30,6,false,null);
-
     }
     List<Impiegati> listaFiltrata;
     public List<Impiegati> filtra(String ruolo, int servizio,List<Impiegati> lista){
